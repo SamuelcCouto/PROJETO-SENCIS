@@ -95,27 +95,6 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-/* ================= HERO ================= */
-.hero {
-    background: linear-gradient(rgba(253, 251, 247, 0.9), rgba(253, 251, 247, 0.9)), url('https://via.placeholder.com/1920x800?text=Fundo+Clinica') center/cover;
-    padding: 120px 0;
-    text-align: center;
-}
-
-.hero-content h2 {
-    font-family: var(--font-title);
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: var(--secondary-color);
-}
-
-.hero-content p {
-    font-size: 18px;
-    max-width: 700px;
-    margin: 0 auto 30px;
-    color: #555;
-}
-
 /* ================= SOBRE ================= */
 .sobre {
     padding: 80px 0;
@@ -124,12 +103,15 @@ nav ul li a:hover {
 
 .sobre-container {
     display: flex;
-    gap: 50px;
+    flex-direction: column; /* Alterado para coluna conforme feedback */
+    gap: 40px;
     align-items: center;
+    text-align: center; /* Centralizando o texto */
 }
 
 .sobre-texto {
-    flex: 1;
+    width: 100%;
+    max-width: 800px;
 }
 
 .sobre-texto h3 {
@@ -143,30 +125,42 @@ nav ul li a:hover {
     margin-bottom: 15px;
 }
 
+/* Enfeitando a lista de diferenciais */
 .diferenciais {
     list-style: none;
-    margin-top: 20px;
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
 }
 
 .diferenciais li {
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
+    background-color: var(--bg-light);
+    padding: 12px 24px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid #f0eae4;
+    font-size: 15px;
 }
 
 .diferenciais i {
     color: var(--primary-color);
+    font-size: 18px;
 }
 
 .sobre-imagem {
-    flex: 1;
+    width: 100%;
+    max-width: 900px; /* Limita a largura para a imagem não estourar na tela */
 }
 
 .sobre-imagem img {
     width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(181, 149, 124, 0.2); /* Sombra estilizada com a cor primária */
 }
 
 /* ================= AVALIAÇÕES ================= */
@@ -275,10 +269,10 @@ nav ul li a:hover {
 
 /* ================= FOOTER ================= */
 footer {
-    background-color: var(--secondary-color);
+    background-color: #9c7f69; /* Marrom alinhado com a paleta dos CTAs */
     color: var(--white);
     text-align: center;
-    padding: 20px 0;
+    padding: 30px 0;
     font-size: 14px;
 }
 
