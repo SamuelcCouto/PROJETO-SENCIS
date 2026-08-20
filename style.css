@@ -83,6 +83,8 @@ nav ul li a:hover {
     text-decoration: none;
     font-weight: 500;
     transition: background 0.3s;
+    display: inline-block; /* Resolve a sobreposição */
+    margin-top: 15px; /* Descola o botão do texto */
 }
 
 .btn-agendar:hover, .btn-primary:hover {
@@ -278,6 +280,7 @@ footer {
 
 /* ================= RESPONSIVO ================= */
 @media (max-width: 768px) {
+    /* Regras do Menu que já estavam aí */
     .nav-container nav, .btn-agendar {
         display: none;
     }
@@ -299,10 +302,45 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+    
+    /* Novos Ajustes Estruturais */
     .sobre-container, .contato-container {
         flex-direction: column;
     }
-    .hero-content h2 {
-        font-size: 36px;
+    
+    /* Ajuste da Hero (Reduzindo textos e margens) */
+    .hero {
+        padding: 60px 0; /* Diminui o respiro no celular */
     }
+    .hero-content h2 {
+        font-size: 32px; /* Título menor para caber na tela */
+        line-height: 1.2;
+    }
+    .hero-content p {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    
+    /* Ajuste das Tags de Diferenciais (Empilhadas no celular) */
+    .diferenciais {
+        flex-direction: column;
+        width: 100%;
+    }
+    .diferenciais li {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+        font-size: 14px;
+        text-align: center;
+    }
+}
+   /* ================= HERO ================= */
+.hero {
+    background: linear-gradient(rgba(253, 251, 247, 0.9), rgba(253, 251, 247, 0.9)), url('https://via.placeholder.com/1920x800?text=Fundo+Clinica') center/cover;
+    padding: 120px 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 }
