@@ -1,19 +1,15 @@
-/* Variáveis de Cores e Fontes Baseadas na Nova Identidade */
+/* ================= VARIÁVEIS ================= */
 :root {
-    /* Paleta Extraída do Guia da Marca */
-    --color-dark-charcoal: #2b2e31; /* Profundidade e autoridade */
-    --color-steel-blue: #4A6B8C;   /* Azul petróleo desaturado, frescor */
-    --color-beige: #C9B29B;        /* Sofisticação, pele, cuidado */
-    --color-nude: #E6D8C8;         /* Acolhimento, humanização */
-    --color-off-white: #F4F1EA;    /* Base neutra, limpeza visual */
-    
+    --color-dark-charcoal: #2b2e31;
+    --color-steel-blue: #4A6B8C;
+    --color-beige: #C9B29B;
+    --color-nude: #E6D8C8;
+    --color-off-white: #F4F1EA;
     --white: #FFFFFF;
     
-    /* Tipografia */
     --font-text: 'Poppins', sans-serif;
     --font-title: 'Playfair Display', serif;
     
-    /* Transições */
     --transition-smooth: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -35,18 +31,13 @@ body {
     overflow-x: hidden;
 }
 
-::selection {
-    background-color: var(--color-beige);
-    color: var(--white);
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 5%;
 }
 
-/* ================= TYPOGRAPHY & TAGS ================= */
+/* ================= TIPOGRAFIA ================= */
 h1, h2, h3, h4, h5 {
     font-family: var(--font-title);
     font-weight: 400;
@@ -114,7 +105,6 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: var(--color-dark-charcoal);
-    font-weight: 400;
     font-size: 15px;
     position: relative;
     padding-bottom: 5px;
@@ -140,10 +130,8 @@ nav ul li a {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 500;
-    letter-spacing: 0.5px;
     transition: var(--transition-smooth);
     display: inline-block;
-    border: 1px solid transparent;
 }
 .btn-agendar:hover, .btn-primary:hover {
     background-color: var(--color-dark-charcoal);
@@ -164,18 +152,7 @@ nav ul li a {
     height: 100vh;
     display: flex;
     align-items: center;
-    overflow: hidden;
 }
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120%; /* Para o parallax */
-    background: linear-gradient(to right, rgba(244, 241, 234, 0.95) 0%, rgba(244, 241, 234, 0.7) 100%), url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-    z-index: -1;
-}
-
 .hero-content {
     max-width: 650px;
 }
@@ -195,7 +172,6 @@ nav ul li a {
 .hero-content h2 em {
     font-style: italic;
     color: var(--color-steel-blue);
-    font-weight: 400;
 }
 .hero-content p {
     font-size: 18px;
@@ -204,47 +180,7 @@ nav ul li a {
     font-weight: 300;
 }
 
-.scroll-indicator {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    opacity: 0.7;
-}
-.mouse {
-    width: 24px;
-    height: 36px;
-    border: 1px solid var(--color-dark-charcoal);
-    border-radius: 12px;
-    position: relative;
-}
-.mouse::before {
-    content: '';
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 6px;
-    background: var(--color-dark-charcoal);
-    border-radius: 2px;
-    animation: scroll 1.5s infinite;
-}
-@keyframes scroll {
-    0% { top: 6px; opacity: 1; }
-    100% { top: 20px; opacity: 0; }
-}
-.scroll-indicator span {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* ================= ESSÊNCIA ================= */
+/* ================= ESSÊNCIA & ESTRUTURA ================= */
 .essencia {
     padding: 120px 0;
     background-color: var(--white);
@@ -293,47 +229,39 @@ nav ul li a {
 .essencia-imagem {
     flex: 1;
 }
-.organic-shape {
+
+/* ================= FOTOS DINÂMICAS COM OPACIDADE (DESKTOP E MOBILE) ================= */
+.photo-card-clean {
     width: 100%;
-    height: 600px;
-    background: linear-gradient(135deg, var(--color-nude), var(--color-beige));
-    border-radius: 200px 200px 0 200px; /* Forma orgânica pedida */
-    position: relative;
+    height: 420px;
+    background-color: var(--color-off-white);
+    border-radius: 20px;
     overflow: hidden;
-}
-/* Abstract art replacing typical tooth image */
-.abstract-art {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: var(--color-steel-blue);
-    border-radius: 50%;
-    top: -50px;
-    right: -50px;
-    opacity: 0.1;
-}
-.organic-shape::after {
-    content: '';
-    position: absolute;
-    bottom: -100px;
-    left: -50px;
-    width: 400px;
-    height: 400px;
-    border: 2px solid rgba(255,255,255,0.3);
-    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-    animation: morph 8s ease-in-out infinite both alternate;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+    border: 1px solid var(--color-nude);
+    position: relative;
 }
 
-@keyframes morph {
-    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-    100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+.photo-card-clean img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0.9; /* Opacidade inicial sutil */
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ================= DIFERENCIAIS ================= */
-.diferenciais-sec {
+.photo-card-clean:hover img {
+    opacity: 1; /* Revela 100% de nitidez ao passar o mouse */
+    transform: scale(1.04);
+}
+
+/* ================= GALERIA DE AMBIENTES (8 FOTOS) ================= */
+.galeria-sec {
     padding: 120px 0;
     background-color: var(--color-off-white);
 }
+
 .section-header {
     text-align: center;
     max-width: 700px;
@@ -347,21 +275,76 @@ nav ul li a {
     color: #666;
     font-weight: 300;
 }
+
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.galeria-item {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(201, 178, 155, 0.2);
+}
+
+.galeria-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.galeria-img-wrapper {
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    position: relative;
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.88; /* Dinâmica de opacidade moderna */
+    transition: opacity 0.4s ease, transform 0.6s ease;
+}
+
+.galeria-item:hover img {
+    opacity: 1;
+    transform: scale(1.06);
+}
+
+.galeria-legenda {
+    display: block;
+    padding: 16px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-dark-charcoal);
+    letter-spacing: 0.5px;
+}
+
+/* ================= DIFERENCIAIS ================= */
+.diferenciais-sec {
+    padding: 120px 0;
+    background-color: var(--white);
+}
 .cards-diferenciais {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
 }
 .card-dif {
-    background: var(--white);
+    background: var(--color-off-white);
     padding: 50px 40px;
-    border-radius: 20px 20px 0 20px; /* Toque orgânico */
+    border-radius: 20px 20px 0 20px;
     transition: var(--transition-smooth);
-    border: 1px solid transparent;
+    border: 1px solid var(--color-nude);
 }
 .card-dif:hover {
     transform: translateY(-10px);
-    border-color: var(--color-nude);
     box-shadow: 0 15px 40px rgba(0,0,0,0.04);
 }
 .card-icon {
@@ -435,7 +418,6 @@ nav ul li a {
     color: var(--white);
 }
 .info-text h5 {
-    font-family: var(--font-text);
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -444,7 +426,6 @@ nav ul li a {
 }
 .info-text p {
     color: #555;
-    font-weight: 400;
 }
 .redes-sociais {
     margin-top: 50px;
@@ -462,18 +443,11 @@ nav ul li a {
 }
 .redes-sociais a:hover {
     color: var(--color-steel-blue);
-    gap: 15px; /* Efeito de seta deslizando */
+    gap: 15px;
 }
 
 .mapa {
     flex: 1;
-}
-.organic-shape-alt {
-    width: 100%;
-    height: 500px;
-    border-radius: 0 200px 200px 200px; /* Orgânico espelhado */
-    overflow: hidden;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
 }
 
 /* ================= FOOTER ================= */
@@ -516,74 +490,18 @@ footer {
     visibility: visible;
     transform: translate(0, 0);
 }
-.fade-up { transform: translateY(50px); }
-.fade-right { transform: translateX(-50px); }
-.fade-left { transform: translateX(50px); }
+.fade-up { transform: translateY(40px); }
+.fade-right { transform: translateX(-40px); }
+.fade-left { transform: translateX(40px); }
 
-/* ================= RESPONSIVO ================= */
-@media (max-width: 992px) {
-    .essencia-container, .contato-container {
-        flex-direction: column;
-        gap: 50px;
-    }
-    .hero-content h2 { font-size: 48px; }
-    .organic-shape, .organic-shape-alt { height: 400px; border-radius: 100px; }
-}
-
-@media (max-width: 768px) {
-    .nav-container nav, .btn-agendar { display: none; }
-    .menu-toggle { display: block; }
-    
-    /* Menu Mobile Fullscreen elegante */
-    nav.active {
-        display: flex;
-        position: fixed;
-        top: 0; left: 0; width: 100%; height: 100vh;
-        background: var(--color-off-white);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-    }
-    nav.active ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 40px;
-    }
-    nav.active ul li a { font-size: 24px; font-family: var(--font-title); }
-    
-    html { cursor: auto; } /* Desativa custom cursor no mobile */
-    .cursor-dot, .cursor-outline { display: none; }
-}
-
-/* ================= RESPONSIVIDADE AVANÇADA (MOBILE-FIRST POLISH) ================= */
-
-@media (max-width: 992px) {
-    .essencia-container, .contato-container {
-        flex-direction: column;
-        gap: 40px;
-    }
-    
-    .reverse-mobile {
-        flex-direction: column;
-    }
-
-    .hero-content h2 { 
-        font-size: 42px; 
-    }
-    
-    .organic-shape, .organic-shape-alt { 
-        height: 350px !important; 
-        border-radius: 40px; 
-    }
-    
-    .essencia, .diferenciais-sec, .contato {
-        padding: 80px 0;
+/* ================= RESPONSIVIDADE ESPECÍFICA (MOBILE) ================= */
+@media (max-width: 1024px) {
+    .galeria-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
-    /* Header & Menu Mobile */
     .nav-container nav, .btn-agendar { 
         display: none; 
     }
@@ -596,10 +514,7 @@ footer {
     nav.active {
         display: flex;
         position: fixed;
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        height: 100vh;
+        top: 0; left: 0; width: 100%; height: 100vh;
         background: var(--color-off-white);
         flex-direction: column;
         justify-content: center;
@@ -618,289 +533,44 @@ footer {
         font-family: var(--font-title); 
     }
 
-    /* Hero ajustes mobile */
-    .hero {
-        height: 90vh;
-        text-align: center;
-    }
-    
-    .hero-content {
-        max-width: 100%;
-        padding: 0 10px;
-    }
-    
     .hero-content h2 { 
-        font-size: 34px; 
-        line-height: 1.2;
+        font-size: 38px; 
     }
     
-    .hero-content p {
-        font-size: 15px;
+    .essencia-container, .contato-container {
+        flex-direction: column;
+        gap: 45px;
     }
 
-    /* Seções e Espaçamentos */
-    .essencia, .diferenciais-sec, .contato {
-        padding: 60px 0;
+    .reverse-mobile {
+        flex-direction: column;
+    }
+
+    .essencia, .diferenciais-sec, .contato, .galeria-sec {
+        padding: 70px 0;
     }
 
     .essencia-texto h3, 
     .section-header h3, 
     .infos-contato h3 { 
-        font-size: 28px !important; 
-        line-height: 1.3;
+        font-size: 32px !important; 
     }
 
-    .stats-container {
-        gap: 25px;
+    /* Otimização específica de imagens e opacidade mobile */
+    .photo-card-clean {
+        height: 300px;
     }
 
-    .stat-number {
-        font-size: 30px;
+    .photo-card-clean img, .galeria-item img {
+        opacity: 0.95; /* Maior clareza imediata em telas menores de toque */
     }
 
-    /* Cards */
-    .cards-diferenciais {
+    .galeria-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px;
     }
 
-    .card-dif {
-        padding: 35px 25px;
-    }
-
-    /* Formas Orgânicas e Mapa no Celular */
-    .organic-shape, .organic-shape-alt { 
-        height: 280px !important; 
-        border-radius: 20px; 
-    }
-
-    .map-wrapper iframe {
-        height: 280px;
-        border-radius: 20px;
-    }
-
-    /* Contato list */
-    .info-item {
-        gap: 15px;
-    }
-    
-    .icon-box {
-        width: 45px;
-        height: 45px;
-        min-width: 45px;
+    .galeria-img-wrapper {
+        height: 250px;
     }
 }
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sencis - Odontologia Integrada</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Seu CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <!-- HEADER -->
-    <header id="header">
-        <div class="container nav-container">
-            <div class="logo">
-                <h1>Sencis<span>.</span></h1>
-            </div>
-            
-            <nav id="nav-menu">
-                <ul>
-                    <li><a href="#inicio" class="hover-link">Início</a></li>
-                    <li><a href="#essencia" class="hover-link">Nossa Essência</a></li>
-                    <li><a href="#estrutura" class="hover-link">Estrutura</a></li>
-                    <li><a href="#diferenciais" class="hover-link">Diferenciais</a></li>
-                    <li><a href="#contato" class="hover-link">Contato</a></li>
-                </ul>
-            </nav>
-
-            <a href="#contato" class="btn-agendar">Agendar Experiência</a>
-            
-            <div class="menu-toggle" id="mobile-menu">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
-    </header>
-
-    <!-- HERO SECTION (Foto: sencisfaxada.jpg) -->
-    <section id="inicio" class="hero" style="background: linear-gradient(to right, rgba(244, 241, 234, 0.92) 0%, rgba(244, 241, 234, 0.6) 100%), url('sencisfaxada.jpg') center/cover;">
-        <div class="container">
-            <div class="hero-content reveal fade-up">
-                <span class="hero-subtitle">Odontologia Integrada</span>
-                <h2>Transformando sorrisos com <em>significado.</em></h2>
-                <p>Uma nova odontologia: sensível, humana e inteligente. O equilíbrio perfeito entre técnica e emoção, desenhado para o seu bem-estar.</p>
-                <a href="#essencia" class="btn-primary">Sinta a diferença</a>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <span>Deslize</span>
-        </div>
-    </section>
-
-    <!-- NOSSA ESSÊNCIA (Foto: sencisespera.png) -->
-    <section id="essencia" class="essencia">
-        <div class="container essencia-container">
-            <div class="essencia-texto reveal fade-right">
-                <span class="section-tag">Sobre a Clínica</span>
-                <h3>Mais do que um consultório, um espaço de pertencimento.</h3>
-                <p>A <strong>Sencis</strong> valoriza a escuta ativa, o olhar atento e a individualidade de cada paciente. Fugimos da frieza tradicional da odontologia para criar um ambiente acolhedor.</p>
-                <p>Nossa recepção foi projetada com iluminação suave e conforto premium, para que seu momento antes do atendimento seja de puro relaxamento.</p>
-                
-                <div class="stats-container">
-                    <div>
-                        <span class="stat-number">100%</span>
-                        <span class="stat-text">Foco em você</span>
-                    </div>
-                    <div>
-                        <span class="stat-number">+</span>
-                        <span class="stat-text">Acolhimento</span>
-                    </div>
-                </div>
-            </div>
-            <div class="essencia-imagem reveal fade-left">
-                <div class="organic-shape">
-                    <img src="sencisespera.png" alt="Recepção Sencis">
-                    <div class="abstract-art"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ESTRUTURA (Foto: sencissaladeatendimento.png) -->
-    <section id="estrutura" class="essencia estrutura-sec">
-        <div class="container essencia-container reverse-mobile">
-            <div class="essencia-texto reveal fade-left">
-                <span class="section-tag">Nossa Estrutura</span>
-                <h3>Tecnologia e luz natural a favor do seu sorriso.</h3>
-                <p>Nossas salas clínicas contam com equipamentos de ponta e amplas janelas que valorizam a luz natural, garantindo precisão e leveza.</p>
-                <p>Tudo planejado cuidadosamente para proporcionar uma experiência clínica livre de ansiedade.</p>
-            </div>
-            <div class="essencia-imagem reveal fade-right">
-                <div class="organic-shape-alt">
-                    <img src="sencissaladeatendimento.png" alt="Sala de Atendimento Sencis">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DIFERENCIAIS -->
-    <section id="diferenciais" class="diferenciais-sec">
-        <div class="container">
-            <div class="section-header reveal fade-up">
-                <span class="section-tag">Nossos Valores</span>
-                <h3>Diferenciais & Objetivos</h3>
-                <p>Entrega personalizada, humanizada e estética. Consolidamos uma opção premium com leveza.</p>
-            </div>
-            
-            <div class="cards-diferenciais">
-                <div class="card-dif reveal fade-up">
-                    <div class="card-icon"><i class="fas fa-leaf"></i></div>
-                    <h4>Sensibilidade</h4>
-                    <p>Fugimos da frieza tradicional. Nosso ambiente e abordagem geram tranquilidade e bem-estar.</p>
-                </div>
-                <div class="card-dif reveal fade-up">
-                    <div class="card-icon"><i class="fas fa-gem"></i></div>
-                    <h4>Excelência Técnica</h4>
-                    <p>Procedimentos que unem funcionalidade e alta estética com materiais de ponta.</p>
-                </div>
-                <div class="card-dif reveal fade-up">
-                    <div class="card-icon"><i class="fas fa-spa"></i></div>
-                    <h4>Cuidado Integrado</h4>
-                    <p>Mimos que fazem a diferença, como um café especial ou chá relaxante na nossa recepção.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTATO, MORDOMIAS E MAPA (Foto: sencisesperamordomias.png) -->
-    <section id="contato" class="contato">
-        <div class="container">
-            <div class="section-header reveal fade-up" style="margin-bottom: 50px;">
-                <span class="section-tag">Experiência & Localização</span>
-                <h3>Cada detalhe pensado para você</h3>
-                <p>Conheça nosso espaço de acolhimento e venha nos fazer uma visita.</p>
-            </div>
-
-            <!-- Grid de destaque com a foto de mordomias -->
-            <div class="mordomias-grid reveal fade-up" style="margin-bottom: 60px;">
-                <div class="organic-shape-alt" style="height: 380px;">
-                    <img src="sencisesperamordomias.png" alt="Mordomias e Espera Sencis">
-                </div>
-            </div>
-        </div>
-
-        <div class="container contato-container">
-            <div class="infos-contato reveal fade-right">
-                <span class="section-tag">Fale Conosco</span>
-                <h3>Agende sua avaliação</h3>
-                <p>Dê o primeiro passo para transformar seu sorriso. Entre em contato conosco pelo WhatsApp ou venha nos visitar.</p>
-                
-                <div class="info-list">
-                    <div class="info-item">
-                        <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
-                        <div class="info-text">
-                            <h5>WhatsApp</h5>
-                            <p>(62) 99227-2783</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="info-text">
-                            <h5>Endereço</h5>
-                            <p>Sencis Odontologia Integrada - Goiânia, GO</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="redes-sociais">
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Siga no Instagram <i class="fas fa-arrow-right" style="font-size: 12px; margin-left: 5px;"></i></a>
-                </div>
-            </div>
-            
-            <div class="mapa reveal fade-left">
-                <!-- Mapa interativo exato da Sencis -->
-                <div class="organic-shape-alt map-wrapper">
-                    <iframe 
-                        src="https://maps.google.com/maps?q=-16.7277486,-49.2791126&z=17&output=embed" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                <h2>Sencis<span>.</span></h2>
-                <p>Odontologia Integrada</p>
-            </div>
-            <div class="footer-copy">
-                <p>&copy; 2026 Sencis Odontologia. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
