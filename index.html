@@ -3,131 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sencis Odontologia Integrada | Goiânia</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Importando fontes elegantes do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-    <!-- Importando ícones -->
+    <title>Sencis - Odontologia Integrada</title>
+    
+    <!-- Google Fonts conforme seu CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para os ícones do menu e contato -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Link para o seu CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Cabeçalho -->
+    <!-- Elementos do seu JS (Cursor e Barra de Progresso) -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <div class="scroll-progress"></div>
+
+    <!-- HEADER -->
     <header id="header">
         <div class="container nav-container">
             <div class="logo">
-                <h1>Sencis<span>Odontologia</span></h1>
+                <h1>Sencis<span>.</span></h1>
             </div>
+            
             <nav id="nav-menu">
                 <ul>
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#sobre">A Clínica</a></li>
-                    <li><a href="#avaliacoes">Avaliações</a></li>
-                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#inicio" class="hover-link">Início</a></li>
+                    <li><a href="#essencia" class="hover-link">Nossa Essência</a></li>
+                    <li><a href="#estrutura" class="hover-link">Estrutura</a></li>
+                    <li><a href="#diferenciais" class="hover-link">Diferenciais</a></li>
+                    <li><a href="#contato" class="hover-link">Contato</a></li>
                 </ul>
             </nav>
-            <a href="https://wa.me/5562992272783" target="_blank" class="btn-agendar">Agendar Consulta</a>
+
+            <a href="#contato" class="btn-agendar magnetic">Agendar Experiência</a>
+            
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
-    <!-- Seção Principal (Hero) -->
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h2>Sorrisos que transformam, cuidado que acolhe.</h2>
-            <p>Atendimento impecável, humanizado e focado no seu bem-estar. Venha tomar um café especial com a gente e conhecer nossa recepção confortável e elegante.</p>
-            <a href="https://wa.me/5562992272783" target="_blank" class="btn-primary">Fale com nossa equipe</a>
-        </div>
-    </section>
-
-    <!-- Sobre a Clínica -->
-    <section id="sobre" class="sobre">
-        <div class="container sobre-container">
-            <div class="sobre-texto">
-                <h3>Sobre a Sencis</h3>
-                <p>A <strong>Sencis Odontologia Integrada</strong> é uma clínica idealizada e gerida por mulheres empreendedoras. Nosso propósito é oferecer um tratamento humanizado, onde o paciente é atendido com carinho, respeito e profissionalismo.</p>
-                <p>Contamos com profissionais altamente competentes, como a Dra. Arielle, que explicam cada procedimento com calma para transmitir total confiança.</p>
-                <ul class="diferenciais">
-                    <li><i class="fas fa-check-circle"></i> Empresa de empreendedoras</li>
-                    <li><i class="fas fa-wheelchair"></i> 100% Acessível (Entrada, Banheiro, Estacionamento)</li>
-                    <li><i class="fas fa-car"></i> Estacionamento gratuito no local</li>
-                    <li><i class="fas fa-coffee"></i> Ambiente aconchegante com café especial</li>
-                </ul>
-            </div>
-            <div class="sobre-imagem">
-                <!-- Substitua o src abaixo pela imagem da fachada que você possui -->
-                <img src="sencisfaxada.png" alt="Fachada da Clínica Sencis Odontologia">
-            </div>
-        </div>
-    </section>
-
-    <!-- Avaliações -->
-    <section id="avaliacoes" class="avaliacoes">
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero">
+        <!-- JS procura por parallax-bg. Adicionada a imagem da fachada -->
+        <div class="hero-bg parallax-bg" style="background: linear-gradient(to right, rgba(244, 241, 234, 0.95) 0%, rgba(244, 241, 234, 0.6) 100%), url('sencisfaxada.jpg') center/cover;"></div>
+        
         <div class="container">
-            <h3>O que dizem nossos pacientes</h3>
-            <div class="cards-avaliacoes">
-                <div class="card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="hero-content reveal fade-up">
+                <span class="hero-subtitle">Odontologia Integrada</span>
+                <h2>Transformando sorrisos com <em>significado.</em></h2>
+                <p>Uma nova odontologia: sensível, humana e inteligente. O equilíbrio perfeito entre técnica e emoção, desenhado para o seu bem-estar.</p>
+                <a href="#essencia" class="btn-primary magnetic">Sinta a diferença</a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Deslize</span>
+        </div>
+    </section>
+
+    <!-- NOSSA ESSÊNCIA (Recepção) -->
+    <section id="essencia" class="essencia">
+        <div class="container essencia-container">
+            <div class="essencia-texto reveal fade-right">
+                <span class="section-tag">Sobre a Clínica</span>
+                <h3>Mais do que um consultório,<br>um espaço de pertencimento.</h3>
+                <p>A <strong>Sencis</strong> valoriza a escuta ativa, o olhar atento e a individualidade de cada paciente. Fugimos da frieza tradicional da odontologia para criar um ambiente onde você se sinta em casa.</p>
+                <p>Nossa recepção foi projetada com iluminação acolhedora e conforto premium, para que seu momento antes do atendimento seja de puro relaxamento.</p>
+                
+                <div class="stats-container">
+                    <div>
+                        <span class="stat-number">100%</span>
+                        <span class="stat-text">Foco em você</span>
                     </div>
-                    <p>"Atendimento impecável do início ao fim! Toda a equipe é muito atenciosa, educada e transmite muita confiança. Os profissionais explicam cada procedimento com calma..."</p>
-                    <span>- Sara Matos</span>
+                    <div>
+                        <span class="stat-number">+</span>
+                        <span class="stat-text">Acolhimento</span>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Excelente clínica, ótimos profissionais. Ambiente aconchegante, preços acessíveis e tratamento humanizado onde o paciente é atendido com carinho e respeito. Super indico."</p>
-                    <span>- Noive Nonoca</span>
-                </div>
-                <div class="card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Ótima experiência, profissionais competentes além de um café especial. Recepção confortável e elegante, ótima localização e tratamento com a Dra. Arielle."</p>
-                    <span>- Ana Maria Félix Silva</span>
+            </div>
+            <div class="essencia-imagem reveal fade-left">
+                <!-- Usando sua classe de forma orgânica com a foto da recepção -->
+                <div class="organic-shape" style="background: url('sencisespera.png') center/cover;">
+                    <div class="abstract-art"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contato e Localização -->
+    <!-- ESTRUTURA E TÉCNICA (Novo bloco aproveitando seu estilo) -->
+    <section id="estrutura" class="essencia" style="background-color: var(--color-off-white); padding-top: 60px;">
+        <div class="container essencia-container" style="flex-direction: row-reverse;">
+            <div class="essencia-texto reveal fade-left">
+                <span class="section-tag">Nossa Estrutura</span>
+                <h3>Tecnologia e luz natural a favor do seu sorriso.</h3>
+                <p>Nossas salas clínicas contam com equipamentos de ponta e amplas janelas que valorizam a luz natural, garantindo precisão nos tratamentos estéticos e um ambiente leve.</p>
+                <p>No nosso escritório de planejamento, estudamos cada detalhe do seu caso de forma personalizada e integrada.</p>
+            </div>
+            <div class="essencia-imagem reveal fade-right">
+                <!-- Forma orgânica invertida com a foto da sala de atendimento -->
+                <div class="organic-shape-alt" style="background: url('sencissaladeatendimento.png') center/cover; height: 600px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section id="diferenciais" class="diferenciais-sec">
+        <div class="container">
+            <div class="section-header reveal fade-up">
+                <span class="section-tag">Nossos Valores</span>
+                <h3>Diferenciais & Objetivos</h3>
+                <p>Entrega personalizada, humanizada e estética. Consolidamos uma opção premium com leveza.</p>
+            </div>
+            
+            <div class="cards-diferenciais">
+                <!-- Card 1 -->
+                <div class="card-dif reveal fade-up" style="transition-delay: 0.1s;">
+                    <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Sensibilidade</h4>
+                    <p>Fugimos da frieza tradicional. Nosso ambiente e abordagem são desenhados para gerar tranquilidade e bem-estar em cada etapa.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="card-dif reveal fade-up" style="transition-delay: 0.2s;">
+                    <div class="card-icon"><i class="fas fa-gem"></i></div>
+                    <h4>Excelência Técnica</h4>
+                    <p>Procedimentos que unem a funcionalidade essencial aos avanços da odontologia estética, com materiais de altíssima qualidade.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="card-dif reveal fade-up" style="transition-delay: 0.3s;">
+                    <div class="card-icon"><i class="fas fa-spa"></i></div>
+                    <h4>Cuidado Integrado</h4>
+                    <p>Mimos que fazem a diferença. Desfrute de um café passado na hora ou um chá relaxante na nossa recepção enquanto aguarda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
     <section id="contato" class="contato">
         <div class="container contato-container">
-            <div class="infos-contato">
-                <h3>Agende seu Horário</h3>
-                <p>É recomendado marcar hora. Aceitamos cartões de crédito, débito e pagamento por aproximação (NFC).</p>
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Av. Sen. José Rodrigues de Morais Neto, 1251 - Sala 03 Qd 199 Lt 06<br>Parque Amazônia, Goiânia - GO, 74835-620</p>
+            <div class="infos-contato reveal fade-right">
+                <span class="section-tag">Fale Conosco</span>
+                <h3>Agende sua avaliação</h3>
+                <p>Dê o primeiro passo para transformar seu sorriso. Entre em contato conosco e reserve seu horário.</p>
+                
+                <div class="info-list">
+                    <div class="info-item">
+                        <div class="icon-box"><i class="fab fa-whatsapp"></i></div>
+                        <div class="info-text">
+                            <h5>WhatsApp</h5>
+                            <p>(62) 99227-2783</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="info-text">
+                            <h5>Endereço</h5>
+                            <p>Sua Rua, Número, Goiânia - GO</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="info-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <p>(62) 99227-2783</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-clock"></i>
-                    <p>Segunda a Sexta - Aberto até as 18:00</p>
-                </div>
+
                 <div class="redes-sociais">
-                    <a href="https://www.instagram.com/sencisodontologia/" target="_blank"><i class="fab fa-instagram"></i> Siga no Instagram</a>
+                    <a href="#" class="magnetic"><i class="fab fa-instagram"></i> Siga no Instagram <i class="fas fa-arrow-right" style="font-size: 12px; margin-left: 5px;"></i></a>
                 </div>
             </div>
-            <div class="mapa">
-                <!-- Iframe do Google Maps (Localização exata fornecida) -->
-<iframe src="https://maps.google.com/maps?q=Sencis%20Odontologia%20Integrada,%20Parque%20Amazonia,%20Goiania&t=&z=16&ie=UTF8&iwloc=&output=embed" width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>            </div>
+            
+            <div class="mapa reveal fade-left">
+                <!-- Foto das "mordomias" (chá/café) ilustrando o convite ao contato -->
+                <div class="organic-shape-alt" style="background: url('sencisesperamordomias.png') center/cover;"></div>
+            </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Sencis Odontologia Integrada. Todos os direitos reservados.</p>
+            <div class="footer-logo">
+                <h2>Sencis<span>.</span></h2>
+                <p>Odontologia Integrada</p>
+            </div>
+            <div class="footer-copy">
+                <p>&copy; 2026 Sencis Odontologia. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Link para o seu JS -->
     <script src="script.js"></script>
 </body>
 </html>
