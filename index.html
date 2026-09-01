@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sencis - Odontologia Integrada</title>
     
     <!-- Google Fonts -->
@@ -43,10 +43,8 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="inicio" class="hero">
-        <div class="hero-bg parallax-bg" style="background: linear-gradient(to right, rgba(244, 241, 234, 0.95) 0%, rgba(244, 241, 234, 0.7) 100%), url('sencisfaxada.jpg') center/cover;"></div>
-        
+    <!-- HERO SECTION (Foto: sencisfaxada.jpg) -->
+    <section id="inicio" class="hero" style="background: linear-gradient(to right, rgba(244, 241, 234, 0.92) 0%, rgba(244, 241, 234, 0.6) 100%), url('sencisfaxada.jpg') center/cover;">
         <div class="container">
             <div class="hero-content reveal fade-up">
                 <span class="hero-subtitle">Odontologia Integrada</span>
@@ -62,7 +60,7 @@
         </div>
     </section>
 
-    <!-- NOSSA ESSÊNCIA -->
+    <!-- NOSSA ESSÊNCIA (Foto: sencisespera.png) -->
     <section id="essencia" class="essencia">
         <div class="container essencia-container">
             <div class="essencia-texto reveal fade-right">
@@ -83,14 +81,15 @@
                 </div>
             </div>
             <div class="essencia-imagem reveal fade-left">
-                <div class="organic-shape" style="background: url('sencisespera.png') center/cover;">
+                <div class="organic-shape">
+                    <img src="sencisespera.png" alt="Recepção Sencis">
                     <div class="abstract-art"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ESTRUTURA -->
+    <!-- ESTRUTURA (Foto: sencissaladeatendimento.png) -->
     <section id="estrutura" class="essencia estrutura-sec">
         <div class="container essencia-container reverse-mobile">
             <div class="essencia-texto reveal fade-left">
@@ -100,7 +99,9 @@
                 <p>Tudo planejado cuidadosamente para proporcionar uma experiência clínica livre de ansiedade.</p>
             </div>
             <div class="essencia-imagem reveal fade-right">
-                <div class="organic-shape-alt" style="background: url('sencissaladeatendimento.png') center/cover;"></div>
+                <div class="organic-shape-alt">
+                    <img src="sencissaladeatendimento.png" alt="Sala de Atendimento Sencis">
+                </div>
             </div>
         </div>
     </section>
@@ -134,13 +135,28 @@
         </div>
     </section>
 
-    <!-- CONTATO E MAPA -->
+    <!-- CONTATO, MORDOMIAS E MAPA (Foto: sencisesperamordomias.png) -->
     <section id="contato" class="contato">
+        <div class="container">
+            <div class="section-header reveal fade-up" style="margin-bottom: 50px;">
+                <span class="section-tag">Experiência & Localização</span>
+                <h3>Cada detalhe pensado para você</h3>
+                <p>Conheça nosso espaço de acolhimento e venha nos fazer uma visita.</p>
+            </div>
+
+            <!-- Grid de destaque com a foto de mordomias -->
+            <div class="mordomias-grid reveal fade-up" style="margin-bottom: 60px;">
+                <div class="organic-shape-alt" style="height: 380px;">
+                    <img src="sencisesperamordomias.png" alt="Mordomias e Espera Sencis">
+                </div>
+            </div>
+        </div>
+
         <div class="container contato-container">
             <div class="infos-contato reveal fade-right">
                 <span class="section-tag">Fale Conosco</span>
                 <h3>Agende sua avaliação</h3>
-                <p>Dê o primeiro passo para transformar seu sorriso. Entre em contato conosco.</p>
+                <p>Dê o primeiro passo para transformar seu sorriso. Entre em contato conosco pelo WhatsApp ou venha nos visitar.</p>
                 
                 <div class="info-list">
                     <div class="info-item">
@@ -154,7 +170,7 @@
                         <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-text">
                             <h5>Endereço</h5>
-                            <p>Alameda dos Buritis, Setor Central / Marista, Goiânia - GO</p>
+                            <p>Sencis Odontologia Integrada - Goiânia, GO</p>
                         </div>
                     </div>
                 </div>
@@ -165,7 +181,7 @@
             </div>
             
             <div class="mapa reveal fade-left">
-                <!-- Mapa interativo com a localização exata da Sencis -->
+                <!-- Mapa interativo exato da Sencis -->
                 <div class="organic-shape-alt map-wrapper">
                     <iframe 
                         src="https://maps.google.com/maps?q=-16.7277486,-49.2791126&z=17&output=embed" 
@@ -177,6 +193,7 @@
                     </iframe>
                 </div>
             </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
