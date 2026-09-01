@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sencis - Odontologia Integrada</title>
     
-    <!-- Google Fonts conforme seu CSS -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome para os ícones do menu e contato -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Link para o seu CSS -->
+    <!-- Seu CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,7 +35,7 @@
                 </ul>
             </nav>
 
-            <a href="#contato" class="btn-agendar magnetic">Agendar Experiência</a>
+            <a href="#contato" class="btn-agendar">Agendar Experiência</a>
             
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fas fa-bars"></i>
@@ -45,15 +45,14 @@
 
     <!-- HERO SECTION -->
     <section id="inicio" class="hero">
-        <!-- JS procura por parallax-bg. Adicionada a imagem da fachada -->
-        <div class="hero-bg parallax-bg" style="background: linear-gradient(to right, rgba(244, 241, 234, 0.95) 0%, rgba(244, 241, 234, 0.6) 100%), url('sencisfaxada.jpg') center/cover;"></div>
+        <div class="hero-bg parallax-bg" style="background: linear-gradient(to right, rgba(244, 241, 234, 0.95) 0%, rgba(244, 241, 234, 0.7) 100%), url('sencisfaxada.jpg') center/cover;"></div>
         
         <div class="container">
             <div class="hero-content reveal fade-up">
                 <span class="hero-subtitle">Odontologia Integrada</span>
                 <h2>Transformando sorrisos com <em>significado.</em></h2>
                 <p>Uma nova odontologia: sensível, humana e inteligente. O equilíbrio perfeito entre técnica e emoção, desenhado para o seu bem-estar.</p>
-                <a href="#essencia" class="btn-primary magnetic">Sinta a diferença</a>
+                <a href="#essencia" class="btn-primary">Sinta a diferença</a>
             </div>
         </div>
 
@@ -63,14 +62,14 @@
         </div>
     </section>
 
-    <!-- NOSSA ESSÊNCIA (Recepção) -->
+    <!-- NOSSA ESSÊNCIA -->
     <section id="essencia" class="essencia">
         <div class="container essencia-container">
             <div class="essencia-texto reveal fade-right">
                 <span class="section-tag">Sobre a Clínica</span>
-                <h3>Mais do que um consultório,<br>um espaço de pertencimento.</h3>
-                <p>A <strong>Sencis</strong> valoriza a escuta ativa, o olhar atento e a individualidade de cada paciente. Fugimos da frieza tradicional da odontologia para criar um ambiente onde você se sinta em casa.</p>
-                <p>Nossa recepção foi projetada com iluminação acolhedora e conforto premium, para que seu momento antes do atendimento seja de puro relaxamento.</p>
+                <h3>Mais do que um consultório, um espaço de pertencimento.</h3>
+                <p>A <strong>Sencis</strong> valoriza a escuta ativa, o olhar atento e a individualidade de cada paciente. Fugimos da frieza tradicional da odontologia para criar um ambiente acolhedor.</p>
+                <p>Nossa recepção foi projetada com iluminação suave e conforto premium, para que seu momento antes do atendimento seja de puro relaxamento.</p>
                 
                 <div class="stats-container">
                     <div>
@@ -84,7 +83,6 @@
                 </div>
             </div>
             <div class="essencia-imagem reveal fade-left">
-                <!-- Usando sua classe de forma orgânica com a foto da recepção -->
                 <div class="organic-shape" style="background: url('sencisespera.png') center/cover;">
                     <div class="abstract-art"></div>
                 </div>
@@ -92,18 +90,17 @@
         </div>
     </section>
 
-    <!-- ESTRUTURA E TÉCNICA (Novo bloco aproveitando seu estilo) -->
-    <section id="estrutura" class="essencia" style="background-color: var(--color-off-white); padding-top: 60px;">
-        <div class="container essencia-container" style="flex-direction: row-reverse;">
+    <!-- ESTRUTURA -->
+    <section id="estrutura" class="essencia estrutura-sec">
+        <div class="container essencia-container reverse-mobile">
             <div class="essencia-texto reveal fade-left">
                 <span class="section-tag">Nossa Estrutura</span>
                 <h3>Tecnologia e luz natural a favor do seu sorriso.</h3>
-                <p>Nossas salas clínicas contam com equipamentos de ponta e amplas janelas que valorizam a luz natural, garantindo precisão nos tratamentos estéticos e um ambiente leve.</p>
-                <p>No nosso escritório de planejamento, estudamos cada detalhe do seu caso de forma personalizada e integrada.</p>
+                <p>Nossas salas clínicas contam com equipamentos de ponta e amplas janelas que valorizam a luz natural, garantindo precisão e leveza.</p>
+                <p>Tudo planejado cuidadosamente para proporcionar uma experiência clínica livre de ansiedade.</p>
             </div>
             <div class="essencia-imagem reveal fade-right">
-                <!-- Forma orgânica invertida com a foto da sala de atendimento -->
-                <div class="organic-shape-alt" style="background: url('sencissaladeatendimento.png') center/cover; height: 600px;"></div>
+                <div class="organic-shape-alt" style="background: url('sencissaladeatendimento.png') center/cover;"></div>
             </div>
         </div>
     </section>
@@ -118,35 +115,32 @@
             </div>
             
             <div class="cards-diferenciais">
-                <!-- Card 1 -->
-                <div class="card-dif reveal fade-up" style="transition-delay: 0.1s;">
+                <div class="card-dif reveal fade-up">
                     <div class="card-icon"><i class="fas fa-leaf"></i></div>
                     <h4>Sensibilidade</h4>
-                    <p>Fugimos da frieza tradicional. Nosso ambiente e abordagem são desenhados para gerar tranquilidade e bem-estar em cada etapa.</p>
+                    <p>Fugimos da frieza tradicional. Nosso ambiente e abordagem geram tranquilidade e bem-estar.</p>
                 </div>
-                <!-- Card 2 -->
-                <div class="card-dif reveal fade-up" style="transition-delay: 0.2s;">
+                <div class="card-dif reveal fade-up">
                     <div class="card-icon"><i class="fas fa-gem"></i></div>
                     <h4>Excelência Técnica</h4>
-                    <p>Procedimentos que unem a funcionalidade essencial aos avanços da odontologia estética, com materiais de altíssima qualidade.</p>
+                    <p>Procedimentos que unem funcionalidade e alta estética com materiais de ponta.</p>
                 </div>
-                <!-- Card 3 -->
-                <div class="card-dif reveal fade-up" style="transition-delay: 0.3s;">
+                <div class="card-dif reveal fade-up">
                     <div class="card-icon"><i class="fas fa-spa"></i></div>
                     <h4>Cuidado Integrado</h4>
-                    <p>Mimos que fazem a diferença. Desfrute de um café passado na hora ou um chá relaxante na nossa recepção enquanto aguarda.</p>
+                    <p>Mimos que fazem a diferença, como um café especial ou chá relaxante na nossa recepção.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTATO -->
+    <!-- CONTATO E MAPA -->
     <section id="contato" class="contato">
         <div class="container contato-container">
             <div class="infos-contato reveal fade-right">
                 <span class="section-tag">Fale Conosco</span>
                 <h3>Agende sua avaliação</h3>
-                <p>Dê o primeiro passo para transformar seu sorriso. Entre em contato conosco e reserve seu horário.</p>
+                <p>Dê o primeiro passo para transformar seu sorriso. Entre em contato conosco.</p>
                 
                 <div class="info-list">
                     <div class="info-item">
@@ -160,21 +154,29 @@
                         <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-text">
                             <h5>Endereço</h5>
-                            <p>Sua Rua, Número, Goiânia - GO</p>
+                            <p>Alameda dos Buritis, Setor Central / Marista, Goiânia - GO</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="redes-sociais">
-                    <a href="#" class="magnetic"><i class="fab fa-instagram"></i> Siga no Instagram <i class="fas fa-arrow-right" style="font-size: 12px; margin-left: 5px;"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i> Siga no Instagram <i class="fas fa-arrow-right" style="font-size: 12px; margin-left: 5px;"></i></a>
                 </div>
             </div>
             
             <div class="mapa reveal fade-left">
-                <!-- Foto das "mordomias" (chá/café) ilustrando o convite ao contato -->
-                <div class="organic-shape-alt" style="background: url('sencisesperamordomias.png') center/cover;"></div>
+                <!-- Mapa interativo com a localização exata da Sencis -->
+                <div class="organic-shape-alt map-wrapper">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=-16.7277486,-49.2791126&z=17&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
             </div>
-        </div>
     </section>
 
     <!-- FOOTER -->
@@ -190,7 +192,6 @@
         </div>
     </footer>
 
-    <!-- Link para o seu JS -->
     <script src="script.js"></script>
 </body>
 </html>
