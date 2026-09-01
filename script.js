@@ -1,35 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // --- 1. Custom Cursor ---
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-    const linksAndButtons = document.querySelectorAll('a, button, .menu-toggle, .magnetic');
-
-    if(window.innerWidth > 768) {
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            // Dot follows instantly
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            // Outline follows with slight delay for smoothness
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        linksAndButtons.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.classList.add('hovering');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.classList.remove('hovering');
-            });
-        });
-    }
 
     // --- 2. Magnetic Buttons Effect ---
     const magnetics = document.querySelectorAll('.magnetic');
@@ -46,25 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('mouseout', () => {
             btn.style.transform = 'translate(0px, 0px)';
         });
-    });
-
-    // --- 3. Scroll Progress & Header Styles ---
-    const progressBar = document.querySelector('.scroll-progress');
-    const header = document.getElementById('header');
-    
-    window.addEventListener('scroll', () => {
-        // Progress bar
-        const scrollPx = document.documentElement.scrollTop;
-        const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (scrollPx / winHeightPx) * 100;
-        progressBar.style.width = `${scrolled}%`;
-
-        // Sticky Header Effect
-        if(scrollPx > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
     });
 
     // --- 4. Parallax Effect na Hero ---
