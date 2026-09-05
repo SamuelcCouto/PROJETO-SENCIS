@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Tokens
+   As cores saem das fotos da própria clínica: o azul-marinho das
+   almofadas da recepção, o dourado das letras da fachada, o brilho
+   quente do dente retroiluminado na parede e o greige das paredes.
+   O fundo dominante é branco — clínica vende limpeza.
+   ============================================================ */
+@theme {
+  --color-ink: #1b2233;
+  --color-ink-soft: #2e3852;
+  --color-ink-muted: #5c6478;
+
+  --color-brass: #8a6224; /* uso em texto pequeno: 4.9:1 no branco */
+  --color-brass-mid: #a4762f; /* bordas, ícones, texto grande */
+  --color-brass-lit: #d9b172; /* o brilho — decoração e texto sobre ink */
+
+  --color-sand: #ede7dd;
+  --color-sand-deep: #dfd6c8;
+  --color-clay: #6f6558; /* texto corrido secundário: 5.4:1 no branco */
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+  --radius-photo: 1.5rem;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+  /* compensa o header fixo quando um link de âncora aterrissa numa seção */
+  scroll-padding-top: 5.5rem;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #fff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fraunces é variável: o eixo SOFT arredonda os terminais e o WONK dá a
+   inclinação levemente irregular que tira a rigidez de uma didone. Baixo,
+   não zero — é o que faz a marca parecer humana em vez de institucional. */
+.font-display {
+  font-variation-settings:
+    "SOFT" 40,
+    "WONK" 1;
+  letter-spacing: -0.018em;
+}
+
+::selection {
+  background: var(--color-brass-lit);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brass-mid);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Só o hero anima, e só uma vez no carregamento. Nada mais se move
+   sozinho — movimento de scroll em cada seção é ruído. */
+@keyframes bloom {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-bloom {
+  animation: bloom 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.anim-rise {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .anim-bloom,
+  .anim-rise {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   O brilho
+   Um único gradiente radial quente, ecoando o dente retroiluminado
+   da recepção. Aparece uma vez, atrás do hero. É o único momento de
+   cor forte da página inteira.
+   ============================================================ */
+.glow {
+  background:
+    radial-gradient(
+      38% 38% at 58% 42%,
+      rgba(236, 205, 156, 0.85) 0%,
+      rgba(217, 177, 114, 0.3) 55%,
+      rgba(217, 177, 114, 0) 100%
+    ),
+    radial-gradient(
+      62% 62% at 62% 40%,
+      rgba(217, 177, 114, 0.5) 0%,
+      rgba(214, 186, 143, 0.18) 45%,
+      rgba(217, 177, 114, 0) 78%
+    );
+  filter: blur(6px);
+}
+
+/* ============================================================
+   Detalhes de conteúdo
+   ============================================================ */
+
+/* A lista de tratamentos é separada por filete, não por card. O filete
+   carrega informação (são itens de uma mesma lista comparável); um card
+   com sombra só repetiria a mesma decoração seis vezes. */
+.lista-filete > * + * {
+  border-top: 1px solid var(--color-sand-deep);
+}
+
+/* appearance-none tira a seta nativa; sem uma seta própria o campo deixa de
+   parecer um menu. O SVG vai embutido para não custar um pedido a mais. */
+.select-seta {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D9B172' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.15rem;
+  padding-right: 3rem;
+}
+
+/* O menu nativo herda o fundo do select; sem isto as opções saem
+   brancas sobre branco em parte dos navegadores. */
+.select-seta option {
+  background-color: #2e3852;
+  color: #fff;
+}
+
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* O sinal de + gira ao abrir: movimento que responde a uma ação da pessoa
+   e mostra o que mudou. */
+details[open] .faq-sinal {
+  transform: rotate(45deg);
+}
