@@ -1,11 +1,18 @@
+import Image from "next/image";
 import { tratamentos } from "@/lib/tratamentos";
 import { whatsappSobre } from "@/lib/clinica";
+import implantesLentesPorcelana from "@/public/fotos/implantes-lentes-porcelana.jpg";
 
 /**
  * Os tratamentos vêm como lista separada por filete, não como grade de cards.
  * São seis itens comparáveis entre si — o filete diz "mesma natureza, leia em
  * sequência". Seis cards com a mesma sombra e o mesmo raio diriam só que o
  * layout tinha seis lugares para preencher.
+ *
+ * A foto de resultado fica na coluna fixa (título + intro), não presa a um dos
+ * seis itens — anexá-la só a "Estética do sorriso" faria os outros cinco
+ * parecerem menos comprovados. Como prova do conjunto, ela acompanha a rolagem
+ * inteira da lista, e não favorece nenhum item sobre os outros.
  */
 export function Tratamentos() {
   return (
@@ -25,6 +32,21 @@ export function Tratamentos() {
               Não sabe em qual destes o seu caso se encaixa? É exatamente para
               isso que serve a avaliação.
             </p>
+
+            <figure className="mt-8 max-w-[22rem]">
+              <div className="overflow-hidden rounded-[var(--radius-photo)] border border-linha shadow-foto">
+                <Image
+                  src={implantesLentesPorcelana}
+                  alt="Close-up de dentes superiores restaurados com lentes de contato dental e implantes em porcelana"
+                  placeholder="blur"
+                  sizes="(max-width: 1024px) 100vw, 352px"
+                  className="h-auto w-full object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 text-sm text-texto">
+                Implantes e lentes em porcelana — um resultado real da clínica.
+              </figcaption>
+            </figure>
           </div>
 
           <ul className="lista-filete">

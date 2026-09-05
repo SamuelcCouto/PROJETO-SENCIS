@@ -23,6 +23,14 @@ export function Hero() {
 
       <div className="relative mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
         <div className="anim-rise">
+          {/* Um traço sólido, não borrado — o gradiente atrás da foto é
+              atmosfera; isto é cor de verdade, junto ao primeiro texto que o
+              olho encontra na página. */}
+          <span
+            aria-hidden
+            className="mb-5 block h-1 w-10 rounded-full bg-azul"
+          />
+
           <h1 className="font-display text-[2.375rem] leading-[1.04] text-ink sm:text-[3.5rem] sm:leading-[1.02] lg:text-[4.25rem]">
             {clinica.slogan}.
           </h1>
@@ -45,7 +53,7 @@ export function Hero() {
             </a>
             <a
               href="#tratamentos"
-              className="inline-flex items-center justify-center rounded-full border border-linha px-7 py-4 font-medium text-ink transition-colors hover:bg-nude"
+              className="inline-flex items-center justify-center rounded-full border border-azul/25 px-7 py-4 font-medium text-ink transition-colors hover:bg-nude"
             >
               Ver tratamentos
             </a>
@@ -69,7 +77,7 @@ export function Hero() {
             />
           </div>
 
-          <figure className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 rounded-[var(--radius-card)] border border-linha bg-white px-5 py-4 lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:flex-col lg:items-start lg:gap-2 lg:px-6 lg:shadow-cartao">
+          <figure className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 rounded-[var(--radius-card)] border border-azul/20 bg-white px-5 py-4 lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:flex-col lg:items-start lg:gap-2 lg:px-6 lg:shadow-cartao">
             <div className="flex items-center gap-2">
               <span className="flex gap-0.5 text-azul" aria-hidden>
                 {[0, 1, 2, 3, 4].map((i) => (

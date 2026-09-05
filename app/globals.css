@@ -141,22 +141,28 @@ body {
    petróleo abraçando um núcleo quente de bege. É a cartela dita em
    luz — razão por fora, emoção por dentro — e ocupa o lugar que era
    do dente iluminado, porque a marca não admite clichê dental.
+
+   A clínica pediu mais presença de azul, sobretudo no topo — o primeiro
+   olhar do site. Em CSS, backgrounds múltiplos empilham na ORDEM: o
+   primeiro listado pinta por cima. Aqui o azul vem primeiro (é o halo,
+   deve dominar); o bege vem depois, menor e mais discreto (é o núcleo
+   quente, não deve engolir o azul como engolia antes).
    ============================================================ */
 .transicao {
   background:
     radial-gradient(
-      30% 30% at 52% 52%,
-      rgba(201, 178, 155, 0.9) 0%,
-      rgba(214, 195, 175, 0.4) 55%,
-      rgba(230, 216, 200, 0) 100%
+      58% 58% at 60% 40%,
+      rgba(74, 107, 140, 0.78) 0%,
+      rgba(74, 107, 140, 0.4) 46%,
+      rgba(74, 107, 140, 0) 78%
     ),
     radial-gradient(
-      52% 52% at 62% 38%,
-      rgba(74, 107, 140, 0.52) 0%,
-      rgba(74, 107, 140, 0.2) 44%,
-      rgba(74, 107, 140, 0) 74%
+      22% 22% at 54% 52%,
+      rgba(201, 178, 155, 0.5) 0%,
+      rgba(214, 195, 175, 0.2) 58%,
+      rgba(230, 216, 200, 0) 100%
     );
-  filter: blur(10px);
+  filter: blur(8px);
 }
 
 /* ============================================================
