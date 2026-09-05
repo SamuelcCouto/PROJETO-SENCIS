@@ -9,7 +9,7 @@ export default function NaoEncontrado() {
         <h1 className="font-display mt-10 text-[2.25rem] leading-tight text-ink">
           Esta página não existe
         </h1>
-        <p className="mt-4 text-clay">
+        <p className="mt-4 text-texto">
           O endereço que você abriu não corresponde a nada no site. Volte para o
           início — tratamentos, estrutura e agendamento estão todos lá.
         </p>

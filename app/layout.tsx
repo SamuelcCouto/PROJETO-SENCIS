@@ -1,14 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Instrument_Sans } from "next/font/google";
+import { Jost, Instrument_Sans } from "next/font/google";
 import { clinica } from "@/lib/clinica";
 import { schemaClinica, schemaFaq, schemaSite } from "@/lib/schema";
 import "./globals.css";
 
-const fraunces = Fraunces({
+// Geométrica, como o letreiro da fachada e os títulos do manual da marca.
+// A identidade pede formas suaves e nenhum clichê dental — uma serifa de
+// display puxava para o editorial, que não é o que a Sencis é.
+const jost = Jost({
   subsets: ["latin"],
   display: "swap",
-  axes: ["SOFT", "WONK", "opsz"],
-  variable: "--font-fraunces",
+  weight: ["300", "400", "500"],
+  variable: "--font-jost",
 });
 
 const instrumentSans = Instrument_Sans({
@@ -92,7 +95,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#1b2233",
+  themeColor: "#2b2e31",
   width: "device-width",
   initialScale: 1,
   // O site antigo travava o zoom com maximum-scale=1 e user-scalable=no,
@@ -110,7 +113,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${fraunces.variable} ${instrumentSans.variable}`}
+      className={`${jost.variable} ${instrumentSans.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://maps.google.com" />

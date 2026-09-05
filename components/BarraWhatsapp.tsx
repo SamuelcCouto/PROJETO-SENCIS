@@ -34,7 +34,7 @@ export function BarraWhatsapp() {
         rel="noopener noreferrer"
         tabIndex={visivel ? 0 : -1}
         aria-hidden={!visivel}
-        className="flex items-center justify-center gap-2.5 rounded-full bg-brass-lit px-6 py-3.5 font-medium text-ink"
+        className="flex items-center justify-center gap-2.5 rounded-full bg-bege px-6 py-3.5 font-medium text-ink"
       >
         <IconeWhatsapp className="h-5 w-5" />
         Agendar no WhatsApp

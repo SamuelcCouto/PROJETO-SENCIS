@@ -17,7 +17,7 @@ export function CameraIntraoral() {
   return (
     <section
       id="camera-intraoral"
-      className="border-t border-sand-deep py-20 sm:py-28"
+      className="border-t border-linha py-20 sm:py-28"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
@@ -26,7 +26,7 @@ export function CameraIntraoral() {
               Você vê o mesmo que a dentista vê
             </h2>
 
-            <div className="mt-6 max-w-[56ch] space-y-4 text-clay">
+            <div className="mt-6 max-w-[56ch] space-y-4 text-texto">
               <p>
                 Uma câmera do tamanho de uma caneta entra na boca e joga o seu
                 dente ampliado na tela, ao vivo. Você acompanha no mesmo momento
@@ -56,7 +56,7 @@ export function CameraIntraoral() {
           </div>
 
           <figure>
-            <div className="aspect-[4/5] overflow-hidden rounded-[var(--radius-photo)] bg-sand shadow-[0_30px_70px_-36px_rgba(27,34,51,0.45)]">
+            <div className="aspect-[4/5] overflow-hidden rounded-[var(--radius-photo)] bg-nude shadow-[0_30px_70px_-36px_rgba(27,34,51,0.45)]">
               <Image
                 src={cameraIntraoral}
                 alt="Paciente deitada na cadeira segurando um tablet que mostra, ampliado e ao vivo, o próprio dente sendo examinado pela câmera intraoral"
@@ -65,7 +65,7 @@ export function CameraIntraoral() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <figcaption className="mt-3 max-w-[46ch] text-sm text-clay">
+            <figcaption className="mt-3 max-w-[46ch] text-sm text-texto">
               O exame acontece na tela junto com você, não só no olho de quem
               está de pé.
             </figcaption>

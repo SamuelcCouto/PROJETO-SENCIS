@@ -60,7 +60,7 @@ export function Cabecalho() {
                 <li key={s.href}>
                   <a
                     href={s.href}
-                    className="relative text-[0.9375rem] text-ink-soft transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-brass-mid after:transition-[width] after:duration-300 hover:after:w-full"
+                    className="relative text-[0.9375rem] text-ink-soft transition-colors hover:text-ink after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-azul after:transition-[width] after:duration-300 hover:after:w-full"
                   >
                     {s.rotulo}
                   </a>
@@ -85,7 +85,7 @@ export function Cabecalho() {
               aria-expanded={menuAberto}
               aria-controls="menu-mobile"
               aria-label={menuAberto ? "Fechar menu" : "Abrir menu"}
-              className="grid h-11 w-11 place-items-center rounded-full border border-sand-deep text-ink transition-colors hover:bg-sand lg:hidden"
+              className="grid h-11 w-11 place-items-center rounded-full border border-linha text-ink transition-colors hover:bg-nude lg:hidden"
             >
               <span className="relative block h-3.5 w-5" aria-hidden>
                 <span
@@ -116,7 +116,7 @@ export function Cabecalho() {
       <div
         id="menu-mobile"
         hidden={!menuAberto}
-        className="fixed inset-x-0 bottom-0 top-[4.5rem] z-40 overflow-y-auto border-t border-sand-deep bg-white px-5 pb-10 pt-8 sm:px-8 lg:hidden"
+        className="fixed inset-x-0 bottom-0 top-[4.5rem] z-40 overflow-y-auto border-t border-linha bg-white px-5 pb-10 pt-8 sm:px-8 lg:hidden"
       >
         <nav aria-label="Navegação do menu">
           <ul className="lista-filete">

@@ -1,26 +1,40 @@
 @import "tailwindcss";
 
 /* ============================================================
-   Tokens
-   As cores saem das fotos da própria clínica: o azul-marinho das
-   almofadas da recepção, o dourado das letras da fachada, o brilho
-   quente do dente retroiluminado na parede e o greige das paredes.
-   O fundo dominante é branco — clínica vende limpeza.
+   Paleta oficial da marca
+   Os cinco valores vêm da cartela da Sencis, e cada um tem papel
+   definido no manual — anotado ao lado. Não inventar tom novo aqui:
+   faltando um valor intermediário, derive dos cinco.
+
+   A cartela existe para dizer uma coisa: a transição do frio para o
+   quente é o equilíbrio entre razão e emoção. Por isso, na página, os
+   tons frios marcam (texto, filete, ícone) e os quentes recebem
+   (fundo de seção, preenchimento de botão).
    ============================================================ */
 @theme {
-  --color-ink: #1b2233;
-  --color-ink-soft: #2e3852;
-  --color-ink-muted: #5c6478;
+  /* "azul escuro acinzentado — profundidade e autoridade" */
+  --color-ink: #2b2e31;
+  --color-ink-soft: #3f4448;
 
-  --color-brass: #8a6224; /* uso em texto pequeno: 4.9:1 no branco */
-  --color-brass-mid: #a4762f; /* bordas, ícones, texto grande */
-  --color-brass-lit: #d9b172; /* o brilho — decoração e texto sobre ink */
+  /* "azul petróleo levemente desaturado — frescor e modernidade" */
+  --color-azul: #4a6b8c; /* 5,0:1 no off-white — seguro para texto */
+  --color-azul-fundo: #3a5570;
 
-  --color-sand: #ede7dd;
-  --color-sand-deep: #dfd6c8;
-  --color-clay: #6f6558; /* texto corrido secundário: 5.4:1 no branco */
+  /* "bege sofisticado — cuidado, pele, bem-estar" */
+  --color-bege: #c9b29b;
 
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  /* "nude claro — humaniza a composição" */
+  --color-nude: #e6d8c8;
+
+  /* "off-white quente — base neutra, leveza e limpeza visual" */
+  --color-areia: #f4f1ea;
+
+  /* Derivados: filete e texto secundário, dentro da família quente. */
+  --color-linha: #ded5c7;
+  --color-texto: #6b655d; /* 5,0:1 no off-white */
+  --color-texto-claro: #8a837a;
+
+  --font-display: var(--font-jost), "Futura", "Century Gothic", sans-serif;
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
 
   --radius-card: 1.25rem;
@@ -38,7 +52,7 @@ html {
 }
 
 body {
-  background: #fff;
+  background: var(--color-areia);
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-size: 1.0625rem;
@@ -47,23 +61,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Fraunces é variável: o eixo SOFT arredonda os terminais e o WONK dá a
-   inclinação levemente irregular que tira a rigidez de uma didone. Baixo,
-   não zero — é o que faz a marca parecer humana em vez de institucional. */
+/* Jost é geométrica, como o letreiro da fachada e os títulos do manual.
+   Peso leve, entrelinha curta e um fio de tracking positivo dão o
+   "confiança sem precisar gritar" que a marca pede — display pesado e
+   apertado soaria institucional demais. */
 .font-display {
-  font-variation-settings:
-    "SOFT" 40,
-    "WONK" 1;
-  letter-spacing: -0.018em;
+  font-weight: 300;
+  letter-spacing: 0.008em;
 }
 
 ::selection {
-  background: var(--color-brass-lit);
+  background: var(--color-nude);
   color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-brass-mid);
+  outline: 2px solid var(--color-azul);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -93,7 +106,7 @@ body {
 }
 
 .anim-bloom {
-  animation: bloom 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: bloom 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .anim-rise {
@@ -116,26 +129,27 @@ body {
 }
 
 /* ============================================================
-   O brilho
-   Um único gradiente radial quente, ecoando o dente retroiluminado
-   da recepção. Aparece uma vez, atrás do hero. É o único momento de
-   cor forte da página inteira.
+   A transição
+   O único momento de cor forte da página: um halo frio de azul
+   petróleo abraçando um núcleo quente de bege. É a cartela dita em
+   luz — razão por fora, emoção por dentro — e ocupa o lugar que era
+   do dente iluminado, porque a marca não admite clichê dental.
    ============================================================ */
-.glow {
+.transicao {
   background:
     radial-gradient(
-      38% 38% at 58% 42%,
-      rgba(236, 205, 156, 0.85) 0%,
-      rgba(217, 177, 114, 0.3) 55%,
-      rgba(217, 177, 114, 0) 100%
+      30% 30% at 52% 52%,
+      rgba(201, 178, 155, 0.9) 0%,
+      rgba(214, 195, 175, 0.4) 55%,
+      rgba(230, 216, 200, 0) 100%
     ),
     radial-gradient(
-      62% 62% at 62% 40%,
-      rgba(217, 177, 114, 0.5) 0%,
-      rgba(214, 186, 143, 0.18) 45%,
-      rgba(217, 177, 114, 0) 78%
+      52% 52% at 62% 38%,
+      rgba(74, 107, 140, 0.52) 0%,
+      rgba(74, 107, 140, 0.2) 44%,
+      rgba(74, 107, 140, 0) 74%
     );
-  filter: blur(6px);
+  filter: blur(10px);
 }
 
 /* ============================================================
@@ -146,13 +160,13 @@ body {
    carrega informação (são itens de uma mesma lista comparável); um card
    com sombra só repetiria a mesma decoração seis vezes. */
 .lista-filete > * + * {
-  border-top: 1px solid var(--color-sand-deep);
+  border-top: 1px solid var(--color-linha);
 }
 
 /* appearance-none tira a seta nativa; sem uma seta própria o campo deixa de
    parecer um menu. O SVG vai embutido para não custar um pedido a mais. */
 .select-seta {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D9B172' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9B29B' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M6 9.5l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1.15rem;
@@ -162,7 +176,7 @@ body {
 /* O menu nativo herda o fundo do select; sem isto as opções saem
    brancas sobre branco em parte dos navegadores. */
 .select-seta option {
-  background-color: #2e3852;
+  background-color: #3f4448;
   color: #fff;
 }
 

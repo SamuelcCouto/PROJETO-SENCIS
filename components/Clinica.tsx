@@ -12,7 +12,7 @@ import salaPlanejamento from "@/public/fotos/sala-planejamento.png";
  */
 export function Clinica() {
   return (
-    <section id="clinica" className="bg-sand py-20 sm:py-28">
+    <section id="clinica" className="bg-nude py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
           <div className="order-2 lg:order-1">
@@ -32,11 +32,17 @@ export function Clinica() {
               Uma clínica construída sala por sala
             </h2>
 
-            <div className="mt-6 max-w-[58ch] space-y-4 text-clay">
+            <div className="mt-6 max-w-[58ch] space-y-4 text-texto">
               <p>
                 A Sencis é nova, e isso não é um detalhe que a gente esconde:
                 foi aberta do zero, por quem quis montar o consultório que
                 gostaria de ter encontrado como paciente.
+              </p>
+              <p>
+                O nome vem de <em>senso</em> — aquele que sente, que percebe,
+                que compreende — e carrega um eco de <em>essência</em>, o que
+                permanece quando se tira o resto. Não é enfeite de marca: é o
+                critério com que a clínica foi montada.
               </p>
               <p>
                 Daí vem o resto. A recepção tem café, poltrona e luz baixa
@@ -47,14 +53,14 @@ export function Clinica() {
               </p>
             </div>
 
-            <figure className="mt-9 rounded-[var(--radius-card)] border border-sand-deep bg-white p-6">
+            <figure className="mt-9 rounded-[var(--radius-card)] border border-linha bg-white p-6">
               <figcaption className="font-display text-xl text-ink">
                 {clinica.responsavel.nome}
               </figcaption>
-              <p className="mt-1 text-sm text-clay">
+              <p className="mt-1 text-sm text-texto">
                 {clinica.responsavel.cargo}
               </p>
-              <p className="mt-3 border-t border-sand-deep pt-3 text-sm text-ink-muted">
+              <p className="mt-3 border-t border-linha pt-3 text-sm text-texto-claro">
                 {clinica.responsavel.cro} · Clínica {clinica.croClinica}
               </p>
             </figure>

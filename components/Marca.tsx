@@ -14,7 +14,7 @@ export function Marca({
   tamanho?: "padrao" | "grande";
 }) {
   const corTexto = tom === "escuro" ? "text-ink" : "text-white";
-  const corLegenda = tom === "escuro" ? "text-clay" : "text-sand/70";
+  const corLegenda = tom === "escuro" ? "text-texto" : "text-nude/70";
   const escala =
     tamanho === "grande"
       ? "text-[1.75rem] sm:text-[2.25rem]"
@@ -33,7 +33,7 @@ export function Marca({
       </span>
       <span
         aria-hidden
-        className="mt-[0.35em] h-px w-full bg-gradient-to-r from-brass-mid via-brass-lit to-transparent"
+        className="mt-[0.35em] h-px w-full bg-gradient-to-r from-azul via-bege to-transparent"
       />
       <span
         className={`mt-[0.5em] font-sans font-medium tracking-[0.3em] ${escalaLegenda} ${corLegenda}`}

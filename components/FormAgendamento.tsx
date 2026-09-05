@@ -91,8 +91,8 @@ export function FormAgendamento() {
   }
 
   const campo =
-    "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder:text-sand/60 transition-colors focus:border-brass-lit focus:outline-none focus:ring-0";
-  const rotulo = "block text-sm font-medium text-sand";
+    "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3.5 text-white placeholder:text-nude/60 transition-colors focus:border-bege focus:outline-none focus:ring-0";
+  const rotulo = "block text-sm font-medium text-nude";
 
   if (estado === "sucesso") {
     return (
@@ -100,7 +100,7 @@ export function FormAgendamento() {
         <h3 className="font-display text-2xl text-white">
           Pedido montado. Falta um toque.
         </h3>
-        <p className="mx-auto mt-3 max-w-[46ch] text-sand/80">
+        <p className="mx-auto mt-3 max-w-[46ch] text-nude/80">
           Abrimos o WhatsApp da clínica com seus dados já preenchidos. Envie a
           mensagem para a recepção receber o pedido e confirmar o horário.
         </p>
@@ -108,7 +108,7 @@ export function FormAgendamento() {
           href={linkConversa}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2.5 rounded-full bg-brass-lit px-7 py-4 font-medium text-ink transition-colors hover:bg-white"
+          className="mt-6 inline-flex items-center gap-2.5 rounded-full bg-bege px-7 py-4 font-medium text-ink transition-colors hover:bg-white"
         >
           <IconeWhatsapp className="h-5 w-5" />
           Abrir a conversa
@@ -137,7 +137,7 @@ export function FormAgendamento() {
             placeholder="Como podemos te chamar"
           />
           {erros.nome && (
-            <p id="erro-nome" className="mt-2 text-sm text-brass-lit">
+            <p id="erro-nome" className="mt-2 text-sm text-bege">
               {erros.nome[0]}
             </p>
           )}
@@ -161,7 +161,7 @@ export function FormAgendamento() {
             placeholder="(62) 90000-0000"
           />
           {erros.telefone && (
-            <p id="erro-telefone" className="mt-2 text-sm text-brass-lit">
+            <p id="erro-telefone" className="mt-2 text-sm text-bege">
               {erros.telefone[0]}
             </p>
           )}
@@ -196,8 +196,8 @@ export function FormAgendamento() {
               key={p}
               className={`cursor-pointer rounded-full border px-5 py-2.5 text-sm transition-colors ${
                 periodo === p
-                  ? "border-brass-lit bg-brass-lit text-ink"
-                  : "border-white/15 text-sand hover:border-white/35"
+                  ? "border-bege bg-bege text-ink"
+                  : "border-white/15 text-nude hover:border-white/35"
               }`}
             >
               <input
@@ -212,7 +212,7 @@ export function FormAgendamento() {
             </label>
           ))}
         </div>
-        <p className="mt-2.5 text-sm text-sand/70">
+        <p className="mt-2.5 text-sm text-nude/70">
           Atendemos das 08:30 às 12:00 e das 13:00 às 18:00, e aos sábados até
           meio-dia.
         </p>
@@ -221,7 +221,7 @@ export function FormAgendamento() {
       <div>
         <label htmlFor="observacoes" className={rotulo}>
           Quer adiantar alguma coisa?{" "}
-          <span className="text-sand/60">(opcional)</span>
+          <span className="text-nude/60">(opcional)</span>
         </label>
         <textarea
           id="observacoes"
@@ -252,7 +252,7 @@ export function FormAgendamento() {
       </div>
 
       {erroGeral && (
-        <p role="alert" className="text-sm text-brass-lit">
+        <p role="alert" className="text-sm text-bege">
           {erroGeral}
         </p>
       )}
@@ -261,12 +261,12 @@ export function FormAgendamento() {
         <button
           type="submit"
           disabled={estado === "enviando"}
-          className="inline-flex items-center justify-center gap-2.5 rounded-full bg-brass-lit px-7 py-4 font-medium text-ink transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-2.5 rounded-full bg-bege px-7 py-4 font-medium text-ink transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
         >
           <IconeWhatsapp className="h-5 w-5" />
           {estado === "enviando" ? "Enviando…" : "Enviar pedido"}
         </button>
-        <p className="text-sm text-sand/70">
+        <p className="text-sm text-nude/70">
           A recepção confirma o horário pelo WhatsApp.
         </p>
       </div>

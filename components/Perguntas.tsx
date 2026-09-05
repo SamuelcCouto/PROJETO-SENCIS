@@ -9,17 +9,14 @@ import { IconeMais } from "./icones";
  */
 export function Perguntas() {
   return (
-    <section
-      id="perguntas"
-      className="border-t border-sand-deep py-20 sm:py-28"
-    >
+    <section id="perguntas" className="border-t border-linha py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div className="lg:sticky lg:top-32 lg:self-start">
             <h2 className="font-display text-[2.25rem] leading-[1.08] text-ink sm:text-[2.75rem]">
               Antes de marcar
             </h2>
-            <p className="mt-5 max-w-[42ch] text-clay">
+            <p className="mt-5 max-w-[42ch] text-texto">
               As perguntas que mais chegam no WhatsApp, respondidas aqui para
               você não precisar perguntar.
             </p>
@@ -27,7 +24,7 @@ export function Perguntas() {
               href={linkWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block border-b border-brass-mid pb-0.5 font-medium text-ink transition-colors hover:text-brass"
+              className="mt-6 inline-block border-b border-azul pb-0.5 font-medium text-ink transition-colors hover:text-azul"
             >
               Ficou outra dúvida? Pergunte
             </a>
@@ -38,9 +35,9 @@ export function Perguntas() {
               <details key={item.pergunta} className="group py-5">
                 <summary className="flex items-start justify-between gap-6 text-lg font-medium text-ink">
                   <span className="max-w-[46ch]">{item.pergunta}</span>
-                  <IconeMais className="faq-sinal mt-1 h-5 w-5 shrink-0 text-brass-mid transition-transform duration-300" />
+                  <IconeMais className="faq-sinal mt-1 h-5 w-5 shrink-0 text-azul transition-transform duration-300" />
                 </summary>
-                <p className="mt-3 max-w-[62ch] pr-10 text-clay">
+                <p className="mt-3 max-w-[62ch] pr-10 text-texto">
                   {item.resposta}
                 </p>
               </details>

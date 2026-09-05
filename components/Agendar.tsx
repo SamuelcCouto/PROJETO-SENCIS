@@ -15,20 +15,20 @@ export function Agendar() {
             <h2 className="font-display text-[2.25rem] leading-[1.08] text-white sm:text-[2.75rem]">
               Vamos marcar sua avaliação
             </h2>
-            <p className="mt-5 max-w-[42ch] text-sand/80">
+            <p className="mt-5 max-w-[42ch] text-nude/80">
               Preencha e a recepção retorna com os horários livres. Leva menos
               de um minuto e você não precisa saber o nome do procedimento.
             </p>
 
             <a
               href={`tel:${clinica.telefone.e164}`}
-              className="mt-8 inline-flex items-center gap-3 text-sand transition-colors hover:text-brass-lit"
+              className="mt-8 inline-flex items-center gap-3 text-nude transition-colors hover:text-bege"
             >
               <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-white/20">
                 <IconeTelefone className="h-4.5 w-4.5" />
               </span>
               <span>
-                <span className="block text-sm text-sand/60">
+                <span className="block text-sm text-nude/60">
                   Com dor? Prefira ligar
                 </span>
                 <span className="font-display text-xl text-white">
