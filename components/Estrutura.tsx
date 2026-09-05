@@ -1,11 +1,11 @@
 import Image, { type StaticImageData } from "next/image";
 import { linkWhatsapp } from "@/lib/clinica";
-import fachada from "@/public/fotos/sencisfaxada.png";
-import espera2 from "@/public/fotos/sencisespera2.png";
-import mordomias from "@/public/fotos/sencisesperamordomias.png";
-import corredor from "@/public/fotos/sencisestrutura.png";
-import consultorio from "@/public/fotos/sencissaladeatendimento.png";
-import consultorio2 from "@/public/fotos/sencissaladeatendimento2.png";
+import fachada from "@/public/fotos/fachada.png";
+import recepcaoSofa from "@/public/fotos/recepcao-sofa.png";
+import recepcaoCafe from "@/public/fotos/recepcao-cafe.png";
+import corredor from "@/public/fotos/corredor.png";
+import consultorioJanela from "@/public/fotos/consultorio-janela.png";
+import cameraIntraoralDetalhe from "@/public/fotos/camera-intraoral-detalhe.jpg";
 
 /**
  * O passeio pela clínica.
@@ -35,7 +35,7 @@ const ambientes: Ambiente[] = [
     proporcao: "aspect-[3/2]",
   },
   {
-    foto: consultorio,
+    foto: consultorioJanela,
     alt: "Consultório da Sencis com a cadeira odontológica voltada para uma janela do chão ao teto",
     titulo: "Consultório com luz natural",
     nota: "A cadeira fica de frente para a janela. Você olha para fora, não para o refletor.",
@@ -43,7 +43,7 @@ const ambientes: Ambiente[] = [
     proporcao: "aspect-[3/2]",
   },
   {
-    foto: espera2,
+    foto: recepcaoSofa,
     alt: "Recepção da Sencis com sofá, poltrona e iluminação indireta",
     titulo: "Recepção",
     nota: "Espaço para acompanhante, sem a fila de cadeiras encostadas na parede.",
@@ -51,10 +51,10 @@ const ambientes: Ambiente[] = [
     proporcao: "aspect-[3/4]",
   },
   {
-    foto: consultorio2,
-    alt: "Bancada de apoio ao lado da cadeira odontológica, com instrumental organizado",
-    titulo: "Bancada de apoio",
-    nota: "O instrumental fica organizado ao lado da cadeira, à vista, e não em uma sala nos fundos.",
+    foto: cameraIntraoralDetalhe,
+    alt: "Tablet mostrando a imagem ampliada de um dente captada pela câmera intraoral durante o atendimento",
+    titulo: "Câmera intraoral",
+    nota: "O dente ampliado na tela, ao vivo, para você olhar junto.",
     colunas: "sm:col-span-2",
     proporcao: "aspect-[3/4]",
   },
@@ -67,7 +67,7 @@ const ambientes: Ambiente[] = [
     proporcao: "aspect-[3/4]",
   },
   {
-    foto: mordomias,
+    foto: recepcaoCafe,
     alt: "Cantinho do café da recepção da Sencis, com bule, xícara e biscoitos",
     titulo: "Café e água",
     nota: "Chegou adiantada? Sirva-se enquanto espera.",

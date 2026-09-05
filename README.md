@@ -22,6 +22,7 @@ npm run dev
 | `app/api/agendamentos/route.ts` | Recebe pedidos de agendamento |
 | `components/` | Uma seção por arquivo |
 | `lib/clinica.ts` | **Endereço, telefone, horário, CRO — fonte única** |
+| `public/fotos/` | Fotos da clínica, em kebab-case pelo que mostram |
 | `lib/tratamentos.ts` | Os procedimentos e como as pessoas os procuram |
 | `lib/faq.ts` | Perguntas frequentes (viram schema `FAQPage`) |
 | `lib/schema.ts` | JSON-LD de busca local |
@@ -62,7 +63,11 @@ silêncio — pior do que não ter formulário.
 
 - `Dentist` + `FAQPage` + `WebSite` em JSON-LD, montados em `lib/schema.ts`
 - `app/sitemap.ts` e `app/robots.ts` gerados pelo Next
-- `public/og.jpg` (1200×630) para pré-visualização de link
+- `public/og.jpg` (1200×630) para pré-visualização de link, recortado da fachada:
+
+  ```bash
+  node -e "require('sharp')('public/fotos/fachada.png').resize(1200,630,{fit:'cover'}).jpeg({quality:82,mozjpeg:true}).toFile('public/og.jpg')"
+  ```
 
 Não existe `aggregateRating` no schema, e isso é de propósito: marcar a nota da
 própria empresa no próprio site é *self-serving review* pelas diretrizes do

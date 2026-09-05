@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { clinica, linkWhatsapp } from "@/lib/clinica";
 import { IconeEstrela, IconeWhatsapp, IconeAcessivel } from "./icones";
-import recepcao from "@/public/fotos/sencisespera.png";
+import recepcaoPoltronas from "@/public/fotos/recepcao-poltronas.png";
 
 /**
  * O hero abre com a coisa mais característica desta clínica: o dente
@@ -61,7 +61,7 @@ export function Hero() {
         <div className="anim-rise relative [animation-delay:180ms]">
           <div className="relative overflow-hidden rounded-[var(--radius-photo)] bg-sand shadow-[0_30px_70px_-30px_rgba(27,34,51,0.35)]">
             <Image
-              src={recepcao}
+              src={recepcaoPoltronas}
               alt="Recepção da Sencis: poltronas claras, almofadas azul-marinho e um dente retroiluminado desenhado na parede"
               priority
               placeholder="blur"

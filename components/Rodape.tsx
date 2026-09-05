@@ -3,6 +3,7 @@ import { clinica, enderecoLinhaUnica } from "@/lib/clinica";
 
 const navegacao = [
   { href: "#tratamentos", rotulo: "Tratamentos" },
+  { href: "#camera-intraoral", rotulo: "Câmera intraoral" },
   { href: "#clinica", rotulo: "A clínica" },
   { href: "#estrutura", rotulo: "Estrutura" },
   { href: "#agendar", rotulo: "Agendar" },

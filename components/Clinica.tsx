@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { clinica } from "@/lib/clinica";
-import escritorio from "@/public/fotos/sencisescritorio.png";
+import salaPlanejamento from "@/public/fotos/sala-planejamento.png";
 
 /**
  * A seção que dá rosto e responsável técnico à clínica.
@@ -18,7 +18,7 @@ export function Clinica() {
           <div className="order-2 lg:order-1">
             <div className="overflow-hidden rounded-[var(--radius-photo)] bg-white shadow-[0_30px_70px_-36px_rgba(27,34,51,0.45)]">
               <Image
-                src={escritorio}
+                src={salaPlanejamento}
                 alt="Sala de planejamento da Sencis, onde o caso é conversado antes de qualquer procedimento"
                 placeholder="blur"
                 sizes="(max-width: 1024px) 100vw, 46vw"
@@ -35,8 +35,8 @@ export function Clinica() {
             <div className="mt-6 max-w-[58ch] space-y-4 text-clay">
               <p>
                 A Sencis é nova, e isso não é um detalhe que a gente esconde:
-                ela foi aberta do zero por uma dentista que decidiu montar o
-                consultório que gostaria de ter encontrado como paciente.
+                foi aberta do zero, por quem quis montar o consultório que
+                gostaria de ter encontrado como paciente.
               </p>
               <p>
                 Daí vem o resto. A recepção tem café, poltrona e luz baixa

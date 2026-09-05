@@ -65,9 +65,9 @@ export function schemaClinica() {
     hasMap: `https://www.google.com/maps/search/?api=1&query=${clinica.geo.latitude},${clinica.geo.longitude}`,
     openingHoursSpecification: horarioAtendimento,
     image: [
-      `${clinica.siteUrl}/fotos/sencisfaxada.png`,
-      `${clinica.siteUrl}/fotos/sencisespera.png`,
-      `${clinica.siteUrl}/fotos/sencissaladeatendimento.png`,
+      `${clinica.siteUrl}/fotos/fachada.png`,
+      `${clinica.siteUrl}/fotos/recepcao-poltronas.png`,
+      `${clinica.siteUrl}/fotos/consultorio-janela.png`,
     ],
     logo: `${clinica.siteUrl}/icone.svg`,
     priceRange: "$$",
