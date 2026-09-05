@@ -66,7 +66,17 @@ export const clinica = {
     instagramHandle: "@sencisodontologia",
   },
 
-  siteUrl: "https://projeto-sencis.vercel.app",
+  /**
+   * A URL canônica do site.
+   *
+   * Precisa bater exatamente com o domínio marcado como "Production" no
+   * painel da Vercel — hoje é o www, com o domínio nu (sencis.com.br)
+   * redirecionando (308) para ele. Se um dia a Vercel passar a tratar o
+   * domínio nu como produção em vez do www, troque aqui também: um
+   * descompasso entre esta constante e o redirect real da Vercel faz o
+   * Google indexar duas URLs canônicas diferentes para a mesma página.
+   */
+  siteUrl: "https://www.sencis.com.br",
 } as const;
 
 export const enderecoLinhaUnica = `${clinica.endereco.logradouro} — ${clinica.endereco.complemento}, ${clinica.endereco.bairro}, ${clinica.endereco.cidade} - ${clinica.endereco.estado}, ${clinica.endereco.cep}`;

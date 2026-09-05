@@ -106,12 +106,17 @@ aos do perfil (copie de `lib/clinica.ts`):
 Endereço escrito de forma diferente em cada lugar divide a autoridade em vez de
 somar. É o erro mais comum e o mais fácil de evitar.
 
-### 7. Domínio próprio
+### 7. Domínio próprio — feito
 
-`projeto-sencis.vercel.app` é um subdomínio da Vercel. Um domínio próprio
-(`sencisodontologia.com.br`) melhora confiança, permite e-mail com o domínio da
-clínica e é o que se cadastra nos diretórios acima. Custa pouco e é o próximo
-passo natural.
+`sencis.com.br` foi registrado e apontado para a Vercel via delegação de
+nameservers. `www.sencis.com.br` é a URL de produção; o domínio nu redireciona
+(308) para ela. É esse endereço que agora deve ser cadastrado em todos os
+diretórios do item 6 e no Google Search Console — não mais o
+`projeto-sencis.vercel.app` antigo.
+
+Depois que o DNS propagar (algumas horas), confirme com um teste simples:
+abrir `https://sencis.com.br` no celular, fora de rede Wi-Fi conhecida, e ver
+se carrega com o cadeado de site seguro.
 
 ---
 
