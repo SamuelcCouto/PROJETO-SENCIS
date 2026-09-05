@@ -1,6 +1,7 @@
 import { Cabecalho } from "@/components/Cabecalho";
 import { Hero } from "@/components/Hero";
 import { Tratamentos } from "@/components/Tratamentos";
+import { EsteticaFacial } from "@/components/EsteticaFacial";
 import { CameraIntraoral } from "@/components/CameraIntraoral";
 import { Clinica } from "@/components/Clinica";
 import { Estrutura } from "@/components/Estrutura";
@@ -25,6 +26,7 @@ export default function Pagina() {
       <main>
         <Hero />
         <Tratamentos />
+        <EsteticaFacial />
         <CameraIntraoral />
         <Clinica />
         <Estrutura />

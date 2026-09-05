@@ -1,5 +1,6 @@
 import { clinica } from "./clinica";
 import { tratamentos } from "./tratamentos";
+import { servicosComplementares } from "./esteticaFacial";
 import { faq } from "./faq";
 
 /**
@@ -92,12 +93,24 @@ export function schemaClinica() {
       jobTitle: clinica.responsavel.cargo,
       identifier: clinica.responsavel.cro,
     },
-    availableService: tratamentos.map((t) => ({
-      "@type": "MedicalProcedure",
-      name: t.nome,
-      description: t.resolve,
-      alternateName: t.tambemChamado,
-    })),
+    availableService: [
+      ...tratamentos.map((t) => ({
+        "@type": "MedicalProcedure",
+        name: t.nome,
+        description: t.resolve,
+        alternateName: t.tambemChamado,
+      })),
+      // Só os serviços dentro do escopo legal de uma cirurgiã-dentista (a
+      // Harmonização Orofacial é especialidade reconhecida pelo CFO) entram
+      // aqui. Limpeza de pele fica de fora — ver a nota em esteticaFacial.ts.
+      ...servicosComplementares
+        .filter((s) => s.escopoDentista)
+        .map((s) => ({
+          "@type": "MedicalProcedure",
+          name: s.nome,
+          description: s.descricao,
+        })),
+    ],
     potentialAction: {
       "@type": "ReserveAction",
       name: "Agendar avaliação",
