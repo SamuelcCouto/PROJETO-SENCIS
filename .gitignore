@@ -7,3 +7,10 @@ build/
 *.tsbuildinfo
 next-env.d.ts
 .DS_Store
+
+# Material bruto que a clínica manda (fotos e vídeos ainda não selecionados).
+# Fica fora do repositório de propósito: só entra o que foi escolhido, tratado e
+# movido para public/fotos/ ou public/videos/. Sem isto, um `git add -A` publica
+# arquivo não revisado e a Vercel carrega tudo em todo deploy.
+videos/
+bruto/
