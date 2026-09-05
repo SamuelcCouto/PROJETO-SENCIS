@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import { servicosComplementares } from "@/lib/esteticaFacial";
 import { whatsappSobre } from "@/lib/clinica";
+import { IconeWhatsapp } from "./icones";
 import botoxAntesDepois from "@/public/fotos/botox-testa-antes-depois.jpg";
 import harmonizacaoFacialPerfil from "@/public/fotos/harmonizacao-facial-perfil.jpg";
 
@@ -77,8 +78,9 @@ export function EsteticaFacial() {
           href={whatsappSobre("estética facial")}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-block border-b border-linha pb-0.5 text-sm text-texto transition-colors hover:border-azul hover:text-ink"
+          className="mt-8 inline-flex items-center gap-2 rounded-full border border-azul/45 px-5 py-2.5 text-sm font-medium text-azul transition-colors hover:bg-azul hover:text-white"
         >
+          <IconeWhatsapp className="h-4 w-4" />
           Perguntar sobre estética facial
         </a>
       </div>

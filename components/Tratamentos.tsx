@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { tratamentos } from "@/lib/tratamentos";
 import { whatsappSobre } from "@/lib/clinica";
+import { IconeWhatsapp } from "./icones";
 import implantesLentesPorcelana from "@/public/fotos/implantes-lentes-porcelana.jpg";
 
 /**
@@ -66,8 +67,9 @@ export function Tratamentos() {
                   href={whatsappSobre(t.nome.toLowerCase())}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-block border-b border-linha pb-0.5 text-sm text-texto transition-colors hover:border-azul hover:text-ink"
+                  className="mt-4 inline-flex items-center gap-2 rounded-full border border-azul/45 px-4 py-2 text-sm font-medium text-azul transition-colors hover:bg-azul hover:text-white"
                 >
+                  <IconeWhatsapp className="h-3.5 w-3.5" />
                   Perguntar sobre {t.nome.toLowerCase()}
                 </a>
               </li>

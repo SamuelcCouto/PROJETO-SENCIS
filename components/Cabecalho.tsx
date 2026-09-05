@@ -42,8 +42,14 @@ export function Cabecalho() {
 
   return (
     <>
+      {/* Uma linha sólida, fixa, no ponto mais alto da página — o primeiro
+          pixel de cor que a pessoa vê, antes até do header. O gradiente do
+          Hero é atmosfera e depende de rolar até lá; esta faixa está sempre
+          presente, em qualquer altura de rolagem. */}
+      <div aria-hidden className="fixed inset-x-0 top-0 z-[60] h-1 bg-azul" />
+
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,padding] duration-500 ${
+        className={`fixed inset-x-0 top-1 z-50 transition-[background-color,box-shadow,padding] duration-500 ${
           rolou || menuAberto
             ? "bg-white/90 py-3 shadow-topo backdrop-blur-md"
             : "bg-transparent py-5"

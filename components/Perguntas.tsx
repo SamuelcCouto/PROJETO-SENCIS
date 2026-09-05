@@ -1,6 +1,6 @@
 import { faq } from "@/lib/faq";
 import { linkWhatsapp } from "@/lib/clinica";
-import { IconeMais } from "./icones";
+import { IconeMais, IconeWhatsapp } from "./icones";
 
 /**
  * Acordeão em <details>/<summary> nativo: abre sem JavaScript, é navegável por
@@ -24,8 +24,9 @@ export function Perguntas() {
               href={linkWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block border-b border-azul pb-0.5 font-medium text-ink transition-colors hover:text-azul"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-azul/45 px-5 py-2.5 text-sm font-medium text-azul transition-colors hover:bg-azul hover:text-white"
             >
+              <IconeWhatsapp className="h-4 w-4" />
               Ficou outra dúvida? Pergunte
             </a>
           </div>
