@@ -1,5 +1,27 @@
+import Image, { type StaticImageData } from "next/image";
 import { servicosComplementares } from "@/lib/esteticaFacial";
 import { whatsappSobre } from "@/lib/clinica";
+import botoxAntesDepois from "@/public/fotos/botox-testa-antes-depois.jpg";
+import harmonizacaoFacialPerfil from "@/public/fotos/harmonizacao-facial-perfil.jpg";
+
+/**
+ * As fotos, uma por item, e só para os dois com registro de resultado.
+ *
+ * Ficam aqui, não em lib/esteticaFacial.ts: lib/ é dado puro, sem depender do
+ * tipo de imagem do Next — mesma separação que Estrutura.tsx já usa. Limpeza
+ * de pele não tem foto porque não veio nenhuma da clínica para esse item; um
+ * espaço em branco ali é melhor que preencher com banco de imagens.
+ */
+const fotos: Partial<Record<string, { src: StaticImageData; alt: string }>> = {
+  botox: {
+    src: botoxAntesDepois,
+    alt: "Testa antes e depois da aplicação de botox, com as rugas de expressão suavizadas",
+  },
+  "harmonizacao-facial": {
+    src: harmonizacaoFacialPerfil,
+    alt: "Paciente de perfil após harmonização facial",
+  },
+};
 
 /**
  * Uma faixa curta, não uma seção-herói.
@@ -7,7 +29,9 @@ import { whatsappSobre } from "@/lib/clinica";
  * A clínica pediu para incluir, mas foi explícita que não é o foco — então o
  * peso visual precisa mostrar isso: fundo diferente do que vem antes e
  * depois (para marcar "isto é um parênteses"), título menor, sem a
- * tipografia grande de destaque que Tratamentos usa para os nomes.
+ * tipografia grande de destaque que Tratamentos usa para os nomes, e as fotos
+ * pequenas — miniatura ao lado do texto, não uma foto de largura total como
+ * as da Estrutura.
  */
 export function EsteticaFacial() {
   return (
@@ -25,13 +49,27 @@ export function EsteticaFacial() {
             </p>
           </div>
 
-          <ul className="grid gap-6 sm:grid-cols-3">
-            {servicosComplementares.map((s) => (
-              <li key={s.id}>
-                <h3 className="font-medium text-ink">{s.nome}</h3>
-                <p className="mt-1.5 text-sm text-texto">{s.descricao}</p>
-              </li>
-            ))}
+          <ul className="grid gap-8 sm:grid-cols-3">
+            {servicosComplementares.map((s) => {
+              const foto = fotos[s.id];
+              return (
+                <li key={s.id}>
+                  {foto && (
+                    <div className="mb-3 aspect-[4/5] w-24 overflow-hidden rounded-[var(--radius-card)] bg-white sm:w-full">
+                      <Image
+                        src={foto.src}
+                        alt={foto.alt}
+                        placeholder="blur"
+                        sizes="(max-width: 640px) 96px, 220px"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  )}
+                  <h3 className="font-medium text-ink">{s.nome}</h3>
+                  <p className="mt-1.5 text-sm text-texto">{s.descricao}</p>
+                </li>
+              );
+            })}
           </ul>
         </div>
 
