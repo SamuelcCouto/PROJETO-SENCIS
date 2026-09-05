@@ -56,7 +56,7 @@ export function CameraIntraoral() {
           </div>
 
           <figure>
-            <div className="aspect-[4/5] overflow-hidden rounded-[var(--radius-photo)] bg-nude shadow-[0_30px_70px_-36px_rgba(27,34,51,0.45)]">
+            <div className="aspect-[4/5] overflow-hidden rounded-[var(--radius-photo)] bg-nude shadow-foto">
               <Image
                 src={cameraIntraoral}
                 alt="Paciente deitada na cadeira segurando um tablet que mostra, ampliado e ao vivo, o próprio dente sendo examinado pela câmera intraoral"

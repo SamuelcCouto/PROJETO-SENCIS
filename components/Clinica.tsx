@@ -16,7 +16,7 @@ export function Clinica() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
           <div className="order-2 lg:order-1">
-            <div className="overflow-hidden rounded-[var(--radius-photo)] bg-white shadow-[0_30px_70px_-36px_rgba(27,34,51,0.45)]">
+            <div className="overflow-hidden rounded-[var(--radius-photo)] bg-white shadow-foto">
               <Image
                 src={salaPlanejamento}
                 alt="Sala de planejamento da Sencis, onde o caso é conversado antes de qualquer procedimento"

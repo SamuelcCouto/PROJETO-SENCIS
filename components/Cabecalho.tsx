@@ -45,7 +45,7 @@ export function Cabecalho() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,padding] duration-500 ${
           rolou || menuAberto
-            ? "bg-white/90 py-3 shadow-[0_1px_0_rgba(27,34,51,0.07)] backdrop-blur-md"
+            ? "bg-white/90 py-3 shadow-topo backdrop-blur-md"
             : "bg-transparent py-5"
         }`}
       >

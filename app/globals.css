@@ -39,6 +39,13 @@
 
   --radius-card: 1.25rem;
   --radius-photo: 1.5rem;
+
+  /* Sombras derivadas do charcoal da cartela (43,46,49). Ficam como token
+     porque, soltas em cada componente, foi exatamente onde sobrou o azul frio
+     da paleta que eu tinha inventado antes do manual chegar. */
+  --shadow-foto: 0 30px 70px -36px rgb(43 46 49 / 0.42);
+  --shadow-cartao: 0 18px 40px -24px rgb(43 46 49 / 0.36);
+  --shadow-topo: 0 1px 0 rgb(43 46 49 / 0.08);
 }
 
 /* ============================================================

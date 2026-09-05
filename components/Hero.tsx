@@ -58,7 +58,7 @@ export function Hero() {
         </div>
 
         <div className="anim-rise relative [animation-delay:180ms]">
-          <div className="relative overflow-hidden rounded-[var(--radius-photo)] bg-nude shadow-[0_30px_70px_-30px_rgba(27,34,51,0.35)]">
+          <div className="relative overflow-hidden rounded-[var(--radius-photo)] bg-nude shadow-foto">
             <Image
               src={recepcaoPoltronas}
               alt="Recepção da Sencis, com poltronas claras, almofadas escuras e iluminação indireta na parede"
@@ -69,7 +69,7 @@ export function Hero() {
             />
           </div>
 
-          <figure className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 rounded-[var(--radius-card)] border border-linha bg-white px-5 py-4 lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:flex-col lg:items-start lg:gap-2 lg:px-6 lg:shadow-[0_18px_40px_-24px_rgba(27,34,51,0.4)]">
+          <figure className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 rounded-[var(--radius-card)] border border-linha bg-white px-5 py-4 lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:flex-col lg:items-start lg:gap-2 lg:px-6 lg:shadow-cartao">
             <div className="flex items-center gap-2">
               <span className="flex gap-0.5 text-azul" aria-hidden>
                 {[0, 1, 2, 3, 4].map((i) => (

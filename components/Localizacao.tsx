@@ -110,7 +110,7 @@ export function Localizacao() {
             </dl>
           </div>
 
-          <div className="overflow-hidden rounded-[var(--radius-photo)] border border-linha bg-white shadow-[0_30px_70px_-40px_rgba(27,34,51,0.45)]">
+          <div className="overflow-hidden rounded-[var(--radius-photo)] border border-linha bg-white shadow-foto">
             <iframe
               src={linkMapaEmbed}
               title={`Mapa com a localização da ${clinica.nome} no Parque Amazônia, Goiânia`}
