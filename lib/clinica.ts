@@ -10,7 +10,7 @@
 export const clinica = {
   nome: "Sencis Odontologia Integrada",
   nomeCurto: "Sencis",
-  slogan: "Odontologia que começa pelo ouvido",
+  slogan: "Odontologia que começa entendendo você",
 
   telefone: {
     // E.164 para links e schema; formatado para leitura humana.

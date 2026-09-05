@@ -1,14 +1,18 @@
 import Image from "next/image";
-import { clinica } from "@/lib/clinica";
 import salaPlanejamento from "@/public/fotos/sala-planejamento.png";
 
 /**
- * A seção que dá rosto e responsável técnico à clínica.
+ * A seção que dá rosto à clínica — mas não a uma dentista específica.
  *
- * Em conteúdo de saúde, o Google pesa autoria identificada (E-E-A-T) — e o
- * paciente também. Uma clínica nova sem nenhuma pessoa no site é indistinguível
- * de uma página genérica, tanto para o algoritmo quanto para quem está com medo
- * de dentista.
+ * Havia aqui um cartão com nome, cargo e CRO da responsável técnica. A clínica
+ * pediu a remoção: são várias dentistas atendendo, e destacar uma cria a
+ * expectativa de "quero ser atendida por ela", que gera atrito quando a agenda
+ * encaixa outra profissional.
+ *
+ * A identificação da responsável técnica continua no rodapé (Rodape.tsx),
+ * discreta — isso não é escolha de marketing, é exigência do Código de Ética
+ * Odontológica (Resolução CFO-196/2019) para qualquer peça publicitária da
+ * clínica. Ver [[sencis-identificacao-responsavel-tecnica]] na memória.
  */
 export function Clinica() {
   return (
@@ -52,18 +56,6 @@ export function Clinica() {
                 pressão.
               </p>
             </div>
-
-            <figure className="mt-9 rounded-[var(--radius-card)] border border-linha bg-white p-6">
-              <figcaption className="font-display text-xl text-ink">
-                {clinica.responsavel.nome}
-              </figcaption>
-              <p className="mt-1 text-sm text-texto">
-                {clinica.responsavel.cargo}
-              </p>
-              <p className="mt-3 border-t border-linha pt-3 text-sm text-texto-claro">
-                {clinica.responsavel.cro} · Clínica {clinica.croClinica}
-              </p>
-            </figure>
           </div>
         </div>
       </div>

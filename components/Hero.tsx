@@ -24,7 +24,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-6xl gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-16">
         <div className="anim-rise">
           <h1 className="font-display text-[2.375rem] leading-[1.04] text-ink sm:text-[3.5rem] sm:leading-[1.02] lg:text-[4.25rem]">
-            Odontologia que começa pelo ouvido.
+            {clinica.slogan}.
           </h1>
 
           <p className="mt-6 max-w-[54ch] text-texto sm:mt-7 sm:text-lg">
