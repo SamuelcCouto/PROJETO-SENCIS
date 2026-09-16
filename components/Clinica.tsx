@@ -1,5 +1,5 @@
 import Image from "next/image";
-import salaPlanejamento from "@/public/fotos/sala-planejamento.png";
+import planejamento from "@/public/fotos/planejamento.jpg";
 
 /**
  * A seção que dá rosto à clínica — mas não a uma dentista específica.
@@ -13,6 +13,9 @@ import salaPlanejamento from "@/public/fotos/sala-planejamento.png";
  * discreta — isso não é escolha de marketing, é exigência do Código de Ética
  * Odontológica (Resolução CFO-196/2019) para qualquer peça publicitária da
  * clínica. Ver [[sencis-identificacao-responsavel-tecnica]] na memória.
+ *
+ * A origem do nome é citação do documento "Essência Sencis" que a clínica
+ * enviou — três palavras, não duas. Não reescrever de cabeça.
  */
 export function Clinica() {
   return (
@@ -20,15 +23,21 @@ export function Clinica() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20">
           <div className="order-2 lg:order-1">
-            <div className="overflow-hidden rounded-[var(--radius-photo)] bg-white shadow-foto">
-              <Image
-                src={salaPlanejamento}
-                alt="Sala de planejamento da Sencis, onde o caso é conversado antes de qualquer procedimento"
-                placeholder="blur"
-                sizes="(max-width: 1024px) 100vw, 46vw"
-                className="h-[20rem] w-full object-cover sm:h-[26rem]"
-              />
-            </div>
+            <figure>
+              <div className="aspect-square overflow-hidden rounded-[var(--radius-photo)] bg-white shadow-foto">
+                <Image
+                  src={planejamento}
+                  alt="Dentista mostrando as radiografias na tela do computador para a paciente sentada à mesa, durante o planejamento do tratamento"
+                  placeholder="blur"
+                  sizes="(max-width: 1024px) 100vw, 46vw"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 max-w-[44ch] text-sm text-texto">
+                O planejamento é feito com você na sala, olhando para as mesmas
+                imagens.
+              </figcaption>
+            </figure>
           </div>
 
           <div className="order-1 lg:order-2">
@@ -43,10 +52,10 @@ export function Clinica() {
                 gostaria de ter encontrado como paciente.
               </p>
               <p>
-                O nome vem de <em>senso</em> — aquele que sente, que percebe,
-                que compreende — e carrega um eco de <em>essência</em>, o que
-                permanece quando se tira o resto. Não é enfeite de marca: é o
-                critério com que a clínica foi montada.
+                O nome nasce do encontro entre três palavras: <em>essência</em>,
+                o que nos torna únicos; <em>essencial</em>, o que realmente
+                importa; e <em>sense</em> — sentir, perceber e compreender. Não
+                é enfeite de marca: é o critério com que a clínica foi montada.
               </p>
               <p>
                 Daí vem o resto. A recepção tem café, poltrona e luz baixa
@@ -56,6 +65,11 @@ export function Clinica() {
                 pressão.
               </p>
             </div>
+
+            {/* Do documento de essência da marca, palavra por palavra. */}
+            <p className="font-display mt-8 max-w-[32ch] border-l-2 border-azul pl-5 text-xl text-ink">
+              O tratamento não começa com uma decisão. Começa com escuta.
+            </p>
           </div>
         </div>
       </div>

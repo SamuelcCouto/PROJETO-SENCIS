@@ -3,7 +3,7 @@ import { servicosComplementares } from "@/lib/esteticaFacial";
 import { whatsappSobre } from "@/lib/clinica";
 import { IconeWhatsapp } from "./icones";
 import botoxAntesDepois from "@/public/fotos/botox-testa-antes-depois.jpg";
-import harmonizacaoFacialPerfil from "@/public/fotos/harmonizacao-facial-perfil.jpg";
+import harmonizacaoFacialMontagem from "@/public/fotos/harmonizacao-facial-montagem.jpg";
 
 /**
  * As fotos, uma por item, e só para os dois com registro de resultado.
@@ -19,8 +19,8 @@ const fotos: Partial<Record<string, { src: StaticImageData; alt: string }>> = {
     alt: "Testa antes e depois da aplicação de botox, com as rugas de expressão suavizadas",
   },
   "harmonizacao-facial": {
-    src: harmonizacaoFacialPerfil,
-    alt: "Paciente de perfil após harmonização facial",
+    src: harmonizacaoFacialMontagem,
+    alt: "Montagem com quatro fotos de perfil da mesma paciente, antes e depois da harmonização facial",
   },
 };
 
@@ -28,11 +28,15 @@ const fotos: Partial<Record<string, { src: StaticImageData; alt: string }>> = {
  * Uma faixa curta, não uma seção-herói.
  *
  * A clínica pediu para incluir, mas foi explícita que não é o foco — então o
- * peso visual precisa mostrar isso: fundo diferente do que vem antes e
- * depois (para marcar "isto é um parênteses"), título menor, sem a
- * tipografia grande de destaque que Tratamentos usa para os nomes, e as fotos
- * pequenas — miniatura ao lado do texto, não uma foto de largura total como
- * as da Estrutura.
+ * peso visual mostra isso: fundo diferente do que vem antes e depois (para
+ * marcar "isto é um parênteses"), título menor, sem a tipografia grande de
+ * destaque que Tratamentos usa nos nomes.
+ *
+ * As imagens vêm DEPOIS do texto, e sem moldura de proporção fixa. Antes
+ * ficavam em cima e recortadas em 4/5: a montagem da harmonização tem quatro
+ * painéis, e o recorte mostrava só o primeiro — a clínica reclamou justamente
+ * disso ("ficou só o começo"). Com o texto em cima, os títulos das três
+ * colunas alinham; sem proporção fixa, cada imagem aparece inteira.
  */
 export function EsteticaFacial() {
   return (
@@ -50,24 +54,25 @@ export function EsteticaFacial() {
             </p>
           </div>
 
-          <ul className="grid gap-8 sm:grid-cols-3">
+          <ul className="grid items-start gap-8 sm:grid-cols-3">
             {servicosComplementares.map((s) => {
               const foto = fotos[s.id];
               return (
                 <li key={s.id}>
+                  <h3 className="font-medium text-ink">{s.nome}</h3>
+                  <p className="mt-1.5 text-sm text-texto">{s.descricao}</p>
+
                   {foto && (
-                    <div className="mb-3 aspect-[4/5] w-24 overflow-hidden rounded-[var(--radius-card)] bg-white sm:w-full">
+                    <div className="mt-4 max-w-[11rem] overflow-hidden rounded-[var(--radius-card)] bg-white sm:max-w-none">
                       <Image
                         src={foto.src}
                         alt={foto.alt}
                         placeholder="blur"
-                        sizes="(max-width: 640px) 96px, 220px"
-                        className="h-full w-full object-cover"
+                        sizes="(max-width: 640px) 176px, 220px"
+                        className="h-auto w-full"
                       />
                     </div>
                   )}
-                  <h3 className="font-medium text-ink">{s.nome}</h3>
-                  <p className="mt-1.5 text-sm text-texto">{s.descricao}</p>
                 </li>
               );
             })}

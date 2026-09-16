@@ -1,36 +1,34 @@
 import Image, { type StaticImageData } from "next/image";
 import { linkWhatsapp } from "@/lib/clinica";
-import { VideoAmbiente } from "./VideoAmbiente";
 import fachada from "@/public/fotos/fachada.png";
 import recepcaoSofa from "@/public/fotos/recepcao-sofa.png";
 import recepcaoCafe from "@/public/fotos/recepcao-cafe.png";
+import corredor from "@/public/fotos/corredor.png";
 import consultorioJanela from "@/public/fotos/consultorio-janela.png";
-import cameraIntraoralDetalhe from "@/public/fotos/camera-intraoral-detalhe.jpg";
+import consultorioBancada from "@/public/fotos/consultorio-bancada.png";
 
 /**
- * O passeio pela clínica.
+ * O passeio pela clínica — só os ambientes.
  *
- * O recorte de cada peça segue a orientação do arquivo: horizontais em 3:2,
+ * Os clipes de procedimento moraram aqui por um tempo, mas migraram para a
+ * lista de Tratamentos, onde cada um fica junto do tratamento que mostra. Esta
+ * seção responde "onde você vai ser atendida", e isso é sobre o espaço.
+ *
+ * O recorte de cada foto segue a orientação do arquivo: horizontais em 3:2,
  * verticais em 3:4. Forçar uma fachada horizontal numa moldura vertical já
  * cortou o letreiro no meio.
- *
- * Os dois clipes entram aqui, e não numa seção própria, porque resolvem a
- * fraqueza desta seção: eram só ambientes vazios. Com eles a galeria passa a
- * mostrar a clínica funcionando, que é o que a pessoa quer saber.
  */
-type Peca = {
+type Ambiente = {
+  foto: StaticImageData;
   alt: string;
   titulo: string;
   /** A legenda diz para que serve o espaço, não só como ele se chama. */
   nota: string;
   colunas: string;
   proporcao: string;
-} & (
-  | { foto: StaticImageData; video?: never }
-  | { foto?: never; video: { src: string; poster: string } }
-);
+};
 
-const pecas: Peca[] = [
+const ambientes: Ambiente[] = [
   {
     foto: fachada,
     alt: "Fachada da Sencis Odontologia com letreiro dourado iluminado sobre a entrada",
@@ -56,32 +54,18 @@ const pecas: Peca[] = [
     proporcao: "aspect-[3/4]",
   },
   {
-    video: {
-      src: "/videos/endodontia-canal.mp4",
-      poster: "/videos/endodontia-canal-poster.jpg",
-    },
-    alt: "Dentista de touca e máscara trabalhando com o fotopolimerizador durante um tratamento de canal",
-    titulo: "Tratamento de canal",
-    nota: "Sem pressa e com o tempo que o caso pedir. Canal deixou de ser sinônimo de sofrimento.",
+    foto: corredor,
+    alt: "Circulação interna da Sencis ligando a recepção aos consultórios",
+    titulo: "Circulação",
+    nota: "Percurso curto e reservado entre a recepção e o atendimento.",
     colunas: "sm:col-span-2",
     proporcao: "aspect-[3/4]",
   },
   {
-    foto: cameraIntraoralDetalhe,
-    alt: "Tablet mostrando a imagem ampliada de um dente captada pela câmera intraoral durante o atendimento",
-    titulo: "Câmera intraoral",
-    nota: "O dente ampliado na tela, ao vivo, para você olhar junto.",
-    colunas: "sm:col-span-2",
-    proporcao: "aspect-[3/4]",
-  },
-  {
-    video: {
-      src: "/videos/ortodontia-manutencao.mp4",
-      poster: "/videos/ortodontia-manutencao-poster.jpg",
-    },
-    alt: "Dentista atendendo uma paciente na cadeira durante a manutenção mensal do aparelho",
-    titulo: "Manutenção de aparelho",
-    nota: "A consulta mensal de quem usa aparelho, com hora marcada e sem espera.",
+    foto: consultorioBancada,
+    alt: "Bancada de apoio ao lado da cadeira odontológica, com instrumental organizado",
+    titulo: "Bancada de apoio",
+    nota: "O instrumental fica ao lado da cadeira, à vista, e não numa sala nos fundos.",
     colunas: "sm:col-span-2",
     proporcao: "aspect-[3/4]",
   },
@@ -90,7 +74,7 @@ const pecas: Peca[] = [
     alt: "Cantinho do café da recepção da Sencis, com bule, xícara e biscoitos",
     titulo: "Café e água",
     nota: "Chegou adiantada? Sirva-se enquanto espera.",
-    colunas: "sm:col-span-2",
+    colunas: "sm:col-span-3",
     proporcao: "aspect-[3/2]",
   },
 ];
@@ -110,32 +94,23 @@ export function Estrutura() {
         </div>
 
         <div className="mt-12 grid items-start gap-x-4 gap-y-8 sm:grid-cols-6">
-          {pecas.map((p) => (
-            <figure key={p.titulo} className={p.colunas}>
+          {ambientes.map((a) => (
+            <figure key={a.titulo} className={a.colunas}>
               <div
-                className={`overflow-hidden rounded-[var(--radius-card)] bg-nude ${p.proporcao}`}
+                className={`overflow-hidden rounded-[var(--radius-card)] bg-nude ${a.proporcao}`}
               >
-                {p.video ? (
-                  <VideoAmbiente
-                    src={p.video.src}
-                    poster={p.video.poster}
-                    descricao={p.alt}
-                    className="h-full w-full object-cover"
-                  />
-                ) : (
-                  <Image
-                    src={p.foto}
-                    alt={p.alt}
-                    placeholder="blur"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="h-full w-full object-cover"
-                  />
-                )}
+                <Image
+                  src={a.foto}
+                  alt={a.alt}
+                  placeholder="blur"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <figcaption className="mt-3">
-                <span className="block font-medium text-ink">{p.titulo}</span>
+                <span className="block font-medium text-ink">{a.titulo}</span>
                 <span className="mt-0.5 block max-w-[42ch] text-sm text-texto">
-                  {p.nota}
+                  {a.nota}
                 </span>
               </figcaption>
             </figure>
@@ -143,7 +118,7 @@ export function Estrutura() {
 
           {/* Fecha a última linha do mosaico com o convite, em vez de com um
               espaço vazio ou uma foto de enchimento. */}
-          <div className="flex flex-col justify-center rounded-[var(--radius-card)] border border-linha p-7 sm:col-span-2">
+          <div className="flex flex-col justify-center rounded-[var(--radius-card)] border border-linha p-7 sm:col-span-3">
             <p className="font-display text-2xl text-ink">
               Quer conhecer antes de marcar?
             </p>

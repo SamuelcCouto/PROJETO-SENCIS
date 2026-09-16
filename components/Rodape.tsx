@@ -21,6 +21,12 @@ export function Rodape() {
         <div className="grid gap-10 sm:grid-cols-[1.2fr_1fr] lg:gap-16">
           <div>
             <Marca tom="claro" tamanho="grande" />
+
+            {/* A assinatura da marca, do documento "Essência Sencis". */}
+            <p className="font-display mt-6 max-w-[28ch] text-lg text-nude/85">
+              Essencial na forma. Sentido na essência de cada sorriso.
+            </p>
+
             <p className="mt-6 max-w-[38ch] text-sm text-nude/70">
               {enderecoLinhaUnica}
             </p>

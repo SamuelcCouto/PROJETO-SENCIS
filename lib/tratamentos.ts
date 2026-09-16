@@ -52,10 +52,11 @@ export const tratamentos: Tratamento[] = [
     nome: "Ortodontia e alinhadores",
     resolve: "Dentes tortos, mordida errada, aparelho que nunca começou",
     descricao:
-      "Aparelho fixo convencional, autoligado ou alinhadores transparentes. A escolha depende do seu caso e da sua rotina — não do que é mais fácil de vender.",
+      "Aparelho fixo convencional, autoligado, alinhadores transparentes e aparelhos ortopédicos para quem ainda está em fase de crescimento. A escolha depende do seu caso e da sua rotina — não do que é mais fácil de vender.",
     tambemChamado: [
       "aparelho dentário",
       "aparelho ortodôntico",
+      "aparelho ortopédico",
       "alinhador invisível",
       "aparelho autoligado",
       "ortodontista",
@@ -67,7 +68,7 @@ export const tratamentos: Tratamento[] = [
     resolve:
       "Dente perdido, prótese que não encaixa, dificuldade para mastigar",
     descricao:
-      "Implante unitário ou múltiplo, coroa, prótese fixa e removível. Reconstrução planejada para mastigar e falar com segurança de novo — não só para preencher o espaço.",
+      "Implante unitário ou múltiplo, coroa, protocolo sobre implantes, prótese fixa e removível. Reconstrução planejada para mastigar e falar com segurança de novo — não só para preencher o espaço.",
     tambemChamado: [
       "implante dentário",
       "prótese dentária",
