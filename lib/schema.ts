@@ -83,41 +83,63 @@ export function schemaClinica() {
       { "@type": "Place", name: "Setor Pedro Ludovico" },
     ],
     isAcceptingNewPatients: true,
-    availableLanguage: { "@type": "Language", name: "Portuguese" },
+    // knowsLanguage, e não availableLanguage: esta só vale para ContactPoint,
+    // Course e hospedagem. Cada propriedade deste objeto é conferida contra o
+    // vocabulário oficial em tests/seo/schema.test.ts.
+    knowsLanguage: "pt-BR",
     medicalSpecialty: "Dentistry",
-    // Acessibilidade cadeirante — confirmado no Perfil da Empresa no Google.
+    // "Aberto ao público" — não confundir com acessibilidade, que vem abaixo.
     publicAccess: true,
+    // Entrada sem degrau, confirmado no Perfil da Empresa no Google.
+    amenityFeature: [
+      {
+        "@type": "LocationFeatureSpecification",
+        name: "Acessível para cadeira de rodas",
+        value: true,
+      },
+    ],
     employee: {
       "@type": "Person",
       name: clinica.responsavel.nome,
       jobTitle: clinica.responsavel.cargo,
       identifier: clinica.responsavel.cro,
     },
-    availableService: [
-      ...tratamentos.map((t) => ({
-        "@type": "MedicalProcedure",
-        name: t.nome,
-        description: t.resolve,
-        alternateName: t.tambemChamado,
-      })),
-      // Só os serviços dentro do escopo legal de uma cirurgiã-dentista (a
-      // Harmonização Orofacial é especialidade reconhecida pelo CFO) entram
-      // aqui. Limpeza de pele fica de fora — ver a nota em esteticaFacial.ts.
-      ...servicosComplementares
-        .filter((s) => s.escopoDentista)
-        .map((s) => ({
-          "@type": "MedicalProcedure",
-          name: s.nome,
-          description: s.descricao,
+    // hasOfferCatalog, e não availableService: esta só vale para MedicalClinic,
+    // Hospital e Physician. Em Dentist o Google simplesmente não lê.
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Tratamentos",
+      itemListElement: [
+        ...tratamentos.map((t) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: t.nome,
+            description: t.resolve,
+            alternateName: t.tambemChamado,
+          },
         })),
-    ],
+        // Só os serviços dentro do escopo legal de uma cirurgiã-dentista (a
+        // Harmonização Orofacial é especialidade reconhecida pelo CFO) entram
+        // aqui. Limpeza de pele fica de fora — ver a nota em esteticaFacial.ts.
+        ...servicosComplementares
+          .filter((s) => s.escopoDentista)
+          .map((s) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: s.nome,
+              description: s.descricao,
+            },
+          })),
+      ],
+    },
     potentialAction: {
       "@type": "ReserveAction",
       name: "Agendar avaliação",
       target: {
         "@type": "EntryPoint",
         urlTemplate: `https://wa.me/${clinica.whatsapp.numero}`,
-        inLanguage: "pt-BR",
         actionPlatform: [
           "http://schema.org/DesktopWebPlatform",
           "http://schema.org/MobileWebPlatform",

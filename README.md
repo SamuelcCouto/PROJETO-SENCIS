@@ -13,6 +13,35 @@ npm run dev
 
 `npm run build` para o build de produção, `npm run typecheck` para checar tipos sem gerar saída.
 
+## Testes
+
+```bash
+npm test          # tudo; a suíte de HTML se pula se não houver build
+npm run test:seo  # faz o build e roda a suíte de SEO contra a página gerada
+```
+
+Rodam também no GitHub Actions a cada push (`.github/workflows/testes.yml`).
+
+| Arquivo | O que protege |
+| --- | --- |
+| `tests/unidade/agendamento.test.ts` | Validação do pedido: telefone, campos obrigatórios, campo isca |
+| `tests/unidade/rota-agendamentos.test.ts` | Respostas da API: 201, 422, 400, isca silenciosa, 405 |
+| `tests/seo/schema.test.ts` | JSON-LD: NAP e horário iguais aos da página, serviços, fotos existentes e **cada propriedade conferida contra o vocabulário oficial do schema.org** |
+| `tests/seo/metadados.test.ts` | Título e descrição no tamanho que o Google não corta, sitemap, robots e o redirecionamento do domínio antigo |
+| `tests/seo/html.test.ts` | A página como o Google recebe: um único h1, alt em toda imagem, NAP visível, canonical, âncoras e links |
+
+A maioria destes testes protege coisa que **nenhum visitante enxerga**. Se uma
+foto for renomeada, a página continua bonita e o JSON-LD passa a apontar para um
+404; se o título crescer, o Google corta o bairro. Ninguém reclama — o teste
+reclama.
+
+O vocabulário do schema.org fica em `tests/fixtures/schemaorg-vocabulario.jsonld`
+(CC BY-SA 3.0). Para atualizar:
+
+```bash
+curl -L https://schema.org/version/latest/schemaorg-current-https.jsonld -o tests/fixtures/schemaorg-vocabulario.jsonld
+```
+
 ## Onde ficam as coisas
 
 | Caminho | O que é |

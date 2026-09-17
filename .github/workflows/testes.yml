@@ -1,0 +1,28 @@
+name: Testes
+
+# Roda a cada push na main e em todo pull request. A Vercel publica o site em
+# paralelo e não espera este resultado — então um teste vermelho aqui não tira
+# o site do ar, mas avisa que algo do SEO quebrou antes de alguém perceber no
+# Google semanas depois.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run typecheck
+
+      # O build gera o HTML que a suíte de SEO inspeciona.
+      - run: npm run build
+      - run: npm test

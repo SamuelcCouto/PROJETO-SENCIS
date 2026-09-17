@@ -127,24 +127,88 @@ se carrega com o cadeado de site seguro.
   associar a página à marca "sencis"
 - Lista os seis grupos de tratamento com os termos que as pessoas realmente
   buscam. O site antigo não citava **nenhum** procedimento em lugar nenhum
-- Tem FAQ com `FAQPage`, elegível para resposta direta na busca
+- Tem FAQ com oito perguntas reais — conteúdo que o Google lê. (O destaque de
+  FAQ no resultado foi restrito pelo Google em 2023 a sites governamentais e de
+  saúde de grande autoridade; uma clínica não se qualifica.)
 - Cita o bairro e os bairros vizinhos no texto
 - Carrega imagens em AVIF/WebP e sem CSS externo bloqueante
-- Tem `sitemap.xml`, `robots.txt` e imagem de compartilhamento
+- Tem `sitemap.xml` (com as fotos, para a busca de imagens), `robots.txt` e
+  imagem de compartilhamento
+- Título com 59 caracteres e descrição com 144, começando por "Dentista" — no
+  limite em que o Google não corta. O título antigo tinha 68 e perdia o bairro.
+- Redireciona `projeto-sencis.vercel.app` para `www.sencis.com.br` (308). Antes o
+  endereço antigo servia uma cópia idêntica do site, e o Google dividia a
+  relevância entre as duas.
+- O JSON-LD passa sem nenhum erro no vocabulário oficial do schema.org. Havia
+  três propriedades que o Google simplesmente ignorava (`availableService`,
+  `availableLanguage` e um `inLanguage`), e a acessibilidade para cadeira de
+  rodas não estava declarada.
+
+Tudo isso é travado por testes automáticos (ver o README): se uma mudança futura
+quebrar o schema, o título ou o sitemap, o teste falha antes de o Google notar.
+
+Medição de 16/09/2026, Lighthouse em produção: **SEO 100** no celular e no
+desktop; performance 81 no celular e 98 no desktop.
 
 Isso sustenta **relevância** e ajuda em **destaque**. Não substitui o perfil.
 
 ---
 
+## O que ficou de fora porque muda o visual
+
+Estas três melhorias foram identificadas, mas não aplicadas: cada uma altera algo
+que a clínica vê. Cabe a ela decidir.
+
+### O site quase não usa a palavra "dentista"
+
+No texto visível da página, "dentista" aparece **duas vezes**, e o título
+principal (h1) não contém a palavra. O Google tem o termo no título da aba, na
+descrição e no schema — mas o conteúdo em si fala "odontologia" (9 vezes) e
+"clínica odontológica". Para quem busca "dentista", o texto da página conta.
+
+Sugestão de menor impacto visual: incluir "dentista" em uma frase que já existe,
+por exemplo no parágrafo logo abaixo do título ("A Sencis é uma clínica
+odontológica…" → "A Sencis é uma clínica de dentistas…"), sem mexer no h1.
+
+### No celular, a foto principal demora a aparecer
+
+A maior imagem da primeira tela (a foto da recepção) leva **3,7 s** para
+aparecer numa conexão móvel simulada; o Google considera bom até 2,5 s. A foto já
+é pré-carregada e baixa em 0,25 s — o atraso de quase 0,9 s está em ela
+**aparecer**, porque a animação de entrada começa com a foto invisível e só
+começa a revelá-la 180 ms depois. Tirar o fade só da foto (mantendo o
+deslizamento) deve recuperar boa parte desse tempo. Velocidade no celular é um
+fator pequeno, mas real, de posição.
+
+### Dois textos com pouco contraste
+
+A linha "Também procurado como…" nos tratamentos (contraste 2,5:1) e os textos
+pequenos sobre o fundo nude da seção de estética (4,1:1) ficam abaixo do mínimo
+de legibilidade (4,5:1). Não afeta posição no Google diretamente, mas afeta quem
+lê no sol ou tem visão cansada.
+
+---
+
 ## Como medir
 
-1. **Google Search Console** — cadastrar o site e enviar o sitemap.
-2. **Estatísticas do perfil** — acompanhar "como as pessoas encontram você".
+1. **Google Search Console** — cadastrar a propriedade do tipo **Domínio**
+   (`sencis.com.br`), que cobre com e sem www de uma vez. O Search Console pede
+   um registro TXT; como o DNS está na Vercel, ele é criado no painel da Vercel
+   em *Domains → sencis.com.br → DNS Records*. Depois, enviar
+   `https://www.sencis.com.br/sitemap.xml`.
+2. **No Perfil da Empresa no Google**, o campo *Site* precisa ser
+   `https://www.sencis.com.br` — e não o endereço antigo da Vercel. É o elo que
+   liga o perfil ao site.
+3. **Estatísticas do perfil** — acompanhar "como as pessoas encontram você".
    A métrica que importa é a divisão entre busca **direta** (procuraram "sencis")
    e busca por **descoberta** (procuraram "dentista"). Hoje é quase toda direta.
    O objetivo é ver descoberta crescer.
-3. Refazer o teste "dentista perto de mim" a partir do Parque Amazônia, uma vez
+4. Refazer o teste "dentista perto de mim" a partir do Parque Amazônia, uma vez
    por mês, sempre em aba anônima.
+
+Quando o perfil estiver com o link certo, vale me passar a URL dele no Google
+Maps: ela entra no `sameAs` do schema e amarra o site ao perfil de forma
+explícita.
 
 ## Prazo honesto
 

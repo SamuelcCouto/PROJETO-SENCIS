@@ -25,13 +25,16 @@ export const metadata: Metadata = {
   // O título abre com o termo que as pessoas digitam, não com a marca: quem já
   // conhece a Sencis busca por "sencis" e acha de qualquer jeito; quem não
   // conhece busca por "dentista em Goiânia".
+  //
+  // Limites: título até 60 caracteres e descrição entre 120 e 155. Acima disso o
+  // Google corta no resultado — o título antigo, com 68, perdia justamente o
+  // bairro. tests/seo/metadados.test.ts falha se passar.
   title: {
-    default:
-      "Dentista em Goiânia — Sencis Odontologia Integrada | Parque Amazônia",
+    default: "Dentista em Goiânia no Parque Amazônia | Sencis Odontologia",
     template: "%s | Sencis Odontologia",
   },
   description:
-    "Clínica odontológica no Parque Amazônia, Goiânia. Clareamento, implante, aparelho, canal e limpeza com atendimento humanizado. Avaliação pelo WhatsApp: (62) 99227-2783.",
+    "Dentista no Parque Amazônia, em Goiânia. Clareamento, implante, aparelho, canal e limpeza, com atendimento humanizado. WhatsApp (62) 99227-2783.",
   keywords: [
     "dentista em Goiânia",
     "clínica odontológica Goiânia",

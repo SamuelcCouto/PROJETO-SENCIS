@@ -1,7 +1,11 @@
 /**
  * Perguntas que as pessoas realmente fazem antes de marcar — e que hoje elas
- * fazem no WhatsApp, uma por uma. Responder aqui economiza a conversa e alimenta
- * o schema FAQPage, que é o que habilita a resposta direta no Google.
+ * fazem no WhatsApp, uma por uma. Responder aqui economiza a conversa, e o texto
+ * das respostas é conteúdo que o Google lê para entender o que a clínica faz.
+ *
+ * O schema FAQPage continua sendo gerado, mas sem expectativa de destaque: desde
+ * agosto de 2023 o Google só mostra FAQ expandido no resultado para sites
+ * governamentais e de saúde de grande autoridade. Uma clínica não se qualifica.
  *
  * Regra ao editar: nenhuma resposta promete preço, prazo ou cobertura de convênio.
  * Compromisso que o site assume, a recepção precisa conseguir cumprir.
