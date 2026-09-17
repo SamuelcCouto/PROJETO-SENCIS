@@ -100,20 +100,14 @@ export function Tratamentos() {
                       <p className="mt-3 max-w-[62ch] text-[0.8125rem] leading-relaxed text-texto-claro/80">
                         Também procurado como {t.tambemChamado.join(", ")}.
                       </p>
-
-                      <a
-                        href={whatsappSobre(t.nome.toLowerCase())}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-4 inline-flex items-center gap-2 rounded-full border border-azul/45 px-4 py-2 text-sm font-medium text-azul transition-colors hover:bg-azul hover:text-white"
-                      >
-                        <IconeWhatsapp className="h-3.5 w-3.5" />
-                        Perguntar sobre {t.nome.toLowerCase()}
-                      </a>
                     </div>
 
+                    {/* No celular o clipe ocupa a coluna inteira: a 128px ele
+                        virava selo decorativo, e a clínica reclamou justamente
+                        disso. No desktop volta a ser coluna lateral, onde o
+                        texto precisa da largura. */}
                     {clipe && (
-                      <div className="aspect-[3/4] w-32 shrink-0 overflow-hidden rounded-[var(--radius-card)] bg-nude sm:w-40">
+                      <div className="aspect-[3/4] w-full shrink-0 overflow-hidden rounded-[var(--radius-card)] bg-nude sm:w-48 lg:w-56">
                         <VideoAmbiente
                           src={clipe.src}
                           poster={clipe.poster}
@@ -123,6 +117,18 @@ export function Tratamentos() {
                       </div>
                     )}
                   </div>
+
+                  {/* Fora do flex: no celular o botão fica depois do vídeo,
+                      fechando o item em vez de ser interrompido por ele. */}
+                  <a
+                    href={whatsappSobre(t.nome.toLowerCase())}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 rounded-full border border-azul/45 px-4 py-2 text-sm font-medium text-azul transition-colors hover:bg-azul hover:text-white"
+                  >
+                    <IconeWhatsapp className="h-3.5 w-3.5" />
+                    Perguntar sobre {t.nome.toLowerCase()}
+                  </a>
                 </li>
               );
             })}

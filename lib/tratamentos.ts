@@ -24,7 +24,7 @@ export const tratamentos: Tratamento[] = [
     nome: "Clínica geral e prevenção",
     resolve: "Cárie, sensibilidade e a consulta que ficou para depois",
     descricao:
-      "A consulta de rotina que evita o problema caro lá na frente. Limpeza, aplicação de flúor, restauração e o plano do que precisa ser feito — em ordem de urgência, com o custo na mesa antes de começar.",
+      "Limpeza, flúor, restauração e o plano do que precisa ser feito — em ordem de urgência, com o custo na mesa antes de começar.",
     tambemChamado: [
       "limpeza dental",
       "profilaxia",
@@ -38,7 +38,7 @@ export const tratamentos: Tratamento[] = [
     nome: "Estética do sorriso",
     resolve: "Dentes escurecidos, manchados ou desalinhados na frente",
     descricao:
-      "Clareamento em consultório ou supervisionado em casa, facetas e lentes de contato dental. Antes de qualquer coisa, um planejamento com simulação — você vê o resultado antes de decidir.",
+      "Clareamento em consultório ou em casa, facetas e lentes de contato dental — com simulação antes, para você ver o resultado antes de decidir.",
     tambemChamado: [
       "clareamento dental",
       "lente de contato dental",
@@ -52,7 +52,7 @@ export const tratamentos: Tratamento[] = [
     nome: "Ortodontia e alinhadores",
     resolve: "Dentes tortos, mordida errada, aparelho que nunca começou",
     descricao:
-      "Aparelho fixo convencional, autoligado, alinhadores transparentes e aparelhos ortopédicos para quem ainda está em fase de crescimento. A escolha depende do seu caso e da sua rotina — não do que é mais fácil de vender.",
+      "Aparelho fixo, autoligado, alinhadores transparentes e aparelhos ortopédicos. A escolha depende do seu caso, não do que é mais fácil de vender.",
     tambemChamado: [
       "aparelho dentário",
       "aparelho ortodôntico",
@@ -68,7 +68,7 @@ export const tratamentos: Tratamento[] = [
     resolve:
       "Dente perdido, prótese que não encaixa, dificuldade para mastigar",
     descricao:
-      "Implante unitário ou múltiplo, coroa, protocolo sobre implantes, prótese fixa e removível. Reconstrução planejada para mastigar e falar com segurança de novo — não só para preencher o espaço.",
+      "Implante unitário ou múltiplo, coroa, protocolo, prótese fixa e removível — planejados para mastigar e falar com segurança de novo.",
     tambemChamado: [
       "implante dentário",
       "prótese dentária",
@@ -82,7 +82,7 @@ export const tratamentos: Tratamento[] = [
     nome: "Canal e tratamento de urgência",
     resolve: "Dor que não passa, abscesso, dente que precisa ser salvo",
     descricao:
-      "Tratamento de canal com anestesia bem feita e o tempo que o caso pedir. Se você chegou aqui com dor, ligue — encaixamos a urgência no mesmo dia sempre que há espaço na agenda.",
+      "Canal com anestesia bem feita e o tempo que o caso pedir. Chegou com dor? Ligue: encaixamos no mesmo dia sempre que há espaço.",
     tambemChamado: [
       "tratamento de canal",
       "endodontia",
@@ -96,7 +96,7 @@ export const tratamentos: Tratamento[] = [
     nome: "Gengiva e periodontia",
     resolve: "Gengiva que sangra, retraída ou inflamada",
     descricao:
-      "Sangramento ao escovar não é normal e não passa sozinho. Tratamento de gengivite e periodontite, raspagem e acompanhamento — a base que sustenta todo o resto do tratamento.",
+      "Gengivite, periodontite, raspagem e acompanhamento. Sangrar ao escovar não é normal e não passa sozinho.",
     tambemChamado: [
       "gengivite",
       "periodontite",
