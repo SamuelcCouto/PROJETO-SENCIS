@@ -12,6 +12,25 @@ import { clinica } from "@/lib/clinica";
 const ARQUIVO = join(process.cwd(), ".next/server/app/index.html");
 const temBuild = existsSync(ARQUIVO);
 
+const VAZIOS = new Set(
+  "area base br col embed hr img input link meta source track wbr".split(" "),
+);
+
+/** As tags de abertura que envolvem a posição dada, da raiz para dentro. */
+function ancestrais(html: string, posicao: number) {
+  const antes = html
+    .slice(0, posicao)
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/g, "");
+  const pilha: string[] = [];
+  for (const m of antes.matchAll(/<(\/?)([a-z][\w-]*)\b[^>]*?(\/?)>/gi)) {
+    const [tag, fecha, nome, autoFecha] = m;
+    if (VAZIOS.has(nome.toLowerCase()) || autoFecha) continue;
+    if (fecha) pilha.pop();
+    else pilha.push(tag);
+  }
+  return pilha;
+}
+
 describe.skipIf(!temBuild)(
   "HTML pré-renderizado (rode npm run test:seo)",
   () => {
@@ -72,6 +91,41 @@ describe.skipIf(!temBuild)(
           .flatMap((b) => [JSON.parse(b[1])].flat())
           .map((x: any) => x["@type"]);
         expect(tipos).toContain("Dentist");
+      });
+    });
+
+    describe("o que o Google mede", () => {
+      // A imagem de destaque da primeira tela (o LCP) é a foto da recepção.
+      const destaques = [...html.matchAll(/<img\b[^>]*>/g)].filter((m) =>
+        /\bfetchpriority="high"/i.test(m[0]),
+      );
+
+      it("marca uma única imagem de destaque, sem lazy", () => {
+        // Com mais de uma, as duas disputam a banda que só uma deveria ter.
+        expect(destaques).toHaveLength(1);
+        expect(destaques[0][0]).toContain("recepcao-poltronas");
+        expect(destaques[0][0]).not.toMatch(/\bloading="lazy"/);
+      });
+
+      it("os vídeos não baixam o pôster na abertura", () => {
+        // Pôster no HTML é baixado na hora, mesmo com preload="none". Os quatro
+        // somavam ~120 KB disputando banda com a foto do topo, e tirá-los
+        // derrubou o LCP de laboratório de 3,8 s para 3,1 s. O VideoAmbiente
+        // só atribui o pôster perto da tela.
+        const comPoster = (html.match(/<video\b[^>]*>/g) ?? []).filter((v) =>
+          /\bposter=/.test(v),
+        );
+        expect(comPoster).toEqual([]);
+      });
+
+      it("a imagem de destaque não começa invisível", () => {
+        // Dentro de um .anim-rise ela nasce com opacity 0, e o Google só conta
+        // a imagem quando ela aparece.
+        const img = destaques[0];
+        const animados = ancestrais(html, img.index!)
+          .concat(img![0])
+          .filter((tag) => /\banim-(rise|bloom)\b/.test(tag));
+        expect(animados).toEqual([]);
       });
     });
 

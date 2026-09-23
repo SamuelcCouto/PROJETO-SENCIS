@@ -65,19 +65,26 @@ export function Hero() {
           </p>
         </div>
 
-        <div className="anim-rise relative [animation-delay:180ms]">
+        {/* A foto não anima. Ela é o maior elemento da primeira tela (o LCP do
+            Google), e o fade de entrada a mantinha invisível quase 0,9 s depois
+            de já ter baixado. Só o cartão de avaliação entra em cena. */}
+        <div className="relative">
           <div className="relative overflow-hidden rounded-[var(--radius-photo)] bg-nude shadow-foto">
             <Image
               src={recepcaoPoltronas}
               alt="Recepção da Sencis, com poltronas claras, almofadas escuras e iluminação indireta na parede"
-              priority
+              // `priority` foi aposentado no Next 16 e já não marcava a busca
+              // como prioritária. `eager` é obrigatório junto: só com
+              // fetchPriority, o next/image ainda aplicaria loading="lazy".
+              loading="eager"
+              fetchPriority="high"
               placeholder="blur"
               sizes="(max-width: 1024px) 100vw, 46vw"
               className="h-[22rem] w-full object-cover sm:h-[28rem] lg:h-[32rem]"
             />
           </div>
 
-          <figure className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 rounded-[var(--radius-card)] border border-azul/20 bg-white px-5 py-4 lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:flex-col lg:items-start lg:gap-2 lg:px-6 lg:shadow-cartao">
+          <figure className="anim-rise [animation-delay:180ms] mt-4 flex flex-wrap items-center gap-x-5 gap-y-3 rounded-[var(--radius-card)] border border-azul/20 bg-white px-5 py-4 lg:absolute lg:-bottom-8 lg:-left-8 lg:mt-0 lg:flex-col lg:items-start lg:gap-2 lg:px-6 lg:shadow-cartao">
             <div className="flex items-center gap-2">
               <span className="flex gap-0.5 text-azul" aria-hidden>
                 {[0, 1, 2, 3, 4].map((i) => (
