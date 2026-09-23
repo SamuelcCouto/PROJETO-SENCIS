@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-`npm run build` para o build de produção, `npm run typecheck` para checar tipos sem gerar saída.
+`npm run build` para o build de produção, `npm run typecheck` para checar tipos sem gerar saída, `npm run lint` para o ESLint.
 
 ## Testes
 
@@ -26,9 +26,10 @@ Rodam também no GitHub Actions a cada push (`.github/workflows/testes.yml`).
 | --- | --- |
 | `tests/unidade/agendamento.test.ts` | Validação do pedido: telefone, campos obrigatórios, campo isca |
 | `tests/unidade/rota-agendamentos.test.ts` | Respostas da API: 201, 422, 400, isca silenciosa, 405 |
+| `tests/unidade/contraste.test.ts` | Contraste mínimo de leitura (4,5:1) das cores do `globals.css`, inclusive no fundo nude e no texto translúcido das faixas escuras |
 | `tests/seo/schema.test.ts` | JSON-LD: NAP e horário iguais aos da página, serviços, fotos existentes e **cada propriedade conferida contra o vocabulário oficial do schema.org** |
 | `tests/seo/metadados.test.ts` | Título e descrição no tamanho que o Google não corta, sitemap, robots e o redirecionamento do domínio antigo |
-| `tests/seo/html.test.ts` | A página como o Google recebe: um único h1, alt em toda imagem, NAP visível, canonical, âncoras e links |
+| `tests/seo/html.test.ts` | A página como o Google recebe: um único h1, alt em toda imagem, NAP visível, canonical, âncoras e links, a palavra "dentista", a foto de destaque sem animação e os vídeos sem pôster na abertura |
 
 A maioria destes testes protege coisa que **nenhum visitante enxerga**. Se uma
 foto for renomeada, a página continua bonita e o JSON-LD passa a apontar para um
@@ -43,6 +44,9 @@ curl -L https://schema.org/version/latest/schemaorg-current-https.jsonld -o test
 ```
 
 ## Onde ficam as coisas
+
+O mapa completo, com fluxos, pegadinhas e o que mexer para cada tarefa, está em
+[`docs/CODEBASE_MAP.md`](docs/CODEBASE_MAP.md).
 
 | Caminho | O que é |
 | --- | --- |

@@ -147,45 +147,70 @@ se carrega com o cadeado de site seguro.
 Tudo isso é travado por testes automáticos (ver o README): se uma mudança futura
 quebrar o schema, o título ou o sitemap, o teste falha antes de o Google notar.
 
-Medição de 16/09/2026, Lighthouse em produção: **SEO 100** no celular e no
-desktop; performance 81 no celular e 98 no desktop.
-
 Isso sustenta **relevância** e ajuda em **destaque**. Não substitui o perfil.
 
 ---
 
-## O que ficou de fora porque muda o visual
+## Ajustes de 23/09/2026: texto, velocidade e leitura
 
-Estas três melhorias foram identificadas, mas não aplicadas: cada uma altera algo
-que a clínica vê. Cabe a ela decidir.
+Três melhorias que tinham ficado de fora por mudarem o visual foram aplicadas,
+cada uma com a menor mudança possível.
 
-### O site quase não usa a palavra "dentista"
+### "Dentista" no texto
 
-No texto visível da página, "dentista" aparece **duas vezes**, e o título
-principal (h1) não contém a palavra. O Google tem o termo no título da aba, na
-descrição e no schema — mas o conteúdo em si fala "odontologia" (9 vezes) e
-"clínica odontológica". Para quem busca "dentista", o texto da página conta.
+O conteúdo visível dizia "dentista" duas vezes; agora são quatro. A palavra
+entrou em duas frases que já existiam, sem mexer no título nem no parágrafo do
+topo:
 
-Sugestão de menor impacto visual: incluir "dentista" em uma frase que já existe,
-por exemplo no parágrafo logo abaixo do título ("A Sencis é uma clínica
-odontológica…" → "A Sencis é uma clínica de dentistas…"), sem mexer no h1.
+- **Tratamentos:** "…sem te mandar a um dentista diferente para cada etapa."
+- **Como chegar:** "Se você procura dentista no Parque Amazônia ou nos bairros
+  vizinhos, estamos na…"
 
-### No celular, a foto principal demora a aparecer
+### Velocidade no celular
 
-A maior imagem da primeira tela (a foto da recepção) leva **3,7 s** para
-aparecer numa conexão móvel simulada; o Google considera bom até 2,5 s. A foto já
-é pré-carregada e baixa em 0,25 s — o atraso de quase 0,9 s está em ela
-**aparecer**, porque a animação de entrada começa com a foto invisível e só
-começa a revelá-la 180 ms depois. Tirar o fade só da foto (mantendo o
-deslizamento) deve recuperar boa parte desse tempo. Velocidade no celular é um
-fator pequeno, mas real, de posição.
+A foto do topo levava 3,7 s para aparecer numa conexão móvel simulada; o Google
+considera bom até 2,5 s.
 
-### Dois textos com pouco contraste
+O diagnóstico anterior culpava a animação de entrada da foto. Medindo o código
+antigo contra o novo na mesma máquina, isso se mostrou errado: o fade custava
+uns 0,2 s. A causa principal eram os **pôsteres dos quatro vídeos de
+tratamento**: o navegador os baixava na abertura (~120 KB), muito antes de
+alguém rolar até eles, disputando a conexão com a foto do topo. Agora cada
+pôster só é baixado quando o vídeo está chegando perto da tela.
 
-A linha "Também procurado como…" nos tratamentos (contraste 2,5:1) e os textos
-pequenos sobre o fundo nude da seção de estética (4,1:1) ficam abaixo do mínimo
-de legibilidade (4,5:1). Não afeta posição no Google diretamente, mas afeta quem
-lê no sol ou tem visão cansada.
+A foto também deixou de nascer invisível, e passou a ser marcada como a imagem
+prioritária da página no formato atual do Next.
+
+### Leitura
+
+Quatro textos estavam abaixo do contraste mínimo de leitura (4,5:1) e passaram a
+cumprir:
+
+- a linha "Também procurado como…", de 2,5:1 para 5,1:1;
+- o texto sobre o fundo nude, de 4,1:1 para 4,65:1;
+- o botão de estética facial;
+- o rodapé.
+
+A lista de endereço e horário também foi corrigida por dentro, para leitores de
+tela, sem mudança visual.
+
+### Resultado em produção
+
+Lighthouse, celular, mediana de três medições:
+
+| | 16/09 | 23/09 |
+|---|---|---|
+| Performance | 78–81 | **93** |
+| Acessibilidade | 90 | **100** |
+| Boas práticas | — | **100** |
+| SEO | 100 | **100** |
+| Foto do topo (LCP) | 3,7 s | **2,8 s** |
+
+No desktop: 100 nas quatro categorias, com LCP de 0,6 s.
+
+Velocidade é um fator pequeno, mas real, de posição, e o que o Google usa para
+ranquear são os dados de visitas reais, não o laboratório. Os números acima
+indicam a direção, não a posição.
 
 ---
 
