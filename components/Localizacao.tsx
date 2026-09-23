@@ -34,78 +34,78 @@ export function Localizacao() {
             </p>
 
             <dl className="mt-10 space-y-7">
-              <div className="flex gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-azul/40 text-azul">
-                  <IconeLocal className="h-5 w-5" />
-                </span>
-                <div>
-                  <dt className="font-medium text-ink">Endereço</dt>
-                  <dd className="mt-1 max-w-[40ch] text-texto">
-                    {enderecoLinhaUnica}
-                  </dd>
-                  <dd className="mt-2">
-                    <a
-                      href={linkComoChegar}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border-b border-azul pb-0.5 text-sm font-medium text-ink transition-colors hover:text-azul"
-                    >
-                      Traçar rota no Google Maps
-                    </a>
-                  </dd>
-                </div>
+              <div className="relative pl-15">
+                <dt className="font-medium text-ink">
+                  <span className="absolute top-0 left-0 grid h-11 w-11 place-items-center rounded-full border border-azul/40 text-azul">
+                    <IconeLocal className="h-5 w-5" />
+                  </span>
+                  Endereço
+                </dt>
+                <dd className="mt-1 max-w-[40ch] text-texto">
+                  {enderecoLinhaUnica}
+                </dd>
+                <dd className="mt-2">
+                  <a
+                    href={linkComoChegar}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="border-b border-azul pb-0.5 text-sm font-medium text-ink transition-colors hover:text-azul"
+                  >
+                    Traçar rota no Google Maps
+                  </a>
+                </dd>
               </div>
 
-              <div className="flex gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-azul/40 text-azul">
-                  <IconeRelogio className="h-5 w-5" />
-                </span>
-                <div>
-                  <dt className="font-medium text-ink">Horário</dt>
-                  <dd className="mt-1 space-y-0.5 text-texto">
-                    {clinica.horarios.map((h) => (
-                      <span key={h.dias} className="block">
-                        {h.dias}: {h.faixas.join(" e ")}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
+              <div className="relative pl-15">
+                <dt className="font-medium text-ink">
+                  <span className="absolute top-0 left-0 grid h-11 w-11 place-items-center rounded-full border border-azul/40 text-azul">
+                    <IconeRelogio className="h-5 w-5" />
+                  </span>
+                  Horário
+                </dt>
+                <dd className="mt-1 space-y-0.5 text-texto">
+                  {clinica.horarios.map((h) => (
+                    <span key={h.dias} className="block">
+                      {h.dias}: {h.faixas.join(" e ")}
+                    </span>
+                  ))}
+                </dd>
               </div>
 
-              <div className="flex gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-azul/40 text-azul">
-                  <IconeTelefone className="h-5 w-5" />
-                </span>
-                <div>
-                  <dt className="font-medium text-ink">Telefone e WhatsApp</dt>
-                  <dd className="mt-1">
-                    <a
-                      href={`tel:${clinica.telefone.e164}`}
-                      className="text-texto transition-colors hover:text-ink"
-                    >
-                      {clinica.telefone.formatado}
-                    </a>
-                  </dd>
-                </div>
+              <div className="relative pl-15">
+                <dt className="font-medium text-ink">
+                  <span className="absolute top-0 left-0 grid h-11 w-11 place-items-center rounded-full border border-azul/40 text-azul">
+                    <IconeTelefone className="h-5 w-5" />
+                  </span>
+                  Telefone e WhatsApp
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={`tel:${clinica.telefone.e164}`}
+                    className="text-texto transition-colors hover:text-ink"
+                  >
+                    {clinica.telefone.formatado}
+                  </a>
+                </dd>
               </div>
 
-              <div className="flex gap-4">
-                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-azul/40 text-azul">
-                  <IconeInstagram className="h-5 w-5" />
-                </span>
-                <div>
-                  <dt className="font-medium text-ink">Instagram</dt>
-                  <dd className="mt-1">
-                    <a
-                      href={clinica.social.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-texto transition-colors hover:text-ink"
-                    >
-                      {clinica.social.instagramHandle}
-                    </a>
-                  </dd>
-                </div>
+              <div className="relative pl-15">
+                <dt className="font-medium text-ink">
+                  <span className="absolute top-0 left-0 grid h-11 w-11 place-items-center rounded-full border border-azul/40 text-azul">
+                    <IconeInstagram className="h-5 w-5" />
+                  </span>
+                  Instagram
+                </dt>
+                <dd className="mt-1">
+                  <a
+                    href={clinica.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-texto transition-colors hover:text-ink"
+                  >
+                    {clinica.social.instagramHandle}
+                  </a>
+                </dd>
               </div>
             </dl>
           </div>

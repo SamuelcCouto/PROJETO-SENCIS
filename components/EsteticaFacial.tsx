@@ -83,7 +83,7 @@ export function EsteticaFacial() {
           href={whatsappSobre("estética facial")}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-8 inline-flex items-center gap-2 rounded-full border border-azul/45 px-5 py-2.5 text-sm font-medium text-azul transition-colors hover:bg-azul hover:text-white"
+          className="mt-8 inline-flex items-center gap-2 rounded-full border border-azul/45 px-5 py-2.5 text-sm font-medium text-azul-fundo transition-colors hover:bg-azul hover:text-white"
         >
           <IconeWhatsapp className="h-4 w-4" />
           Perguntar sobre estética facial

@@ -31,8 +31,7 @@
 
   /* Derivados: filete e texto secundário, dentro da família quente. */
   --color-linha: #ded5c7;
-  --color-texto: #6b655d; /* 5,0:1 no off-white */
-  --color-texto-claro: #8a837a;
+  --color-texto: #6b655d; /* 5,1:1 no off-white; no nude, ver .bg-nude */
 
   --font-display: var(--font-jost), "Futura", "Century Gothic", sans-serif;
   --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
@@ -75,6 +74,15 @@ body {
 .font-display {
   font-weight: 300;
   letter-spacing: 0.008em;
+}
+
+/* O texto corrido tem 5,1:1 no off-white, mas só 4,1:1 no nude, abaixo do
+   mínimo de leitura (4,5:1). Em vez de trocar a classe em cada parágrafo, a
+   seção nude escurece o próprio token um grau, 14% em direção ao ink: 4,65:1.
+   Qualquer `text-texto` dentro dela, inclusive de seção nova, já sai legível.
+   Conferido em tests/unidade/contraste.test.ts. */
+.bg-nude {
+  --color-texto: #625d57;
 }
 
 ::selection {

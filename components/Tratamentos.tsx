@@ -97,7 +97,7 @@ export function Tratamentos() {
                         {t.descricao}
                       </p>
 
-                      <p className="mt-3 max-w-[62ch] text-[0.8125rem] leading-relaxed text-texto-claro/80">
+                      <p className="mt-3 max-w-[62ch] text-[0.8125rem] leading-relaxed text-texto">
                         Também procurado como {t.tambemChamado.join(", ")}.
                       </p>
                     </div>

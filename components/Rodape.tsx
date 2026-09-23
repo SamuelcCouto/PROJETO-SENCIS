@@ -51,7 +51,7 @@ export function Rodape() {
           </nav>
         </div>
 
-        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-nude/55">
+        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-nude/65">
           <p>
             Responsável técnica: {clinica.responsavel.nome} ·{" "}
             {clinica.responsavel.cro} · Clínica {clinica.croClinica}
