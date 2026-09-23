@@ -95,6 +95,13 @@ describe.skipIf(!temBuild)(
     });
 
     describe("o que o Google mede", () => {
+      it("usa a palavra que as pessoas buscam", () => {
+        // O conteúdo falava "odontologia" e "clínica odontológica"; "dentista"
+        // aparecia duas vezes. Título e schema não bastam: o texto conta.
+        const vezes = texto.match(/\bdentistas?\b/gi) ?? [];
+        expect(vezes.length).toBeGreaterThanOrEqual(4);
+      });
+
       // A imagem de destaque da primeira tela (o LCP) é a foto da recepção.
       const destaques = [...html.matchAll(/<img\b[^>]*>/g)].filter((m) =>
         /\bfetchpriority="high"/i.test(m[0]),

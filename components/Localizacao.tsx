@@ -28,9 +28,10 @@ export function Localizacao() {
               Como chegar
             </h2>
             <p className="mt-5 max-w-[46ch] text-texto">
-              Estamos na Av. Senador José Rodrigues de Morais Neto, no Parque
-              Amazônia, a poucos minutos do Jardim Atlântico, da Vila Rosa e do
-              Setor Pedro Ludovico.
+              Se você procura dentista no Parque Amazônia ou nos bairros
+              vizinhos, estamos na Av. Senador José Rodrigues de Morais Neto, a
+              poucos minutos do Jardim Atlântico, da Vila Rosa e do Setor Pedro
+              Ludovico.
             </p>
 
             <dl className="mt-10 space-y-7">

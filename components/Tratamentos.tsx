@@ -58,8 +58,8 @@ export function Tratamentos() {
             </h2>
             <p className="mt-5 max-w-[46ch] text-texto">
               Odontologia integrada quer dizer que o mesmo lugar acompanha você
-              da limpeza de rotina ao implante, sem te mandar para quatro
-              endereços diferentes.
+              da limpeza de rotina ao implante, sem te mandar a um dentista
+              diferente para cada etapa.
             </p>
             <p className="mt-4 max-w-[46ch] text-texto">
               Não sabe em qual destes o seu caso se encaixa? É exatamente para
