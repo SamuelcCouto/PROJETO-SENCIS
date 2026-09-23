@@ -22,6 +22,7 @@ jobs:
 
       - run: npm ci
       - run: npm run typecheck
+      - run: npm run lint
 
       # O build gera o HTML que a suíte de SEO inspeciona.
       - run: npm run build
