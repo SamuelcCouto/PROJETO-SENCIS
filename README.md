@@ -1,111 +1,107 @@
-# Sencis Odontologia Integrada
+# Sencis Odontologia Integrada — site
 
-Site da Sencis Odontologia Integrada — Parque Amazônia, Goiânia/GO.
+Site de página única da Sencis (Parque Amazônia, Goiânia/GO), com rolagem
+animada. Plano visual e de movimento em `design-plan.md` e no Figma
+(https://www.figma.com/design/iaF5FVNgYIOh0CCQnFgeDm). Dados de origem em
+`briefing.md`.
 
-Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · deploy na Vercel.
+**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4
+(só os tokens; o visual está em `app/globals.css`) · GSAP + ScrollTrigger ·
+Lenis (rolagem suave). Tudo instalado pelo npm, sem CDN.
 
 ## Rodar
 
 ```bash
 npm install
-npm run dev
+npm run dev        # desenvolvimento, recarrega sozinho
+npm run build      # build de produção
+npm run start      # serve o build (porta 3000, ou PORT=3200 npm run start)
 ```
 
-`npm run build` para o build de produção, `npm run typecheck` para checar tipos sem gerar saída, `npm run lint` para o ESLint.
-
-## Testes
+Antes de entregar qualquer mudança:
 
 ```bash
-npm test          # tudo; a suíte de HTML se pula se não houver build
-npm run test:seo  # faz o build e roda a suíte de SEO contra a página gerada
+npm run typecheck && npm run lint && npm run build
 ```
 
-Rodam também no GitHub Actions a cada push (`.github/workflows/testes.yml`).
+## Onde mexer
 
-| Arquivo | O que protege |
-| --- | --- |
-| `tests/unidade/agendamento.test.ts` | Validação do pedido: telefone, campos obrigatórios, campo isca |
-| `tests/unidade/rota-agendamentos.test.ts` | Respostas da API: 201, 422, 400, isca silenciosa, 405 |
-| `tests/unidade/contraste.test.ts` | Contraste mínimo de leitura (4,5:1) das cores do `globals.css`, inclusive no fundo nude e no texto translúcido das faixas escuras |
-| `tests/seo/schema.test.ts` | JSON-LD: NAP e horário iguais aos da página, serviços, fotos existentes e **cada propriedade conferida contra o vocabulário oficial do schema.org** |
-| `tests/seo/metadados.test.ts` | Título e descrição no tamanho que o Google não corta, sitemap, robots e o redirecionamento do domínio antigo |
-| `tests/seo/html.test.ts` | A página como o Google recebe: um único h1, alt em toda imagem, NAP visível, canonical, âncoras e links, a palavra "dentista", a foto de destaque sem animação e os vídeos sem pôster na abertura |
+| Quero mudar | Arquivo |
+|---|---|
+| Telefone, WhatsApp, endereço, horário, CRO, nota do Google, Instagram | `lib/clinica.ts` (fonte única: precisa bater com o Perfil da Empresa no Google) |
+| Textos dos tratamentos, do encontro, da primeira consulta, da harmonização e as perguntas | `lib/conteudo.ts` |
+| Foto ou vídeo de um tratamento | `lib/conteudo.ts`, campo `midia` do tratamento. O arquivo vai em `public/fotos` ou `public/videos` |
+| Fotos da abertura, da clínica e da galeria | `components/secoes/abertura.tsx` e `components/secoes/clinica.tsx` (lista `salas`) |
+| Fotos de resultados (lentes, harmonização, botox) | `components/secoes/resultados.tsx` (lista `casos`) |
+| Textura do fundo | `public/textura/` e o bloco "o fundo: mármore" em `app/globals.css` |
+| Cores e fontes | `app/globals.css` (bloco `@theme`) e `app/layout.tsx` (fontes) |
+| Logotipo | `components/marca.tsx` e o desenho do N em `lib/traco.ts` (provisório, redesenhado da fachada) |
+| Caminho do fio que atravessa a página | `lib/fio.ts` (uma rota por seção) |
+| Título e descrição para o Google, imagem de compartilhamento | `app/layout.tsx` e `public/og.jpg` |
+| Dados estruturados (JSON-LD de dentista e perguntas) | `lib/schema.ts` (lê de `lib/clinica.ts` e `lib/conteudo.ts`) |
 
-A maioria destes testes protege coisa que **nenhum visitante enxerga**. Se uma
-foto for renomeada, a página continua bonita e o JSON-LD passa a apontar para um
-404; se o título crescer, o Google corta o bairro. Ninguém reclama — o teste
-reclama.
+### Trocar ou acrescentar mídia
 
-O vocabulário do schema.org fica em `tests/fixtures/schemaorg-vocabulario.jsonld`
-(CC BY-SA 3.0). Para atualizar:
+- **Fotos:** coloque o arquivo em `public/fotos/` com nome em kebab-case pelo que
+  mostra (`consultorio-janela.png`) e informe `largura` e `altura` reais no
+  conteúdo. As fotos aparecem inteiras, sem recorte: a moldura segue a proporção
+  do arquivo.
+- **Vídeos:** MP4 H.264 sem áudio, vertical 3:4 (1080×1440 é o ideal), até 6 MB,
+  com um pôster JPG do primeiro quadro. Os vídeos tocam mudos, em loop, só quando
+  aparecem na tela.
+- Material bruto enviado pela clínica fica em `fotos/` e `videos/` na raiz, que
+  estão fora do git. Só entra no site o que for escolhido e copiado para `public/`.
 
-```bash
-curl -L https://schema.org/version/latest/schemaorg-current-https.jsonld -o tests/fixtures/schemaorg-vocabulario.jsonld
-```
+## Como a página se move
 
-## Onde ficam as coisas
+Ordem das seções (`app/page.tsx`): abertura, o encontro, a primeira consulta,
+tratamentos, resultados, harmonização orofacial, a clínica, perguntas, visita,
+rodapé.
 
-O mapa completo, com fluxos, pegadinhas e o que mexer para cada tarefa, está em
-[`docs/CODEBASE_MAP.md`](docs/CODEBASE_MAP.md).
+- **Fundo:** veios de mármore (o mármore da fachada e da bandeja do café) em
+  `public/textura/`, gerados sem emenda para repetir. Ficam atrás do fio e
+  derivam devagar com a rolagem (`--deriva`), inclusive nos trechos fixados.
 
-| Caminho | O que é |
-| --- | --- |
-| `app/page.tsx` | Monta a página única, na ordem das seções |
-| `app/layout.tsx` | Metadados, fontes e injeção do JSON-LD |
-| `app/api/agendamentos/route.ts` | Recebe pedidos de agendamento |
-| `components/` | Uma seção por arquivo |
-| `lib/clinica.ts` | **Endereço, telefone, horário, CRO — fonte única** |
-| `public/fotos/` | Fotos da clínica, em kebab-case pelo que mostram |
-| `lib/tratamentos.ts` | Os procedimentos e como as pessoas os procuram |
-| `lib/faq.ts` | Perguntas frequentes (viram schema `FAQPage`) |
-| `lib/schema.ts` | JSON-LD de busca local |
-| `lib/agendamento/` | Contrato, validação e repositório de agendamentos |
+- **Abertura:** a única animação que roda sozinha, ao carregar.
+- **O encontro** (fixada): as palavras essência, essencial e sense se alinham
+  pelas letras em comum e sobra o nome SENCIS.
+- **Tratamentos** (fixada, com parada em cada item): a lista passa pelo eixo; o
+  detalhe e o vídeo trocam ao lado.
+- **O fio:** um traço só, que nasce como o braço do N na abertura, vira o eixo do
+  encontro e dos tratamentos, acende em nude na clínica e termina no N do rodapé.
+  Ele se desenha conforme a rolagem e passa pelos vãos entre os blocos, calculado
+  a partir da posição real deles (`lib/fio.ts`, `components/fio-da-pagina.tsx`).
+  No celular e com movimento reduzido, corre pela margem direita.
 
-### Mexer nos dados da clínica
+Regras que evitam quebra (detalhes em `components/` e na skill `site-premium`):
 
-Endereço, telefone, horário e CRO saem todos de `lib/clinica.ts`. Editar lá
-atualiza a página, o rodapé, o mapa e o JSON-LD de uma vez.
+1. Anime só `transform`, `opacity`, `filter`, `clip-path` e o traço
+   (`stroke-dashoffset`).
+2. Dois tweens nunca mexem na mesma propriedade do mesmo elemento.
+3. No máximo dois trechos fixados na página. Os gatilhos são criados na ordem das
+   seções, e o fio (`FioDaPagina`) vem depois de tudo.
+4. Na seção de tratamentos, só os títulos (`h3`) recebem transform. `ol` e `li`
+   ficam sem posição e sem transform, senão o detalhe e a mídia se deslocam.
+5. Traços usam `pathLength="1000"` e vão de 1000 a 0. O GSAP arredonda px para
+   inteiro: com `pathLength="1"`, o traço só ligava e desligava.
+6. Tudo que anima tem caminho sem movimento (`prefers-reduced-motion`): sem pin,
+   sem rolagem suave, conteúdo à vista.
 
-O que estiver ali precisa bater **exatamente** com o Perfil da Empresa no
-Google. Divergência de nome, endereço ou telefone entre o site e o perfil
-enfraquece a busca local — é o erro mais comum e o mais fácil de evitar.
+## Testes que foram feitos
 
-## O backend de agendamentos
+- TypeScript e ESLint sem erros; build de produção estático.
+- Prints automáticos em 1440×900 e 390×844, também com movimento reduzido, pelo
+  script `prints.mjs` da skill `site-premium`. Console sem erros.
+- Menu do celular (abre, deixa o resto `inert`, fecha com Esc, devolve o foco) e
+  botão fixo de WhatsApp testados com Playwright.
+- **Não testado:** Safari em iPhone de verdade, Firefox, 768px. Faça isso antes de
+  publicar.
 
-Ainda não existe agenda. O que existe é o encaixe pronto para ela:
+## Pendências
 
-```
-FormAgendamento → POST /api/agendamentos → pedidoAgendamentoSchema (zod)
-                                         → RepositorioAgendamentos
-                                         → WhatsApp da clínica
-```
-
-Hoje `RepositorioEmMemoria` (`lib/agendamento/repositorio.ts`) só valida e
-registra; a entrega real acontece no WhatsApp, que é o canal que a recepção lê
-todo dia.
-
-Para ligar uma agenda de verdade, escreva uma classe que implemente
-`RepositorioAgendamentos` e troque a linha da fábrica em `obterRepositorio()`.
-Nem a rota nem o formulário precisam mudar.
-
-**Antes de tirar o passo do WhatsApp**, garanta que o novo destino avisa alguém.
-Um pedido que entra no banco e não dispara notificação é um paciente perdido em
-silêncio — pior do que não ter formulário.
-
-## SEO local
-
-- `Dentist` + `FAQPage` + `WebSite` em JSON-LD, montados em `lib/schema.ts`
-- `app/sitemap.ts` e `app/robots.ts` gerados pelo Next
-- `public/og.jpg` (1200×630) para pré-visualização de link, recortado da fachada:
-
-  ```bash
-  node -e "require('sharp')('public/fotos/fachada.png').resize(1200,630,{fit:'cover'}).jpeg({quality:82,mozjpeg:true}).toFile('public/og.jpg')"
-  ```
-
-Não existe `aggregateRating` no schema, e isso é de propósito: marcar a nota da
-própria empresa no próprio site é *self-serving review* pelas diretrizes do
-Google — inelegível para rich result e sujeito a ação manual. A nota 5,0 aparece
-na tela, creditada ao Google, mas fora do JSON-LD.
-
-O site sustenta relevância e destaque. **Posição no Google Maps quem decide é o
-Perfil da Empresa no Google**, não o site — veja `docs/visibilidade-google.md`.
+- Logotipo oficial em SVG (o atual é provisório).
+- Confirmar com a clínica: odontopediatria como serviço próprio, quem faz a
+  limpeza de pele, consentimento para fotos de antes e depois, e a divergência
+  "desde 2017" (Instagram) × "clínica nova" (versão atual do site).
+- Publicação: domínio sencis.com.br na Vercel (hoje aponta para a versão atual).
+  Ao trocar, manter o `siteUrl` de `lib/clinica.ts` igual ao domínio de produção.

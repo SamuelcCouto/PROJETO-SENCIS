@@ -1,42 +1,44 @@
-import { Cabecalho } from "@/components/Cabecalho";
-import { Hero } from "@/components/Hero";
-import { Tratamentos } from "@/components/Tratamentos";
-import { EsteticaFacial } from "@/components/EsteticaFacial";
-import { CameraIntraoral } from "@/components/CameraIntraoral";
-import { Clinica } from "@/components/Clinica";
-import { Estrutura } from "@/components/Estrutura";
-import { Agendar } from "@/components/Agendar";
-import { Perguntas } from "@/components/Perguntas";
-import { Localizacao } from "@/components/Localizacao";
-import { Rodape } from "@/components/Rodape";
-import { BarraWhatsapp } from "@/components/BarraWhatsapp";
+import { Cabecalho } from "@/components/cabecalho";
+import { FioDaPagina } from "@/components/fio-da-pagina";
+import { Rodape } from "@/components/rodape";
+import { Abertura } from "@/components/secoes/abertura";
+import { Clinica } from "@/components/secoes/clinica";
+import { Encontro } from "@/components/secoes/encontro";
+import { Perguntas } from "@/components/secoes/perguntas";
+import { PrimeiraConsulta } from "@/components/secoes/primeira-consulta";
+import { Resultados } from "@/components/secoes/resultados";
+import { Rosto } from "@/components/secoes/rosto";
+import { Tratamentos } from "@/components/secoes/tratamentos";
+import { Visita } from "@/components/secoes/visita";
+import { WhatsappFixo } from "@/components/whatsapp-fixo";
 
+/**
+ * Ordem da página = ordem dos ScrollTriggers. Cada seção fixada acrescenta
+ * espaço, e os gatilhos de baixo contam com os de cima.
+ * Fixadas: o encontro e os tratamentos. Nenhuma outra.
+ * O FioDaPagina vem depois de tudo: os gatilhos do fio nascem depois dos pins.
+ */
 export default function Pagina() {
   return (
     <>
-      <a
-        href="#tratamentos"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-ink focus:px-5 focus:py-3 focus:text-white"
-      >
+      <a className="pular" href="#conteudo">
         Pular para o conteúdo
       </a>
-
       <Cabecalho />
-
-      <main>
-        <Hero />
+      <main id="conteudo">
+        <Abertura />
+        <Encontro />
+        <PrimeiraConsulta />
         <Tratamentos />
-        <EsteticaFacial />
-        <CameraIntraoral />
+        <Resultados />
+        <Rosto />
         <Clinica />
-        <Estrutura />
-        <Agendar />
         <Perguntas />
-        <Localizacao />
+        <Visita />
       </main>
-
       <Rodape />
-      <BarraWhatsapp />
+      <FioDaPagina />
+      <WhatsappFixo />
     </>
   );
 }

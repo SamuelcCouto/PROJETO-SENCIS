@@ -19,14 +19,10 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        // O endereço original da Vercel continuava servindo o site inteiro, e o
-        // Google enxergava duas cópias idênticas, dividindo a relevância entre
-        // elas. O redirecionamento permanente (308) diz qual é a oficial.
-        //
-        // Casa só este host exato: os links de preview de cada branch
-        // (projeto-sencis-git-*.vercel.app) continuam abrindo normalmente.
-        // O destino precisa ser o mesmo siteUrl de lib/clinica.ts — o teste em
-        // tests/seo/metadados.test.ts falha se divergirem.
+        // O endereço da Vercel servia o site inteiro e o Google via duas cópias.
+        // O 308 diz qual é a oficial. Só este host: as prévias de cada branch
+        // (projeto-sencis-git-*.vercel.app) continuam abrindo.
+        // O destino precisa ser o mesmo siteUrl de lib/clinica.ts.
         source: "/:path*",
         has: [{ type: "host", value: "projeto-sencis.vercel.app" }],
         destination: "https://www.sencis.com.br/:path*",
