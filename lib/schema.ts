@@ -1,49 +1,18 @@
 import { clinica } from "./clinica";
-import { tratamentos } from "./tratamentos";
-import { servicosComplementares } from "./esteticaFacial";
-import { faq } from "./faq";
+import { perguntas, rosto, tratamentos } from "./conteudo";
 
 /**
- * JSON-LD para busca local.
+ * JSON-LD para a busca local, herdado da versão atual do site.
  *
- * O tipo `Dentist` é o que diz ao Google, sem ambiguidade, que este endereço é
- * um consultório odontológico — o site antigo não declarava nada disso, então a
- * página só era recuperável por marca ("sencis") e não por categoria.
- *
- * Nota deliberada: NÃO existe `aggregateRating` aqui. A nota 5,0 é real, mas
- * marcar avaliação da própria empresa no próprio site é "self-serving review"
- * pelas diretrizes do Google, inelegível para rich result e sujeito a ação
- * manual. A nota aparece na tela, creditada ao Google — só não no schema.
+ * Sem `aggregateRating` de propósito: marcar a própria nota no próprio site é
+ * "self-serving review" para o Google. A nota aparece na tela, creditada ao
+ * Google, e fica fora do schema.
  */
 
-const enderecoPostal = {
-  "@type": "PostalAddress",
-  streetAddress: `${clinica.endereco.logradouro}, ${clinica.endereco.complemento}`,
-  addressLocality: clinica.endereco.cidade,
-  addressRegion: clinica.endereco.estado,
-  postalCode: clinica.endereco.cep,
-  addressCountry: clinica.endereco.pais,
-};
-
 const horarioAtendimento = [
-  {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    opens: "08:30",
-    closes: "12:00",
-  },
-  {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    opens: "13:00",
-    closes: "18:00",
-  },
-  {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: ["Saturday"],
-    opens: "08:30",
-    closes: "12:00",
-  },
+  { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "08:30", closes: "12:00" },
+  { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "13:00", closes: "18:00" },
+  { "@type": "OpeningHoursSpecification", dayOfWeek: ["Saturday"], opens: "08:30", closes: "12:00" },
 ];
 
 export function schemaClinica() {
@@ -57,12 +26,15 @@ export function schemaClinica() {
       "Clínica odontológica no Parque Amazônia, em Goiânia. Clínica geral, estética do sorriso, ortodontia, implantes, canal e periodontia, com atendimento humanizado.",
     url: clinica.siteUrl,
     telephone: clinica.telefone.e164,
-    address: enderecoPostal,
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: clinica.geo.latitude,
-      longitude: clinica.geo.longitude,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: `${clinica.endereco.logradouro}, ${clinica.endereco.complemento}`,
+      addressLocality: clinica.endereco.cidade,
+      addressRegion: clinica.endereco.estado,
+      postalCode: clinica.endereco.cep,
+      addressCountry: clinica.endereco.pais,
     },
+    geo: { "@type": "GeoCoordinates", latitude: clinica.geo.latitude, longitude: clinica.geo.longitude },
     hasMap: `https://www.google.com/maps/search/?api=1&query=${clinica.geo.latitude},${clinica.geo.longitude}`,
     openingHoursSpecification: horarioAtendimento,
     image: [
@@ -70,7 +42,6 @@ export function schemaClinica() {
       `${clinica.siteUrl}/fotos/recepcao-poltronas.png`,
       `${clinica.siteUrl}/fotos/consultorio-janela.png`,
     ],
-    logo: `${clinica.siteUrl}/icone.svg`,
     priceRange: "$$",
     currenciesAccepted: "BRL",
     paymentAccepted: "Dinheiro, Pix, Cartão de crédito, Cartão de débito",
@@ -83,68 +54,29 @@ export function schemaClinica() {
       { "@type": "Place", name: "Setor Pedro Ludovico" },
     ],
     isAcceptingNewPatients: true,
-    // knowsLanguage, e não availableLanguage: esta só vale para ContactPoint,
-    // Course e hospedagem. Cada propriedade deste objeto é conferida contra o
-    // vocabulário oficial em tests/seo/schema.test.ts.
     knowsLanguage: "pt-BR",
     medicalSpecialty: "Dentistry",
-    // "Aberto ao público" — não confundir com acessibilidade, que vem abaixo.
     publicAccess: true,
-    // Entrada sem degrau, confirmado no Perfil da Empresa no Google.
-    amenityFeature: [
-      {
-        "@type": "LocationFeatureSpecification",
-        name: "Acessível para cadeira de rodas",
-        value: true,
-      },
-    ],
+    amenityFeature: [{ "@type": "LocationFeatureSpecification", name: "Acessível para cadeira de rodas", value: true }],
     employee: {
       "@type": "Person",
       name: clinica.responsavel.nome,
       jobTitle: clinica.responsavel.cargo,
       identifier: clinica.responsavel.cro,
     },
-    // hasOfferCatalog, e não availableService: esta só vale para MedicalClinic,
-    // Hospital e Physician. Em Dentist o Google simplesmente não lê.
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Tratamentos",
       itemListElement: [
         ...tratamentos.map((t) => ({
           "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
-            name: t.nome,
-            description: t.resolve,
-            alternateName: t.tambemChamado,
-          },
+          itemOffered: { "@type": "Service", name: t.nome, description: t.resolve, alternateName: t.tambemChamado },
         })),
-        // Só os serviços dentro do escopo legal de uma cirurgiã-dentista (a
-        // Harmonização Orofacial é especialidade reconhecida pelo CFO) entram
-        // aqui. Limpeza de pele fica de fora — ver a nota em esteticaFacial.ts.
-        ...servicosComplementares
-          .filter((s) => s.escopoDentista)
-          .map((s) => ({
-            "@type": "Offer",
-            itemOffered: {
-              "@type": "Service",
-              name: s.nome,
-              description: s.descricao,
-            },
-          })),
+        ...rosto.servicos.map((s) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: s.nome, description: s.descricao },
+        })),
       ],
-    },
-    potentialAction: {
-      "@type": "ReserveAction",
-      name: "Agendar avaliação",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `https://wa.me/${clinica.whatsapp.numero}`,
-        actionPlatform: [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform",
-        ],
-      },
     },
   };
 }
@@ -153,11 +85,10 @@ export function schemaFaq() {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "@id": `${clinica.siteUrl}/#faq`,
-    mainEntity: faq.map((item) => ({
+    mainEntity: perguntas.map((p) => ({
       "@type": "Question",
-      name: item.pergunta,
-      acceptedAnswer: { "@type": "Answer", text: item.resposta },
+      name: p.pergunta,
+      acceptedAnswer: { "@type": "Answer", text: p.resposta },
     })),
   };
 }

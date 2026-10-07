@@ -1,0 +1,25 @@
+name: Verificação
+
+# Roda a cada push na main e em todo pull request. A Vercel publica em paralelo
+# e não espera este resultado: um vermelho aqui não tira o site do ar, mas avisa
+# que algo quebrou (tipos, lint ou build) antes de alguém perceber no site.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verificacao:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run build

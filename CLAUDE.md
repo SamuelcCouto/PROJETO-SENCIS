@@ -1,30 +1,22 @@
-# Sencis Odontologia Integrada
-
-## Visão geral do código
+# Sencis Odontologia Integrada — v2
 
 Site de página única da clínica Sencis (Parque Amazônia, Goiânia/GO), em
-produção em `https://www.sencis.com.br`. O conteúdo é dado estático em `lib/`,
-renderizado no servidor; o único ponto dinâmico é `POST /api/agendamentos`, que
-valida o pedido e devolve o paciente para o WhatsApp da clínica. Boa parte do
-código existe para SEO local: JSON-LD `Dentist`, metadados e sitemap, travados
-por testes.
+produção em `https://www.sencis.com.br`. A v2 substituiu a v1 em outubro de
+2026; a v1 continua no histórico do git.
 
-**Stack**: Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4 ·
-Zod · Vitest · Vercel.
-**Estrutura**: `app/` (layout, página, API, sitemap) · `components/` (uma seção
-por arquivo) · `lib/` (dados, JSON-LD, contrato de agendamento) · `tests/`
-(unidade e SEO) · `public/fotos` e `public/videos`.
+**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS 4
+(tokens) · GSAP + ScrollTrigger · Lenis · Vercel.
 
-Arquitetura detalhada, pegadinhas e onde mexer para cada tarefa:
-[docs/CODEBASE_MAP.md](docs/CODEBASE_MAP.md). Estratégia de busca local:
-[docs/visibilidade-google.md](docs/visibilidade-google.md).
+Como rodar, onde trocar cada conteúdo e as regras de movimento: `README.md`.
+Plano visual e de movimento: `design-plan.md`. Origem dos dados: `briefing.md`.
+Estratégia de busca local: `docs/visibilidade-google.md`.
 
 ## Regras
 
-- Nome, endereço, telefone e CRO saem só de `lib/clinica.ts`, e precisam bater
-  com o Perfil da Empresa no Google.
+- Nome, endereço, telefone e CRO saem só de `lib/clinica.ts` e precisam bater
+  com o Perfil da Empresa no Google. O `siteUrl` de lá é o mesmo destino do
+  redirecionamento em `next.config.ts`.
 - Código, nomes e comentários em português, seguindo o estilo existente.
-- Antes de entregar: `npm run typecheck && npm run lint && npm run build && npm test`
-  (a suíte de HTML só roda com build).
-- Performance se mede comparando o código antigo e o novo na mesma máquina, com
-  várias execuções: um número isolado do Lighthouse varia até 7 pontos.
+- Fotos sempre inteiras, sem recorte. O fio da página (`lib/fio.ts`) passa
+  pelos vãos e nunca por cima de texto ou foto.
+- Antes de entregar: `npm run typecheck && npm run lint && npm run build`.

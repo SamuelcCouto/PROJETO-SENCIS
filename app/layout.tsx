@@ -1,132 +1,68 @@
 import type { Metadata, Viewport } from "next";
-import { Jost, Instrument_Sans } from "next/font/google";
+import { Albert_Sans, Ysabeau } from "next/font/google";
+import { SmoothScroll } from "@/components/motion/smooth-scroll";
 import { clinica } from "@/lib/clinica";
 import { schemaClinica, schemaFaq, schemaSite } from "@/lib/schema";
 import "./globals.css";
 
-// Geométrica, como o letreiro da fachada e os títulos do manual da marca.
-// A identidade pede formas suaves e nenhum clichê dental — uma serifa de
-// display puxava para o editorial, que não é o que a Sencis é.
-const jost = Jost({
+// Ysabeau: sans humanista com proporções de Garamond, conversa com o N
+// caligráfico do letreiro. Só os pesos que os títulos usam.
+const ysabeau = Ysabeau({
   subsets: ["latin"],
+  weight: ["200", "300", "400"],
   display: "swap",
-  weight: ["300", "400", "500"],
-  variable: "--font-jost",
+  variable: "--fonte-ysabeau",
 });
 
-const instrumentSans = Instrument_Sans({
+// Albert Sans: grotesca geométrica, eco do "ODONTOLOGIA" da fachada.
+const albert = Albert_Sans({
   subsets: ["latin"],
+  weight: ["300", "400", "500"],
   display: "swap",
-  variable: "--font-instrument",
+  variable: "--fonte-albert",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(clinica.siteUrl),
-  // O título abre com o termo que as pessoas digitam, não com a marca: quem já
-  // conhece a Sencis busca por "sencis" e acha de qualquer jeito; quem não
-  // conhece busca por "dentista em Goiânia".
-  //
-  // Limites: título até 60 caracteres e descrição entre 120 e 155. Acima disso o
-  // Google corta no resultado — o título antigo, com 68, perdia justamente o
-  // bairro. tests/seo/metadados.test.ts falha se passar.
   title: {
     default: "Dentista em Goiânia no Parque Amazônia | Sencis Odontologia",
     template: "%s | Sencis Odontologia",
   },
   description:
     "Dentista no Parque Amazônia, em Goiânia. Clareamento, implante, aparelho, canal e limpeza, com atendimento humanizado. WhatsApp (62) 99227-2783.",
-  keywords: [
-    "dentista em Goiânia",
-    "clínica odontológica Goiânia",
-    "dentista Parque Amazônia",
-    "clareamento dental Goiânia",
-    "implante dentário Goiânia",
-    "aparelho ortodôntico Goiânia",
-    "lente de contato dental Goiânia",
-    "tratamento de canal Goiânia",
-    "odontologia integrada",
-    "Sencis Odontologia",
-  ],
   applicationName: clinica.nome,
-  authors: [{ name: clinica.responsavel.nome }],
-  creator: clinica.nome,
-  publisher: clinica.nome,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "pt_BR",
     url: clinica.siteUrl,
     siteName: clinica.nome,
-    title:
-      "Sencis Odontologia Integrada — Dentista no Parque Amazônia, Goiânia",
-    description:
-      "Uma clínica onde a conversa vem antes do procedimento. Clínica geral, estética, ortodontia, implantes e canal em Goiânia.",
-    images: [
-      {
-        // Recorte 1200x630 da fachada: quem recebe o link vê o letreiro que
-        // vai procurar na calçada. Gerado em public/og.jpg.
-        url: "/og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Fachada da Sencis Odontologia Integrada, com o letreiro dourado sobre a entrada",
-      },
-    ],
+    title: "Sencis Odontologia Integrada, dentista no Parque Amazônia, Goiânia",
+    description: "Cuidar de um sorriso é olhar para além dele. Clínica geral, estética, ortodontia, implantes e canal em Goiânia.",
+    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Fachada da Sencis Odontologia, com o letreiro dourado sobre a entrada" }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Sencis Odontologia Integrada — Goiânia",
-    description:
-      "Clínica odontológica no Parque Amazônia, Goiânia. Atendimento humanizado, avaliação pelo WhatsApp.",
-    images: ["/og.jpg"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
-  category: "Odontologia",
-  icons: {
-    icon: [{ url: "/icone.svg", type: "image/svg+xml" }],
-    apple: "/icone.svg",
-  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2b2e31",
+  themeColor: "#F3EFE6",
   width: "device-width",
   initialScale: 1,
-  // O site antigo travava o zoom com maximum-scale=1 e user-scalable=no,
-  // o que impede alguém com baixa visão de ampliar o texto.
   maximumScale: 5,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = [schemaClinica(), schemaFaq(), schemaSite()];
-
   return (
-    <html
-      lang="pt-BR"
-      className={`${jost.variable} ${instrumentSans.variable}`}
-    >
-      <head>
-        <link rel="preconnect" href="https://maps.google.com" />
+    <html lang="pt-BR" className={`${ysabeau.variable} ${albert.variable}`}>
+      <body>
         <script
           type="application/ld+json"
-          // Conteúdo próprio e estático, montado a partir de lib/schema.ts.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-      </head>
-      <body>{children}</body>
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

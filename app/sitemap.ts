@@ -2,18 +2,15 @@ import type { MetadataRoute } from "next";
 import { clinica } from "@/lib/clinica";
 
 /**
- * As fotos entram no sitemap para aparecerem na busca de imagens — quem procura
- * "clareamento dental Goiânia" ou "consultório odontológico Parque Amazônia"
- * pelo Google Imagens chega aqui.
- *
- * São os arquivos originais em public/, não as versões otimizadas do
- * next/image, que mudam de URL a cada build. tests/seo/metadados.test.ts
- * confere que cada um existe: renomear uma foto sem atualizar esta lista quebra
- * o teste, não o Google.
+ * Página única. As fotos entram no sitemap para aparecerem na busca de imagens
+ * ("consultório odontológico Parque Amazônia", "lentes de porcelana Goiânia").
+ * São os arquivos originais em public/, que mantêm a URL entre um build e outro
+ * (as versões do next/image mudam).
  */
 const fotos = [
   "fachada.png",
   "recepcao-poltronas.png",
+  "recepcao-cafe.png",
   "consultorio-janela.png",
   "planejamento.jpg",
   "camera-intraoral.jpg",
