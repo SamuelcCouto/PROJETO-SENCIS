@@ -21,8 +21,15 @@ npm run start      # serve o build (porta 3000, ou PORT=3200 npm run start)
 Antes de entregar qualquer mudança:
 
 ```bash
-npm run typecheck && npm run lint && npm run build
+npm run typecheck && npm run lint && npm run build && npm test
 ```
+
+`npm test` roda a suíte (Vitest): JSON-LD validado contra o vocabulário oficial
+do schema.org, metadados, sitemap, robots, contraste dos pares de cor e o HTML
+gerado (um h1 com o título pedido pela clínica, foto do topo visível desde o
+início, NAP em texto, links, alt das imagens). A parte de HTML precisa de build:
+sem ela, se pula sozinha. `npm run test:seo` faz o build e roda só o SEO. O
+GitHub roda tudo a cada push e pull request (`.github/workflows/verificacao.yml`).
 
 ## Onde mexer
 
@@ -89,19 +96,34 @@ Regras que evitam quebra (detalhes em `components/` e na skill `site-premium`):
 
 ## Testes que foram feitos
 
-- TypeScript e ESLint sem erros; build de produção estático.
-- Prints automáticos em 1440×900 e 390×844, também com movimento reduzido, pelo
-  script `prints.mjs` da skill `site-premium`. Console sem erros.
-- Menu do celular (abre, deixa o resto `inert`, fecha com Esc, devolve o foco) e
-  botão fixo de WhatsApp testados com Playwright.
-- **Não testado:** Safari em iPhone de verdade, Firefox, 768px. Faça isso antes de
-  publicar.
+- `npm test`: 68 testes (SEO, schema.org, metadados, contraste, HTML gerado e os
+  pedidos da clínica). Rodam no GitHub a cada push.
+- Responsividade em 12 tamanhos (de 320×568 a 1920×1080, incluindo celular
+  deitado 740×360 e tablet 768×1024) com a auditoria da skill `mobile`: página
+  nunca mais larga que a tela, trechos fixados cabendo na altura, áreas de
+  toque de 44 px.
+- Prints com movimento reduzido; menu do celular e botão fixo de WhatsApp com
+  Playwright; Lighthouse no perfil de celular.
+- **Não testado:** Safari em iPhone de verdade e Firefox (os motores do
+  Playwright não abrem na máquina de desenvolvimento). Ver o roteiro em
+  "Pendências".
+
+## Regras de responsividade
+
+- Seção fixada (pin) nunca tem altura mínima maior que a tela: o que passa do
+  fim nunca é visto. O encontro usa só `100svh` e fontes em `svh`.
+- Em coluna única (abaixo de 1024 px), foto tem `max-height: 82svh`: no celular
+  deitado uma foto em pé passava de duas telas.
+- Link tem área de toque de 44 px (`padding-block` com margem negativa); regra
+  que dá `margin-top` a um link desconta 13 px.
 
 ## Pendências
 
-- Logotipo oficial em SVG (o atual é provisório).
-- Confirmar com a clínica: odontopediatria como serviço próprio, quem faz a
-  limpeza de pele, consentimento para fotos de antes e depois, e a divergência
-  "desde 2017" (Instagram) × "clínica nova" (versão atual do site).
-- Publicação: domínio sencis.com.br na Vercel (hoje aponta para a versão atual).
-  Ao trocar, manter o `siteUrl` de `lib/clinica.ts` igual ao domínio de produção.
+- Logotipo oficial em SVG (o atual é provisório, redesenhado da fachada).
+- Testar em iPhone real (Safari) e no Firefox: abrir o site, rolar devagar até o
+  fim, conferir o fio, o encontro, a lista de tratamentos parada na tela, o menu
+  e um botão de WhatsApp.
+- Mídia melhor (opcional): vídeos dos tratamentos regravados em 1080×1440, a foto
+  da abertura em tamanho original e um vídeo curto de abertura.
+- Confirmar com a clínica: odontopediatria como serviço próprio, consentimento
+  para fotos de antes e depois, e "desde 2017" (Instagram) × "clínica nova".

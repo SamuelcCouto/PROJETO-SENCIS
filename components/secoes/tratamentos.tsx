@@ -49,7 +49,25 @@ export function Tratamentos() {
       });
     });
     videos.forEach((v) => observador.observe(v));
-    return () => observador.disconnect();
+
+    // Pôster no HTML é baixado na abertura, mesmo com preload="none": os quatro
+    // disputavam banda com a foto do topo. Só entram quando a seção se aproxima.
+    const aproximacao = new IntersectionObserver(
+      ([e]) => {
+        if (!e.isIntersecting) return;
+        videos.forEach((v) => {
+          if (v.dataset.poster) v.poster = v.dataset.poster;
+        });
+        aproximacao.disconnect();
+      },
+      { rootMargin: "900px 0px" },
+    );
+    if (secao.current) aproximacao.observe(secao.current);
+
+    return () => {
+      observador.disconnect();
+      aproximacao.disconnect();
+    };
   }, []);
 
   useGSAP(
@@ -175,7 +193,7 @@ function MidiaTratamento({ midia }: { midia: Midia | null }) {
     return (
       <>
         <div className="trat__quadro">
-          <video src={midia.src} poster={midia.poster} muted loop playsInline preload="none" aria-hidden="true" />
+          <video src={midia.src} data-poster={midia.poster} muted loop playsInline preload="none" aria-hidden="true" />
         </div>
         <figcaption>{midia.legenda}</figcaption>
       </>
