@@ -26,7 +26,7 @@ export function MapaSobDemanda() {
 
   return (
     <div className="mapa">
-      <Image src="/fotos/fachada.png" alt="" fill sizes="(min-width: 1024px) 40vw, 92vw" />
+      <Image src="/fotos/fachada.png" alt="Fachada da Sencis, com o letreiro dourado sobre a entrada" fill sizes="(min-width: 1024px) 40vw, 92vw" />
       <button type="button" className="botao botao--claro mapa__botao" onClick={() => setCarregado(true)}>
         Mostrar o mapa do Google
       </button>

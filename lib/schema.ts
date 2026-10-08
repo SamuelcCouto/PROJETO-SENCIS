@@ -35,7 +35,7 @@ export function schemaClinica() {
       addressCountry: clinica.endereco.pais,
     },
     geo: { "@type": "GeoCoordinates", latitude: clinica.geo.latitude, longitude: clinica.geo.longitude },
-    hasMap: `https://www.google.com/maps/search/?api=1&query=${clinica.geo.latitude},${clinica.geo.longitude}`,
+    hasMap: clinica.perfilGoogle,
     openingHoursSpecification: horarioAtendimento,
     image: [
       `${clinica.siteUrl}/fotos/fachada.png`,
@@ -45,7 +45,8 @@ export function schemaClinica() {
     priceRange: "$$",
     currenciesAccepted: "BRL",
     paymentAccepted: "Dinheiro, Pix, Cartão de crédito, Cartão de débito",
-    sameAs: [clinica.social.instagram],
+    logo: `${clinica.siteUrl}/icon.svg`,
+    sameAs: [clinica.perfilGoogle, clinica.social.instagram],
     areaServed: [
       { "@type": "City", name: "Goiânia" },
       { "@type": "Place", name: "Parque Amazônia" },
@@ -72,7 +73,8 @@ export function schemaClinica() {
           "@type": "Offer",
           itemOffered: { "@type": "Service", name: t.nome, description: t.resolve, alternateName: t.tambemChamado },
         })),
-        ...rosto.servicos.map((s) => ({
+        // Só o que está no escopo legal de uma cirurgiã-dentista (ver lib/conteudo.ts).
+        ...rosto.servicos.filter((s) => s.escopoDentista).map((s) => ({
           "@type": "Offer",
           itemOffered: { "@type": "Service", name: s.nome, description: s.descricao },
         })),

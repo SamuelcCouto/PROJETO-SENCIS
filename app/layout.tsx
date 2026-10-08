@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: clinica.siteUrl,
     siteName: clinica.nome,
     title: "Sencis Odontologia Integrada, dentista no Parque Amazônia, Goiânia",
-    description: "Cuidar de um sorriso é olhar para além dele. Clínica geral, estética, ortodontia, implantes e canal em Goiânia.",
+    description: "Odontologia que começa entendendo você. Clínica geral, estética, ortodontia, implantes e canal no Parque Amazônia, Goiânia.",
     images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Fachada da Sencis Odontologia, com o letreiro dourado sobre a entrada" }],
   },
   robots: { index: true, follow: true },
