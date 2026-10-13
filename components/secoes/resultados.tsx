@@ -17,7 +17,7 @@ const casos = [
   },
   {
     src: "/fotos/harmonizacao-facial-montagem.jpg",
-    alt: "Montagem com quatro fotos do rosto de uma paciente, de frente e de perfil, antes e depois da harmonização facial",
+    alt: "Montagem com quatro fotos do rosto de uma paciente, de frente e de perfil, antes e depois da harmonização facial, com olhos e tatuagem desfocados para preservar a identidade",
     largura: 876,
     altura: 1236,
     legenda: "Harmonização facial, antes e depois",

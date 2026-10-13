@@ -125,5 +125,12 @@ Regras que evitam quebra (detalhes em `components/` e na skill `site-premium`):
   e um botão de WhatsApp.
 - Mídia melhor (opcional): vídeos dos tratamentos regravados em 1080×1440, a foto
   da abertura em tamanho original e um vídeo curto de abertura.
-- Confirmar com a clínica: odontopediatria como serviço próprio, consentimento
-  para fotos de antes e depois, e "desde 2017" (Instagram) × "clínica nova".
+- Consentimento por escrito da paciente da harmonização facial. Até chegar, a
+  montagem fica com olhos e tatuagem desfocados (o original está no histórico
+  do git). Com o termo assinado, basta devolver a foto original.
+
+Decidido em 13/10/2026: odontopediatria fica dentro de clínica geral, sem item
+próprio; a clínica é tratada como nova até a Jhennifer confirmar o "desde 2017"
+do Instagram; as promessas do FAQ (encaixe no mesmo dia, convênio por reembolso,
+valor da avaliação pelo WhatsApp) foram confirmadas. Teste em iPhone e Firefox
+adiado por prazo.
