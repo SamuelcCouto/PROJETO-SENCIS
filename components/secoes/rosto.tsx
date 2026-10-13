@@ -2,14 +2,14 @@ import { FioCamada } from "@/components/fio-camada";
 import { whatsappSobre } from "@/lib/clinica";
 import { rosto } from "@/lib/conteudo";
 
-/** Harmonização orofacial: serviço secundário, com peso visual menor de propósito. */
+/** Botox, harmonização e limpeza de pele: secundários, com peso visual menor de propósito. */
 export function Rosto() {
   return (
     <section className="rosto" data-fio="rosto" aria-labelledby="rosto-titulo">
       <FioCamada />
       <div className="rosto__cabeca">
         <h2 id="rosto-titulo" className="rosto__titulo">
-          Harmonização orofacial
+          {rosto.titulo}
         </h2>
         <p>{rosto.intro}</p>
       </div>
@@ -21,8 +21,8 @@ export function Rosto() {
           </div>
         ))}
       </dl>
-      <a className="link rosto__link" href={whatsappSobre("harmonização orofacial")} target="_blank" rel="noopener noreferrer">
-        Perguntar sobre harmonização no WhatsApp
+      <a className="link rosto__link" href={whatsappSobre("botox, harmonização e limpeza de pele")} target="_blank" rel="noopener noreferrer">
+        Perguntar sobre esses cuidados no WhatsApp
       </a>
     </section>
   );

@@ -5,5 +5,11 @@ import nextTs from "eslint-config-next/typescript";
 export default defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    // Os testes de SEO percorrem JSON arbitrário (o JSON-LD gerado e o grafo
+    // do vocabulário schema.org): ali `any` é o tipo honesto.
+    files: ["tests/**"],
+    rules: { "@typescript-eslint/no-explicit-any": "off" },
+  },
   globalIgnores([".next/**", "out/**", "build/**", "next-env.d.ts", "prints/**"]),
 ]);

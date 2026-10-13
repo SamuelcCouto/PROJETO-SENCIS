@@ -173,17 +173,38 @@ export const primeiraConsulta: Passo[] = [
   },
 ];
 
+/**
+ * Cuidados com o rosto. A clínica pediu os três juntos, mas foi clara que não
+ * são o foco: por isso a seção tem peso visual menor que a de tratamentos.
+ *
+ * Limpeza de pele não está no escopo legal de uma cirurgiã-dentista (costuma
+ * ser feita por esteticista ou biomédica). Por isso o texto não a atribui à
+ * responsável técnica e ela fica fora do JSON-LD de dentista
+ * (`escopoDentista: false`). Botox e harmonização entram: são da Harmonização
+ * Orofacial, especialidade reconhecida pelo CFO (Resolução CFO-198/2019).
+ */
 export const rosto = {
+  titulo: "Também no consultório",
   intro:
-    "Além do sorriso, a Sencis cuida do rosto dentro da Harmonização Orofacial, especialidade reconhecida pelo Conselho Federal de Odontologia.",
+    "A Sencis é uma clínica odontológica antes de tudo. Mas o cuidado com o rosto não para na boca, e alguns tratamentos abaixo cabem na mesma visita.",
   servicos: [
     {
       nome: "Botox",
-      descricao: "Toxina botulínica para dor de mandíbula, bruxismo e rugas de expressão.",
+      descricao:
+        "Toxina botulínica para dor de mandíbula, bruxismo e rugas de expressão, aplicada dentro da Harmonização Orofacial.",
+      escopoDentista: true,
     },
     {
       nome: "Harmonização facial",
-      descricao: "Preenchimento e contorno para o equilíbrio do rosto, planejados junto com o sorriso.",
+      descricao:
+        "Preenchimento e contorno para o equilíbrio do rosto, dentro da mesma especialidade reconhecida pelo Conselho Federal de Odontologia.",
+      escopoDentista: true,
+    },
+    {
+      nome: "Limpeza de pele",
+      descricao:
+        "Limpeza de pele facial, para quem já é paciente da clínica e quer somar um cuidado de rotina à visita.",
+      escopoDentista: false,
     },
   ],
 };

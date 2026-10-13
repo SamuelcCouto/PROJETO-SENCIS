@@ -102,10 +102,10 @@ body {
 
 /* ---------- o fundo: mármore ----------
    Veios do mármore da fachada e da bandeja do café (public/textura, gerados
-   sem emenda). Ficam atrás do fio e derivam devagar com a rolagem
-   (--deriva, animado no FioDaPagina); com movimento reduzido, ficam parados. */
-[data-fio]::before {
-  content: "";
+   sem emenda), numa camada própria (.veios, de FioCamada). Ficam atrás do fio
+   e derivam devagar com a rolagem: o FioDaPagina anima só o transform dela.
+   Com movimento reduzido, ficam parados. */
+.veios {
   position: absolute;
   inset: -120px 0;
   z-index: -2;
@@ -113,24 +113,23 @@ body {
   background-image: url("/textura/veios-claros.webp");
   background-size: 820px auto;
   background-repeat: repeat;
-  transform: translate3d(0, calc(var(--deriva, 0) * 1px), 0);
   will-change: transform;
 }
-.trat::before,
-.rosto::before {
+.trat > .veios,
+.rosto > .veios {
   background-size: 980px auto;
   background-position: 310px 140px;
 }
-.clinica::before,
-.rodape::before,
-.visita::before {
+.clinica > .veios,
+.rodape > .veios,
+.visita > .veios {
   background-image: url("/textura/veios-escuros.webp");
 }
-.visita::before {
+.visita > .veios {
   opacity: 0.8;
 }
 @media (max-width: 767px) {
-  [data-fio]::before {
+  .veios {
     background-size: 560px auto;
   }
 }
@@ -227,6 +226,15 @@ body {
   color: var(--color-azul-profundo);
 }
 
+/* Área de toque de pelo menos 44 px (WCAG 2.5.8 pede 24, o ideal no celular é
+   44): o padding aumenta o alvo e a margem negativa devolve o espaço, então o
+   layout visual não muda. Regras que dão margin-top a um link descontam 13px. */
+.link,
+.abertura__nota a {
+  display: inline-block;
+  padding-block: 13px;
+  margin-block: -13px;
+}
 .link {
   color: var(--color-azul);
   font-weight: 500;
@@ -389,7 +397,8 @@ body {
 .abertura__titulo {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(2.75rem, 1.2rem + 5.4vw, 6.75rem);
+  /* mínimo de 2.45rem: em 320 px, "entendendo você" cabe numa linha */
+  font-size: clamp(2.45rem, 1.2rem + 5.4vw, 6.75rem);
   line-height: 1.02;
   letter-spacing: -0.01em;
 }
@@ -435,8 +444,7 @@ body {
 
 @media (prefers-reduced-motion: no-preference) {
   .abertura [data-linha],
-  .abertura [data-apoio],
-  .abertura [data-foto] {
+  .abertura [data-apoio] {
     opacity: 0;
     animation: rede-opacidade 0s 4s forwards;
   }
@@ -470,8 +478,10 @@ body {
 .encontro {
   --eixo: 30vw;
   position: relative;
+  /* Sem altura mínima: a seção fica fixada, e o que passasse da tela (no
+     iPhone SE ou no celular deitado) nunca seria visto. As fontes já se
+     ajustam pela altura (svh). */
   height: 100svh;
-  min-height: 600px;
   overflow: hidden;
   background: var(--color-papel);
 }
@@ -733,13 +743,13 @@ body {
   max-width: 34em;
 }
 .trat__detalhe .link {
-  display: inline-block;
-  margin-top: 14px;
+  margin-top: 1px; /* 14px menos os 13px da área de toque */
   color: var(--color-azul-profundo);
 }
 .trat__midia {
   margin: 28px 0 0;
-  max-width: 340px;
+  /* 62svh: no celular deitado a moldura 3:4 cabe inteira na altura */
+  max-width: min(340px, 62svh);
 }
 .trat__midia:has(.trat__sem-midia) {
   display: none;
@@ -911,7 +921,7 @@ body {
 }
 .rosto__lista {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px 40px;
   align-content: start;
   margin: 0;
@@ -932,6 +942,9 @@ body {
 @media (max-width: 1023px) {
   .rosto {
     grid-template-columns: 1fr;
+  }
+  .rosto__lista {
+    grid-template-columns: 1fr 1fr;
   }
   .rosto__link {
     grid-column: 1;
@@ -964,8 +977,7 @@ body {
   color: var(--color-creme);
 }
 .clinica__texto .link {
-  display: inline-block;
-  margin-top: 28px;
+  margin-top: 15px; /* 28px menos os 13px da área de toque */
 }
 .clinica__foto {
   position: absolute;
@@ -1136,8 +1148,7 @@ body {
   line-height: 1.6;
 }
 .visita .link--claro {
-  display: inline-block;
-  margin-top: 14px;
+  margin-top: 1px; /* 14px menos os 13px da área de toque */
   color: var(--color-papel);
 }
 .visita__horarios {
@@ -1239,6 +1250,25 @@ body {
   .rodape {
     grid-template-columns: 1fr;
     padding: 80px var(--gutter) 112px;
+  }
+}
+
+/* ---------- fotos inteiras na tela em coluna única ----------
+   Em uma coluna, a foto ocupa a largura toda; no celular deitado (740×360) ou
+   no tablet, uma foto em pé passava de duas telas de altura. Limitar a altura
+   pela tela mantém a proporção e a foto inteira à vista. No celular em pé
+   nada muda: lá elas já cabem. */
+@media (max-width: 1023px) {
+  .consulta__foto-celular img,
+  .salas__foto img,
+  .resultados__foto img,
+  .clinica__foto-in img {
+    width: auto;
+    max-width: 100%;
+    max-height: 82svh;
+  }
+  .abertura__foto {
+    max-width: 82svh;
   }
 }
 

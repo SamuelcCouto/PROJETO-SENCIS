@@ -8,7 +8,7 @@ import { COM_MOVIMENTO, gsap, useGSAP } from "@/lib/motion";
 
 /**
  * Abertura. A única animação que roda sozinha no site: o fio nasce como o
- * braço do N e se desenha (FioDaPagina), a foto aparece inteira e a frase
+ * braço do N e se desenha (FioDaPagina), a foto assenta (já visível) e a frase
  * assenta linha a linha, com um desvio de menos de 1° que se corrige
  * (power2.out, sem passar do ponto).
  *
@@ -24,12 +24,13 @@ export function Abertura() {
       const mm = gsap.matchMedia();
       mm.add(COM_MOVIMENTO, () => {
         const q = gsap.utils.selector(raiz);
-        gsap.set(q("[data-linha], [data-apoio], [data-foto]"), { animation: "none" });
+        gsap.set(q("[data-linha], [data-apoio]"), { animation: "none" });
 
         gsap
           .timeline({ defaults: { ease: "power2.out" } })
-          .fromTo(q("[data-foto]"), { opacity: 0 }, { opacity: 1, duration: 0.9 }, 0.5)
-          .fromTo(q("[data-foto-in]"), { scale: 1.05 }, { scale: 1, duration: 1.2 }, 0.5)
+          // A foto nunca começa invisível: é a maior imagem da primeira tela (o
+          // LCP), e o Google só a conta quando ela aparece. Ela só assenta.
+          .fromTo(q("[data-foto-in]"), { scale: 1.05 }, { scale: 1, duration: 1.4 }, 0)
           .fromTo(
             q("[data-linha]"),
             { opacity: 0, y: 22, rotation: 0.8 },
@@ -48,13 +49,13 @@ export function Abertura() {
       <div className="abertura__texto">
         <h1 id="abertura-titulo" className="abertura__titulo">
           <span className="abertura__linha" data-linha>
-            Cuidar de um
+            Odontologia
           </span>{" "}
           <span className="abertura__linha" data-linha>
-            sorriso é olhar
+            que começa
           </span>{" "}
           <span className="abertura__linha" data-linha>
-            para além dele.
+            entendendo você
           </span>
         </h1>
         <p className="abertura__lead" data-apoio>
@@ -76,7 +77,7 @@ export function Abertura() {
         </p>
       </div>
 
-      <div className="abertura__foto" data-foto>
+      <div className="abertura__foto">
         <div className="abertura__foto-in" data-foto-in>
           <Image
             src="/fotos/planejamento.jpg"

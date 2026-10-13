@@ -2,7 +2,8 @@ name: Verificação
 
 # Roda a cada push na main e em todo pull request. A Vercel publica em paralelo
 # e não espera este resultado: um vermelho aqui não tira o site do ar, mas avisa
-# que algo quebrou (tipos, lint ou build) antes de alguém perceber no site.
+# que algo quebrou (tipos, lint, build, SEO ou contraste) antes de alguém
+# perceber no site ou no Google.
 on:
   push:
     branches: [main]
@@ -22,4 +23,6 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run lint
+      # O build gera o HTML que a suíte de SEO inspeciona.
       - run: npm run build
+      - run: npm test

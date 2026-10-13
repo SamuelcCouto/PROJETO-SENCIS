@@ -19,4 +19,10 @@ Estratégia de busca local: `docs/visibilidade-google.md`.
 - Código, nomes e comentários em português, seguindo o estilo existente.
 - Fotos sempre inteiras, sem recorte. O fio da página (`lib/fio.ts`) passa
   pelos vãos e nunca por cima de texto ou foto.
-- Antes de entregar: `npm run typecheck && npm run lint && npm run build`.
+- Pedidos da clínica que não podem regredir (os testes conferem): título do
+  topo "Odontologia que começa entendendo você", limpeza de pele junto com
+  botox e harmonização (fora do JSON-LD), nenhuma dentista em destaque (a
+  responsável técnica só no rodapé), todas as fotos que a clínica mandou.
+- Responsividade: seção fixada nunca maior que a tela; em coluna única, foto
+  com `max-height: 82svh`; link com área de toque de 44 px. Detalhes no README.
+- Antes de entregar: `npm run typecheck && npm run lint && npm run build && npm test`.

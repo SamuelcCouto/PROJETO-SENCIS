@@ -25,9 +25,13 @@ export function FioDaPagina() {
     const completo = window.matchMedia(`${COM_MOVIMENTO} and (min-width: 1024px)`);
     const larga = window.matchMedia("(min-width: 1024px)");
 
+    // Duas fases: primeiro mede todas as seções, depois escreve todos os
+    // desenhos. Medir e escrever alternados forçava um recálculo de layout por
+    // seção (o Lighthouse acusava ~2,7 s de "Style & Layout" no celular).
     const construir = () => {
       const modo: Modo = completo.matches ? "completo" : "costura";
       const movimento = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const desenhos: { svg: SVGSVGElement; w: number; h: number; d: string }[] = [];
       let entrada: number | null = null;
       for (const secao of secoes) {
         const rota = ROTAS[secao.dataset.fio ?? ""];
@@ -36,9 +40,12 @@ export function FioDaPagina() {
         const h = secao.offsetHeight;
         if (!rota || !svg || !w || !h) continue;
         const { d, saida } = rota({ secao, w, h, entrada, modo, larga: larga.matches, movimento });
+        desenhos.push({ svg, w, h, d });
+        entrada = saida;
+      }
+      for (const { svg, w, h, d } of desenhos) {
         svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
         svg.querySelectorAll("path").forEach((p) => p.setAttribute("d", d));
-        entrada = saida;
       }
     };
 
@@ -74,13 +81,17 @@ export function FioDaPagina() {
 
     // O mármore do fundo deriva mais devagar que o conteúdo, inclusive
     // enquanto uma seção está fixada: o fundo continua vivo durante o pin.
+    // Só transform na camada .veios: animar uma variável CSS na seção obrigava
+    // o navegador a recalcular o estilo de tudo dentro dela a cada quadro.
     mm.add(COM_MOVIMENTO, () => {
       secoes.forEach((secao) => {
+        const veios = secao.querySelector(":scope > .veios");
+        if (!veios) return;
         gsap.fromTo(
-          secao,
-          { "--deriva": -90 },
+          veios,
+          { y: -90 },
           {
-            "--deriva": 90,
+            y: 90,
             ease: "none",
             scrollTrigger: { trigger: secao, start: "top bottom", end: "bottom top", scrub: true },
           },

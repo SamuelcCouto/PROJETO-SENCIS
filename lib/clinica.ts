@@ -8,6 +8,8 @@
 export const clinica = {
   nome: "Sencis Odontologia Integrada",
   nomeCurto: "Sencis",
+  /** O título do topo, pedido pela clínica (Jhennifer) desde a v1. */
+  slogan: "Odontologia que começa entendendo você",
   assinatura: "Essencial na forma. Sentido na essência de cada sorriso.",
 
   telefone: {
@@ -44,6 +46,12 @@ export const clinica = {
     cro: "CRO-GO 16695",
   },
   croClinica: "CRO-GO 4560",
+
+  /**
+   * Link permanente do Perfil da Empresa no Google (pelo CID da ficha). Vai no
+   * JSON-LD (hasMap e sameAs) para o Google ligar o site ao perfil do Maps.
+   */
+  perfilGoogle: "https://maps.google.com/?cid=3246560138749927553",
 
   avaliacoes: {
     nota: "5,0",

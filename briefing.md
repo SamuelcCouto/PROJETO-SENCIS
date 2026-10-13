@@ -83,7 +83,11 @@ Hospedagem atual: Vercel
 Prazo: **[confirmar]**
 Coleta dados pessoais: não, se não houver formulário. Mapa do Google carrega só com clique (LGPD).
 
-## Divergências para confirmar com a clínica
+## Divergências com a clínica
+Respostas de 13/10/2026: odontopediatria fica dentro de clínica geral; a clínica é tratada como
+nova até confirmação; FAQ confirmado; sem consentimento por ora, a harmonização vai com olhos e
+tatuagem desfocados; logo SVG ainda não disponível.
+
 1. O Instagram diz "desde 2017 transformando sorrisos"; a v1 diz que a clínica "é nova, aberta do zero".
    Provável: a doutora atua desde 2017 e a clínica é recente.
 2. Odontopediatria entra como serviço próprio ou dentro de clínica geral?
